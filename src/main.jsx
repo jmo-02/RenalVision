@@ -9,7 +9,7 @@ import LowBloodPressure from "./pages/heart/low-blood-pressure/LowBloodPressure"
 import "./index.css";
 import Layout from "./layout/Layout";
 import KidneyStones from "./pages/kidney/kidney-stones/KidneyStones";
-import Kidney from "./pages/Kidney/Kidney";
+import Kidney from "./pages/kidney/Kidney";
 // import App from "./App";
 
 createRoot(document.getElementById("root")).render(

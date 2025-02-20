@@ -8,7 +8,7 @@ import HighBloodPressure from "./pages/heart/high-blood-pressure/HighBloodPressu
 import LowBloodPressure from "./pages/heart/low-blood-pressure/LowBloodPressure";
 import "./index.css";
 import Layout from "./layout/Layout";
-import KidneyStones from "./pages/Kidney/kidney-stones/KidneyStones";
+import KidneyStones from "./pages/kidney/kidney-stones/KidneyStones";
 import Kidney from "./pages/Kidney/Kidney";
 // import App from "./App";
 

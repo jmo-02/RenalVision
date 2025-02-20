@@ -1,6 +1,10 @@
 html,
 body,
 #root {
+  background-image: url(https://images.pexels.com/photos/7269618/pexels-photo-7269618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -9,6 +13,7 @@ body,
   font-family: "Roboto", serif;
   font-optical-sizing: auto;
   font-style: normal;
+
 }
 
 h1 {

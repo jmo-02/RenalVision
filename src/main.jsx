@@ -8,6 +8,8 @@ import HighBloodPressure from "./pages/heart/high-blood-pressure/HighBloodPressu
 import LowBloodPressure from "./pages/heart/low-blood-pressure/LowBloodPressure";
 import "./index.css";
 import Layout from "./layout/Layout";
+import KidneyStones from "./pages/Kidney/kidney-stones/KidneyStones";
+import Kidney from "./pages/Kidney/Kidney";
 // import App from "./App";
 
 createRoot(document.getElementById("root")).render(
@@ -18,9 +20,8 @@ createRoot(document.getElementById("root")).render(
         <Route index path="/" element={<Home />} />
         <Route path="quiz" element={<Quiz />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="corazon" element={<Heart />}>
-          <Route path="presion-alta" element={<HighBloodPressure />} />
-          <Route path="presion-baja" element={<LowBloodPressure />} />
+        <Route path="riñon" element={<Kidney />}>
+          <Route path="calculos-renales" element={<KidneyStones />} />
         </Route>
       </Routes>
     </Layout>

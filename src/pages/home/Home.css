@@ -1,0 +1,83 @@
+section{
+  display: flex;
+  justify-content: space-between; /* Distribuye los contenedores a los lados */
+  align-items: center; /* Alinea verticalmente */
+  padding: 2rem 9%;
+  gap: 3rem; /* Espaciado entre los contenedores */
+}
+.imageContainer{
+  flex: 1;  /* Ocupa la mitad del contenedor */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar elementos */
+  justify-content: center; /* Centrar verticalmente */
+  text-align: center;
+  gap: 1rem; /* Espaciado entre elementos */
+}
+
+.imagen1 {
+    height: 200px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.imagen1:hover {
+    height: 225px;
+    width: 225px;
+
+
+}
+
+.boton3 {
+  display: inline-block;
+    border-radius: 10px;
+    color: #318aac !important;
+    /*font-size: 20px;*/
+    font-weight: 500;
+    padding: 0.5em 1.2em;
+    background: rgba(0,0,0,0);
+    border: 2px solid;
+    border-color: #318aac;
+    transition: all 1s ease;
+    position: relative;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    padding-left: 1rem;
+    font-size: 1.7rem;
+    margin-top: 1.5rem; /* Baja el botón */
+
+  }
+.boton3:hover {
+    background: #318aac;
+    border-radius: 20px;
+    color: #fff !important;
+  }
+
+.home{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separa en dos columnas */
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 10rem;
+}
+
+.content {
+  flex: 1 1 50%; /* Ocupa el otro 50% */
+  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+  max-width: 500px;
+}
+
+.content h3{
+  font-size: 3.5rem;
+  line-height: 1.8;
+  
+
+}
+
+.content p{
+  font-size: 1.7rem;
+  line-height: 1.8;
+  padding: 1rem 0;
+}
+ 

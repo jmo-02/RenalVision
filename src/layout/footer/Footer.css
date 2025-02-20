@@ -1,4 +1,33 @@
 footer{
-    background-color: #00586F;
-    padding: 1rem;
+    background-color:#06566e/* rgba(255, 255, 255, 0.2)*/;
+    padding: 30px 0;
+    height: 100px;
+    backdrop-filter: blur(1px); /* para un fondo desenfocado*/
+    box-shadow: 0px -10px 30px rgba(145, 116, 116, 0.5); /* Sombra Negra hacia arriba con gran difuminado */
+}
+
+.footer-link{
+    color:#ffff/*(55, 152, 255,0.9)*/;
+    font-size: 25px;
+    text-decoration: none; /* Elimina subrayado */
+    margin-top: 10px; /* Agrega espacio entre los enlaces y el borde superior */
+    display: inline-block;
+}
+
+
+.footer-link:hover {
+    color: #04a9d9; /* Color más claro al pasar el mouse */
+}
+
+.ulinks{
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 50px; /* Espaciado entre los elementos */
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.ulinks li{
+    display: inline-block;
 }

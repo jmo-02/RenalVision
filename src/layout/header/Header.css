@@ -1,6 +1,9 @@
 header{
-    background-color: #00586F;
-    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0 20px;
+    backdrop-filter: blur(1px); /* para un fondo desenfocado*/
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Negra con gran difuminado */
+    height: 110px;
 }
 
 nav{
@@ -8,4 +11,32 @@ nav{
     justify-content: end;
     align-items: center;
     gap: 1rem;
+}
+
+.link{
+    color:#06566e;
+    font-size: 20px;
+    font-weight:bolder;
+}
+.link:hover{
+    color:#04a9d9 
+}
+
+.navlinks{
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaciado entre los enlaces */
+    margin: 0;
+    padding: 0;
+    gap: 20px;;
+
+}
+.logo img {
+    height: 100px; /* Ajusta el tamaño del logo */
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

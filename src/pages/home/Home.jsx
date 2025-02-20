@@ -6,16 +6,28 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleClick = useCallback(() => {
-    navigate("/corazon", {
+    navigate("/riñon", {
       state: { userData: { displayName: "Juan Moreno" } },
     });
   }, [navigate]);
 
   return (
-    <div>
-      <h1>Inicio</h1>
-      <button onClick={handleClick}>Ver más enfermedades</button>
+  <section className="home">
+    <div className="imageContainer">
+      <h1>RenalVision</h1>
+      <img src="src/assets/logo3.png" className="imagen1" />
+      <button onClick={handleClick} className="boton3">Ver más enfermedades</button>
     </div>
+
+    <div className="content">
+      <h3>Acerca de nosotros</h3>
+      <p>
+        En este texto va a ir información del proyecto....  
+        Renal Vision es un ......  
+        .....
+      </p>
+    </div>
+  </section>
   );
 };
 

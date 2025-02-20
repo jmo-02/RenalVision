@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import "./Home.css";
 import { useCallback } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStaffSnake } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,7 +17,15 @@ const Home = () => {
   <section className="home">
     <div className="imageContainer">
       <h1>RenalVision</h1>
-      <img src="src/assets/logo3.png" className="imagen1" />
+      
+      <div className="logo2" style={{fontSize:200}}>
+
+      {/* <img src="/images/logo3.png" className="imagen1" />
+       */}
+      <FontAwesomeIcon icon={faStaffSnake} className="imagen1"/>
+
+      </div>
+      
       <button onClick={handleClick} className="boton3">Ver más enfermedades</button>
     </div>
 

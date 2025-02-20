@@ -1,13 +1,15 @@
 import { NavLink } from "react-router";
 import "./Header.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStaffSnake } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
 <header>
   <div className="container">
     {/* Logo a la izquierda */}
-    <div className="logo">
-      <img src="/public/images/logo3.png" alt="Logo" />
+    <div className="logo" style={{fontSize:90}}>
+      <FontAwesomeIcon icon={faStaffSnake} />
     </div>
 
     {/* Navegación */}

@@ -19,6 +19,7 @@ section{
     height: 200px;
     width: 200px;
     transition: all 0.3s ease;
+    color: var(--verde);
 }
 
 .imagen1:hover {
@@ -32,25 +33,25 @@ section{
   display: inline-block;
     border-radius: 10px;
     color: #318aac !important;
-    /*font-size: 20px;*/
+    font-size: 20px;
     font-weight: 500;
     padding: 0.5em 1.2em;
     background: rgba(0,0,0,0);
     border: 2px solid;
     border-color: #318aac;
     transition: all 1s ease;
-    position: relative;
+    position:static;
     margin-top: 1rem;
     padding: 1.5rem;
     padding-left: 1rem;
-    font-size: 1.7rem;
+    
     margin-top: 1.5rem; /* Baja el botón */
 
   }
 .boton3:hover {
     background: #318aac;
     border-radius: 20px;
-    color: #fff !important;
+    color: #ffffff !important;
   }
 
 .home{

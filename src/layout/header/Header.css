@@ -31,8 +31,9 @@ nav{
     gap: 20px;;
 
 }
-.logo img {
-    height: 100px; /* Ajusta el tamaño del logo */
+.logo {
+    font-size: 80px;
+    color: var(--verde) 
 }
 
 .container{

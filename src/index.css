@@ -1,6 +1,12 @@
 html,
 body,
 #root {
+  --verde: #06566e;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
   background-image: url(https://images.pexels.com/photos/7269618/pexels-photo-7269618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
   background-size: 100%;
   background-position: center;
@@ -15,6 +21,15 @@ body,
   font-style: normal;
 
 }
+
+/* :root {
+  --verde: #06566e;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+} */
 
 h1 {
   font-size: xx-large;
@@ -59,4 +74,13 @@ button {
 
 button:hover {
   background-color: #00586f;
+}
+
+:root {
+  --verde: #06566e;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
 }

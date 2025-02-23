@@ -24,10 +24,16 @@ footer{
     justify-content: center; /* Centra los elementos horizontalmente */
     gap: 50px; /* Espaciado entre los elementos */
     list-style: none;
-    padding: 0;
-    margin: 0
+    padding:0;
+    margin-top: 25px;
 }
 
 .ulinks li{
     display: inline-block;
+}
+.copyright-text {
+    color: white;
+    padding-left: 30px;
+    padding-top: 10px;
+    font-size: 20px;
 }

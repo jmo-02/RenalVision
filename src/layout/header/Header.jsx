@@ -24,8 +24,11 @@ const Header = () => {
         Sobre Nosotros
       </NavLink>
     </nav>
+    
   </div>
+  <div className="subtitlerenal"> RenalVision </div>
 </header>
+
 
   );
 };

@@ -16,6 +16,7 @@ section{
 }
 
 .imagen1 {
+
     height: 200px;
     width: 200px;
     transition: all 0.3s ease;
@@ -70,14 +71,14 @@ section{
 }
 
 .content h3{
-  font-size: 3.5rem;
-  line-height: 1.8;
+  font-size: 3rem;
+  line-height: 0.05rem;
   
 
 }
 
 .content p{
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   line-height: 1.8;
   padding: 1rem 0;
 }

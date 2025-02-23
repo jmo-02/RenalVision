@@ -41,3 +41,10 @@ nav{
     align-items: center;
     justify-content: space-between;
 }
+.subtitlerenal {
+    margin-top: -80px;
+    margin-left: 80px;
+    color:#06566e;
+    font-size: 40px;
+    
+}

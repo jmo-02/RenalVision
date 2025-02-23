@@ -16,9 +16,9 @@ const Home = () => {
   return (
   <section className="home">
     <div className="imageContainer">
-      <h1>RenalVision</h1>
+      {/* <h1>RenalVision</h1> */}
       
-      <div className="logo2" style={{fontSize:200}}>
+      <div className="logo2" style={{fontSize:100}}>
 
       {/* <img src="/images/logo3.png" className="imagen1" />
        */}
@@ -26,15 +26,15 @@ const Home = () => {
 
       </div>
       
-      <button onClick={handleClick} className="boton3">Ver más enfermedades</button>
+      {/* <button onClick={handleClick} className="boton3">Ver más enfermedades</button> */}
     </div>
 
     <div className="content">
-      <h3>Acerca de nosotros</h3>
+      <h3>Acerca del Proyecto </h3>
       <p>
-        En este texto va a ir información del proyecto....  
+        En este cuadro de texto ira información del proyecto....  
         Renal Vision es un ......  
-        .....
+        
       </p>
     </div>
   </section>

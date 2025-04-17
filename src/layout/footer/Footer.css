@@ -1,9 +1,20 @@
 footer{
     background-color:#06566e/* rgba(255, 255, 255, 0.2)*/;
-    padding: 30px 0;
-    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 15px 0;
+    height: 25px;
     backdrop-filter: blur(1px); /* para un fondo desenfocado*/
     box-shadow: 0px -10px 30px rgba(145, 116, 116, 0.5); /* Sombra Negra hacia arriba con gran difuminado */
+}
+
+.copyright-text{
+    color:#8fc5c5;
+    font-size: 20px;
+    
+    
 }
 
 .footer-link{

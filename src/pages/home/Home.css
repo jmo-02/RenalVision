@@ -1,84 +1,79 @@
-section{
+section {
   display: flex;
-  justify-content: space-between; /* Distribuye los contenedores a los lados */
   align-items: center; /* Alinea verticalmente */
+  justify-content: center;
   padding: 2rem 9%;
-  gap: 3rem; /* Espaciado entre los contenedores */
-}
-.imageContainer{
-  flex: 1;  /* Ocupa la mitad del contenedor */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centrar elementos */
-  justify-content: center; /* Centrar verticalmente */
-  text-align: center;
-  gap: 1rem; /* Espaciado entre elementos */
 }
 
 .imagen1 {
-    height: 200px;
-    width: 200px;
-    transition: all 0.3s ease;
-    color: var(--verde);
+  height: 200px;
+  width: 200px;
+  transition: all 0.3s ease;
+  color: var(--verde);
 }
 
 .imagen1:hover {
-    height: 225px;
-    width: 225px;
-
-
+  height: 225px;
+  width: 225px;
 }
 
-.boton3 {
-  display: inline-block;
-    border-radius: 10px;
-    color: #318aac !important;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 0.5em 1.2em;
-    background: rgba(0,0,0,0);
-    border: 2px solid;
-    border-color: #318aac;
-    transition: all 1s ease;
-    position:static;
-    margin-top: 1rem;
-    padding: 1.5rem;
-    padding-left: 1rem;
-    
-    margin-top: 1.5rem; /* Baja el botón */
+.logo2 {
+  padding-top: 1rem;
+  align-items: center;
+  display: flex;
+  align-self: auto;
+  font-size: 4rem;
+  font-weight:600;
+  color: var(--black);
+}
 
-  }
-.boton3:hover {
-    background: #318aac;
-    border-radius: 20px;
-    color: #ffffff !important;
-  }
+.boton {
+  display: flex;
+  border-radius: 20px;
+  color: #318aac !important;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.5em 1.2em;
+  background: rgba(0, 0, 0, 0);
+  border: 2px solid;
+  border-color: #318aac;
+  transition: all 1s ease;
+  position: static;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  padding-left: 1rem;
 
-.home{
+  margin-top: 1.5rem; /* Baja el botón */
+}
+.boton:hover {
+  background: #318aac;
+  border-radius: 20px;
+  color: #ffffff !important;
+}
+
+.home {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Separa en dos columnas */
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-top: 10rem;
+  justify-content: center; /* Separa en dos columnas */
+  width: 100%;
 }
 
 .content {
-  flex: 1 1 50%; /* Ocupa el otro 50% */
-  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Separa en dos columnas */
   max-width: 500px;
 }
 
-.content h3{
+.content h3 {
   font-size: 3.5rem;
   line-height: 1.8;
-  
-
 }
 
-.content p{
-  font-size: 1.7rem;
+.content p {
+  font-size: 2rem;
+  font-weight: 500;
   line-height: 1.8;
   padding: 1rem 0;
 }
- 

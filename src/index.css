@@ -1,25 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
 html,
 body,
 #root {
   --verde: #06566e;
+  --beige: #f5f5dc;
   --black: #444;
   --light-color: #777;
   --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
   --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
-  --border: 0.2rem solid var(--green);
-  background-image: url(https://images.pexels.com/photos/7269618/pexels-photo-7269618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  --border: 0.2rem solid var(--green);
   margin: 0;
   padding: 0;
+  background-color: rgb(239, 239, 237);
   width: 100%;
   user-select: none;
   overflow-x: hidden;
-  font-family: "Roboto", serif;
+  font-family: "Poppins", "Manrope", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-
 }
 
 /* :root {
@@ -41,10 +40,10 @@ span {
   color: #2b3133;
 }
 
-p {
+/* p {
   font-size: medium;
   color: #2b3133;
-}
+} */
 
 a {
   color: whitesmoke;
@@ -83,4 +82,9 @@ button:hover {
   --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
   --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
   --border: 0.2rem solid var(--green);
+}
+
+
+html {
+  font-size: 65.5%; /* 1rem = 10px */
 }

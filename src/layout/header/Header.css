@@ -1,8 +1,9 @@
 header{
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 0 20px;
+    padding: 0 5%;
+    padding-bottom: 2rem;
     backdrop-filter: blur(1px); /* para un fondo desenfocado*/
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Negra con gran difuminado */
+    box-shadow: 0px 10px 30px rgba(156, 153, 153, 0.435); /* Negra con gran difuminado */
     height: 110px;
 }
 
@@ -25,12 +26,25 @@ nav{
 .navlinks{
     list-style: none;
     display: flex;
-    gap: 20px; /* Espaciado entre los enlaces */
+    gap: 25px; /* Espaciado entre los enlaces */
     margin: 0;
     padding: 0;
-    gap: 20px;;
+    
 
 }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #38A3A5; /* Puedes cambiarlo si necesitas otro color */
+}
+
 .logo {
     font-size: 80px;
     color: var(--verde) 
@@ -39,5 +53,6 @@ nav{
 .container{
     display: flex;
     align-items: center;
+    padding-inline: 6rem;
     justify-content: space-between;
 }

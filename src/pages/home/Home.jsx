@@ -14,30 +14,25 @@ const Home = () => {
   }, [navigate]);
 
   return (
-  <section className="home">
-    <div className="imageContainer">
-      <h1>RenalVision</h1>
-      
-      <div className="logo2" style={{fontSize:200}}>
+    <section className="home">
 
-      {/* <img src="/images/logo3.png" className="imagen1" />
-       */}
-      <FontAwesomeIcon icon={faStaffSnake} className="imagen1"/>
+      <div className="content">
+
+        <div className="logo2">
+          <FontAwesomeIcon icon={faStaffSnake} className="imagen1" /> ¡Bienvenido a RenalVision!
+        </div>
+
+        <p>
+          Adentrate a descubrir mas sobre tus riñones
+        </p>
+
+        <button onClick={handleClick} className="boton">
+          Descubrelo
+        </button>
 
       </div>
-      
-      <button onClick={handleClick} className="boton3">Ver más enfermedades</button>
-    </div>
 
-    <div className="content">
-      <h3>Acerca de nosotros</h3>
-      <p>
-        En este texto va a ir información del proyecto....  
-        Renal Vision es un ......  
-        .....
-      </p>
-    </div>
-  </section>
+    </section>
   );
 };
 

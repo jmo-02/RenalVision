@@ -12,7 +12,7 @@ import Layout from "./layout/Layout";
 import KidneyStones from "./pages/kidney/kidney-stones/KidneyStones";
 import Kidney from "./pages/kidney/Kidney";
 import Profile from "./pages/profile/Profile";
-import WhatIs from "./pages/kidney/kidney-stones/what-is/WhatIS";
+import WhatIs from "./pages/kidney/kidney-stones/what-is/WhatIs";
 import AboutUs from "./pages/about-us/AboutUs";
 
 // import App from "./App";

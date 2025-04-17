@@ -7,7 +7,7 @@ const Kidney = () => {
   const navigate = useNavigate();
 
   const handleClick = useCallback(() => {
-    navigate("/calculos-renales", {
+    navigate("/riñon/calculos-renales", {
     });
   }, [navigate]);
 

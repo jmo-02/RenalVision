@@ -1,0 +1,43 @@
+section {
+    padding: 2rem 9%;
+
+}
+
+.content {
+    display: flex;
+    align-items: center;  /* Alinea verticalmente */
+    flex-wrap: wrap;       /* Permite envolver en pantallas pequeñas */
+    gap: 1.5rem;
+    padding-top: 10rem;
+    padding-bottom: 3em;
+}
+
+.model-3d { /* Usa una clase para la imagen */
+    padding-top: 1rem;
+    max-width: 45%;
+    width: 900px;
+    height: 600px;
+}
+
+.content { /* Usa una clase para el contenido */
+    flex: 1 1 45rem;
+    margin-top: -100px; /* Ajusta el tamaño según necesites */
+    max-width: 55%;
+}
+
+.content h3 {
+    font-size: 3.5rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-align: center;
+    padding-left: 1rem;
+    text-shadow: var(--text-shadow);
+}
+
+.content p {
+    font-size: 2rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    text-align: justify;
+    padding: 1rem 0;
+}

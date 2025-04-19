@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+html,
+body,
+#root {
+  --verde: #06566e;
+  --beige: #f5f5dc;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+  margin: 0;
+  padding: 0;
+  background-color: rgb(239, 239, 237);
+  width: 100%;
+  user-select: none;
+  overflow-x: hidden;
+  font-family: "Poppins", "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* :root {
+  --verde: #06566e;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+} */
+
+h1 {
+  font-size: xx-large;
+  color: #00586f;
+}
+
+span {
+  font-size: large;
+  color: #2b3133;
+}
+
+/* p {
+  font-size: medium;
+  color: #2b3133;
+} */
+
+a {
+  color: whitesmoke;
+  font-size: medium;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  display: flex;
+  cursor: pointer;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  background-color: #007491;
+  border: none;
+  width: 256px;
+  height: 54px;
+  padding: 1rem;
+  text-align: center;
+  color: whitesmoke;
+  font-size: large;
+}
+
+button:hover {
+  background-color: #00586f;
+}
+
+:root {
+  --verde: #06566e;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+}
+
+
+html {
+  font-size: 65.5%; /* 1rem = 10px */
+}

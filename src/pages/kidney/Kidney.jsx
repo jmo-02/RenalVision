@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useCallback } from "react";
 import { Outlet, useNavigate } from "react-router";
 
@@ -36,3 +37,14 @@ const Kidney = () => {
 };
 
 export default Kidney;
+=======
+import React from 'react'
+
+const Kidney = () => {
+  return (
+    <div>Riñones</div>
+  )
+}
+
+export default Kidney
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8

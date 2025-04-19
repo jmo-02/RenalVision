@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import "./Header.css";
+<<<<<<< HEAD
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStaffSnake } from "@fortawesome/free-solid-svg-icons";
 import useAuthStore from "../../stores/use-auth-store";
@@ -49,6 +50,33 @@ const Header = () => {
         </nav>
       </div>
     </header>
+=======
+
+const Header = () => {
+  return (
+<header>
+  <div className="container">
+    {/* Logo a la izquierda */}
+    <div className="logo">
+      <img src="/src/assets/logo3.png" alt="Logo" />
+    </div>
+
+    {/* Navegación */}
+    <nav className="navlinks">
+      <NavLink to="/" end className="link">
+        Inicio
+      </NavLink>
+      <NavLink to="/quiz" end className="link">
+        Quiz
+      </NavLink>
+      <NavLink to="/sobre-nosotros" end className="link">
+        Sobre Nosotros
+      </NavLink>
+    </nav>
+  </div>
+</header>
+
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
   );
 };
 

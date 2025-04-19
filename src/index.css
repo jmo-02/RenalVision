@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 html,
@@ -29,6 +30,25 @@ body,
   --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
   --border: 0.2rem solid var(--green);
 } */
+=======
+html,
+body,
+#root {
+  background-image: url(https://images.pexels.com/photos/7269618/pexels-photo-7269618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  user-select: none;
+  overflow-x: hidden;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+}
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
 
 h1 {
   font-size: xx-large;
@@ -40,10 +60,17 @@ span {
   color: #2b3133;
 }
 
+<<<<<<< HEAD
 /* p {
   font-size: medium;
   color: #2b3133;
 } */
+=======
+p {
+  font-size: medium;
+  color: #2b3133;
+}
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
 
 a {
   color: whitesmoke;
@@ -74,6 +101,7 @@ button {
 button:hover {
   background-color: #00586f;
 }
+<<<<<<< HEAD
 
 :root {
   --verde: #06566e;
@@ -88,3 +116,5 @@ button:hover {
 html {
   font-size: 65.5%; /* 1rem = 10px */
 }
+=======
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8

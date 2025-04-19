@@ -1,15 +1,21 @@
 footer{
     background-color:#06566e/* rgba(255, 255, 255, 0.2)*/;
+<<<<<<< HEAD
     display: flex;
     justify-content: center;
     align-items: center;
     
     padding: 15px 0;
     height: 25px;
+=======
+    padding: 30px 0;
+    height: 100px;
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
     backdrop-filter: blur(1px); /* para un fondo desenfocado*/
     box-shadow: 0px -10px 30px rgba(145, 116, 116, 0.5); /* Sombra Negra hacia arriba con gran difuminado */
 }
 
+<<<<<<< HEAD
 .copyright-text{
     color:#8fc5c5;
     font-size: 20px;
@@ -17,6 +23,8 @@ footer{
     
 }
 
+=======
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
 .footer-link{
     color:#ffff/*(55, 152, 255,0.9)*/;
     font-size: 25px;
@@ -35,16 +43,24 @@ footer{
     justify-content: center; /* Centra los elementos horizontalmente */
     gap: 50px; /* Espaciado entre los elementos */
     list-style: none;
+<<<<<<< HEAD
     padding:0;
     margin-top: 25px;
+=======
+    padding: 0;
+    margin: 0
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
 }
 
 .ulinks li{
     display: inline-block;
 }
+<<<<<<< HEAD
 .copyright-text {
     color: white;
     padding-left: 30px;
     padding-top: 10px;
     font-size: 20px;
 }
+=======
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8

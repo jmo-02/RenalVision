@@ -1,9 +1,15 @@
 header{
     background-color: rgba(255, 255, 255, 0.2);
+<<<<<<< HEAD
     padding: 0 5%;
     padding-bottom: 2rem;
     backdrop-filter: blur(1px); /* para un fondo desenfocado*/
     box-shadow: 0px 10px 30px rgba(156, 153, 153, 0.435); /* Negra con gran difuminado */
+=======
+    padding: 0 20px;
+    backdrop-filter: blur(1px); /* para un fondo desenfocado*/
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Negra con gran difuminado */
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
     height: 110px;
 }
 
@@ -26,6 +32,7 @@ nav{
 .navlinks{
     list-style: none;
     display: flex;
+<<<<<<< HEAD
     gap: 25px; /* Espaciado entre los enlaces */
     margin: 0;
     padding: 0;
@@ -48,11 +55,22 @@ nav{
 .logo {
     font-size: 80px;
     color: var(--verde) 
+=======
+    gap: 20px; /* Espaciado entre los enlaces */
+    margin: 0;
+    padding: 0;
+    gap: 20px;;
+
+}
+.logo img {
+    height: 100px; /* Ajusta el tamaño del logo */
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
 }
 
 .container{
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     padding-inline: 6rem;
     justify-content: space-between;
 }
@@ -62,4 +80,7 @@ nav{
     color:#06566e;
     font-size: 40px;
     
+=======
+    justify-content: space-between;
+>>>>>>> bf6fcf2ce86d3485ce60d02da551f0c26ec521a8
 }

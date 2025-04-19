@@ -1,0 +1,68 @@
+.kidney-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.kidney-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #003b4a;
+}
+
+/* Grupo de botones */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 250px;
+}
+
+.kidney-button {
+  background-color: #007a99;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.kidney-button:hover {
+  background-color: #009fb7;
+}
+
+@media (max-width: 768px) {
+  .kidney-title {
+    font-size: 1.6rem;
+  }
+
+  .kidney-button {
+    font-size: 0.95rem;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kidney-title {
+    font-size: 1.4rem;
+  }
+
+  .button-group {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .kidney-button {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+  }
+}

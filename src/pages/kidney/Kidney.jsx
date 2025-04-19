@@ -1,26 +1,36 @@
-import React, { useCallback } from 'react'
-import { Outlet, useNavigate } from 'react-router'
-
+import React, { useCallback } from 'react';
+import { Outlet, useNavigate } from 'react-router';
+import './Kidney.css'; 
 
 const Kidney = () => {
-
   const navigate = useNavigate();
 
-  const handleClick = useCallback(() => {
-    navigate("/riñon/calculos-renales", {
-    });
+  const handleCalculos = useCallback(() => {
+    navigate('/riñon/calculos-renales');
+  }, [navigate]);
+
+  const handleGlomerulonefritis = useCallback(() => {
+    navigate('/riñon/glomerulonefritis');
   }, [navigate]);
 
   return (
-    <div>
-      Aqui encontraras algunas de las enfermedades renales mas comunes
+    <div className="kidney-container">
+      <h2 className="kidney-title">
+        Aquí encontrarás algunas de las enfermedades renales más comunes
+      </h2>
 
-      <button onClick={handleClick} className='boton1'>
-        Calculos Renales
-      </button>
-      <Outlet/>
+      <div className="button-group">
+        <button onClick={handleCalculos} className="kidney-button">
+          Cálculos Renales
+        </button>
+        <button onClick={handleGlomerulonefritis} className="kidney-button">
+          Glomerulonefritis
+        </button>
+      </div>
+
+      <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default Kidney
+export default Kidney;

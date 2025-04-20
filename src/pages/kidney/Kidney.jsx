@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import  { useCallback } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import './Kidney.css'; 
 
@@ -23,9 +23,13 @@ const Kidney = () => {
         <button onClick={handleCalculos} className="kidney-button">
           Cálculos Renales
         </button>
-        <button onClick={handleGlomerulonefritis} className="kidney-button">
-          Glomerulonefritis
-        </button>
+
+        <div className="button-with-image">
+          <img src="/images/glomerulonefritis.png" alt="Ícono de Glomerulonefritis" />
+          <button onClick={handleGlomerulonefritis} className="kidney-button">
+            Glomerulonefritis
+          </button>
+        </div>
       </div>
 
       <Outlet />

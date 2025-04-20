@@ -1,9 +1,17 @@
-// src/pages/kidney/glomerulonephritis/models-3d/Glomerulo.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 
 const GlomeruloModel = (props) => {
   const { scene } = useGLTF('/models-3d/glomerulus.glb');
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true; // opcional
+      }
+    });
+  }, [scene]);
 
   return (
     <primitive 

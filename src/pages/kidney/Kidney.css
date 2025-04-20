@@ -3,23 +3,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 75vh;
+  min-height: 70vh;
   background-color: #f9f9f9;
   text-align: center;
+  max-width: 800px;
+  border-radius: 8px;
+  padding: 0 20px;
 }
 
 .kidney-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 40px  ;
   color: #003b4a;
 }
 
-/* Grupo de botones */
+/* Contenedor de todos los botones */
 .button-group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+}
+
+/* Estilo del botón individual sin imagen */
+.button-group > button.kidney-button {
+  display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 250px;
 }
@@ -29,40 +40,70 @@
   border: none;
   padding: 15px 30px;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
   width: 100%;
+  max-width: 250px;
 }
 
 .kidney-button:hover {
   background-color: #009fb7;
 }
 
+
+.button-with-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  margin-right: 100px;
+}
+
+.button-with-image img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
   .kidney-title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+
+  .button-group {
+    max-width: 90%;
+  }
+
+  .button-with-image {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-with-image img {
+    width: 80px;
   }
 
   .kidney-button {
-    font-size: 0.95rem;
-    padding: 14px 24px;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .kidney-title {
-    font-size: 1.4rem;
-  }
-
-  .button-group {
-    max-width: 100%;
-    padding: 0 10px;
+    font-size: 1.5rem;
   }
 
   .kidney-button {
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding: 12px 20px;
+  }
+
+  .button-with-image img {
+    width: 70px;
   }
 }

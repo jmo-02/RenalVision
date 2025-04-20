@@ -13,8 +13,8 @@ const Glomerulonephritis = () => {
       <div className="glomerulo-content">
         <div className="glomerulo-model">
           <Canvas style={{ height: '300px'}} camera={{ position: [7, 3, 4], fov: 50 }}>
-            <ambientLight intensity={0.6} />
-            <directionalLight position={[0, 5, 5]} intensity={6} />
+            <ambientLight intensity={1} />
+            <directionalLight position={[1, 6, 7]} intensity={5} />
             <GlomeruloModel />
             <OrbitControls enableZoom />
           </Canvas>
@@ -23,9 +23,10 @@ const Glomerulonephritis = () => {
 
         <div className="glomerulo-card">
           <h2> Glomerulonefritis</h2>
-          <button onClick={() => navigate('info')}>¿Que es?</button>
-          <button onClick={() => navigate('sintomas')}>Sintomas</button>
-          <button onClick={() => navigate('tratamientos')}>Tratamientos</button>
+          <button onClick={() => navigate('/riñon/glomerulonefritis/info')}>¿Qué es?</button>
+          <button onClick={() => navigate('/riñon/glomerulonefritis/sintomas')}>Síntomas</button>
+          <button onClick={() => navigate('/riñon/glomerulonefritis/tratamientos')}>Tratamientos</button>
+
         </div>
       </div>
 

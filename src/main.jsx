@@ -13,6 +13,8 @@ import WhatIs from "./pages/kidney/kidney-stones/what-is/WhatIs";
 import AboutUs from "./pages/about-us/AboutUs";
 import Glomerulonephritis from "./pages/kidney/glomerulonephritis/Glomerulonephritis";
 import GlomerulonephritisWhatIs from "./pages/kidney/glomerulonephritis/what-is/GlomerulonephritisWhatIs";
+import GlomerulonephritisSymptoms from "./pages/kidney/glomerulonephritis/symptoms/GlomerulonephritisSymptoms";
+import GlomerulonephritisTreatment from "./pages/kidney/glomerulonephritis/treatment/GlomerulonephritisTreatment";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -30,9 +32,11 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<KidneyStones />} />
             <Route path="que-es" element={<WhatIs />} />
           </Route>
-          <Route path="glomerulonefritis">
+          <Route path="glomerulonefritis" >
             <Route index element={<Glomerulonephritis />} />
             <Route path="info" element={<GlomerulonephritisWhatIs />} />
+            <Route path="sintomas" element={<GlomerulonephritisSymptoms />} />
+            <Route path="tratamientos" element={<GlomerulonephritisTreatment />} />
           </Route>
         </Route>
       </Routes>

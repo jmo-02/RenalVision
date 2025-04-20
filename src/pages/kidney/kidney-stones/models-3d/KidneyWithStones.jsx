@@ -5,10 +5,10 @@ const KidneyWithStones = (props) => {
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.KidneyStone.geometry}
         material={materials.KidneyStoneMaterial}
+        castShadow
       />
     </group>
   )

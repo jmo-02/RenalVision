@@ -1,7 +1,7 @@
 import "./NotFound.css";
 
 const NotFound = () => {
-  return <div>prohibido gordas</div>;
+  return <div>¡¡¡ NOT FOUND !!!</div>;
 };
 
 export default NotFound;

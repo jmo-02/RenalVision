@@ -6,16 +6,7 @@ import { DirectionalLightHelper, HemisphereLightHelper, PointLightHelper, SpotLi
 const Lights = () => {
   
   const directionalLightRef = useRef();
-  useHelper(directionalLightRef, DirectionalLightHelper);
-  
-  const spotLightRef = useRef();
-  useHelper(spotLightRef,SpotLightHelper);
-
-  const pointLightRef = useRef();
-  useHelper(pointLightRef, PointLightHelper);
-
-  const hemisphereLightRef = useRef();
-  useHelper(hemisphereLightRef,HemisphereLightHelper);
+  // useHelper(directionalLightRef, DirectionalLightHelper);
 
   return (
       <>

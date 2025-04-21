@@ -11,7 +11,7 @@ const WhatIs = () => {
   return (
     <section className="whatis" id="whatis">
       <div className="model-3d">
-        <Canvas shadows camera={{ position: [0, 0, 7],fov:45 }}>
+        <Canvas shadows camera={{ position: [0, 0, 20],fov:45 }}>
           <OrbitControls />
           <Lights/>
           

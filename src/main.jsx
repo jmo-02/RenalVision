@@ -4,9 +4,6 @@ import Home from "./pages/home/Home";
 import Quiz from "./pages/quiz/Quiz";
 import Login from "./pages/login/Login";
 import NotFound from "./pages/not-found/NotFound";
-import Heart from "./pages/heart/Heart";
-import HighBloodPressure from "./pages/heart/high-blood-pressure/HighBloodPressure";
-import LowBloodPressure from "./pages/heart/low-blood-pressure/LowBloodPressure";
 import "./index.css";
 import Layout from "./layout/Layout";
 import KidneyStones from "./pages/kidney/kidney-stones/KidneyStones";
@@ -14,6 +11,8 @@ import Kidney from "./pages/kidney/Kidney";
 import Profile from "./pages/profile/Profile";
 import WhatIs from "./pages/kidney/kidney-stones/what-is/WhatIs";
 import AboutUs from "./pages/about-us/AboutUs";
+import KidneyStoneTreatment from "./pages/kidney/kidney-stones/treatment/KidneyStoneTreatment";
+import KidneyStoneSymptoms from "./pages/kidney/kidney-stones/symptoms/KidneyStoneSymptoms";
 
 // import App from "./App";
 
@@ -33,6 +32,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="calculos-renales">
             <Route index element={<KidneyStones />} />
             <Route path="que-es" element={<WhatIs />} />
+            <Route path="sintomas" element={<KidneyStoneSymptoms />} />
+            <Route path="tratamientos" element={<KidneyStoneTreatment />} />
           </Route>
         </Route>
       </Routes>

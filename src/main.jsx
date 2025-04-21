@@ -15,9 +15,12 @@ import KidneyStoneTreatment from "./pages/kidney/kidney-stones/treatment/KidneyS
 import KidneyStoneSymptoms from "./pages/kidney/kidney-stones/symptoms/KidneyStoneSymptoms";
 
 // import App from "./App";
+import Glomerulonephritis from "./pages/kidney/glomerulonephritis/Glomerulonephritis";
+import GlomerulonephritisWhatIs from "./pages/kidney/glomerulonephritis/what-is/GlomerulonephritisWhatIs";
+import GlomerulonephritisSymptoms from "./pages/kidney/glomerulonephritis/symptoms/GlomerulonephritisSymptoms";
+import GlomerulonephritisTreatment from "./pages/kidney/glomerulonephritis/treatment/GlomerulonephritisTreatment";
 
 createRoot(document.getElementById("root")).render(
-  // <App />
   <BrowserRouter>
     <Layout>
       <Routes>
@@ -34,6 +37,12 @@ createRoot(document.getElementById("root")).render(
             <Route path="que-es" element={<WhatIs />} />
             <Route path="sintomas" element={<KidneyStoneSymptoms />} />
             <Route path="tratamientos" element={<KidneyStoneTreatment />} />
+          </Route>
+          <Route path="glomerulonefritis" >
+            <Route index element={<Glomerulonephritis />} />
+            <Route path="info" element={<GlomerulonephritisWhatIs />} />
+            <Route path="sintomas" element={<GlomerulonephritisSymptoms />} />
+            <Route path="tratamientos" element={<GlomerulonephritisTreatment />} />
           </Route>
         </Route>
       </Routes>

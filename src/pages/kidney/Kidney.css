@@ -1,0 +1,112 @@
+.kidney-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  background-color: #f9f9f9;
+  text-align: center;
+  max-width: 800px;
+  border-radius: 8px;
+  padding: 0 20px;
+}
+
+.kidney-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px  ;
+  color: #003b4a;
+}
+
+/* Contenedor de todos los botones */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+}
+
+/* Estilo del botón individual sin imagen */
+.button-group > button.kidney-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+
+}
+
+.kidney-button {
+  background-color: #007a99;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: #4c63af 0px 10px 20px -10px;
+
+}
+
+.kidney-button:hover {
+  background-color: #009fb7;
+}
+
+
+.button-with-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  margin-right: 100px;
+}
+
+.button-with-image img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .kidney-title {
+    font-size: 1.8rem;
+  }
+
+  .button-group {
+    max-width: 90%;
+  }
+
+  .button-with-image {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-with-image img {
+    width: 80px;
+  }
+
+  .kidney-button {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kidney-title {
+    font-size: 1.5rem;
+  }
+
+  .kidney-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .button-with-image img {
+    width: 70px;
+  }
+}

@@ -1,0 +1,65 @@
+.section-container {
+  padding: 2rem;
+  margin: 1.5rem auto;
+  font-size: 1.2rem; /* Tamaño aumentado */
+  line-height: 1.8;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+}
+
+.section-container h3 {
+  font-size: 2rem; /* Título más grande */
+  color: #003b4a;
+  margin-bottom: 1rem;
+}
+
+.section-container ul {
+  padding-left: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-container li {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem; /* Aumento de tamaño de ítems */
+}
+
+/* Botón de regreso */
+.back-button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: #007a99;
+  color: white;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1.1rem; /* Botón más legible */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover,
+.back-button:focus {
+  background-color: #005f73;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .section-container {
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .section-container h3 {
+    font-size: 1.6rem;
+  }
+
+  .section-container li {
+    font-size: 1.1rem;
+  }
+
+  .back-button {
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+  }
+}

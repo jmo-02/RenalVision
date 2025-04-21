@@ -13,6 +13,11 @@ const Kidney = () => {
     navigate('/riñon/glomerulonefritis');
   }, [navigate]);
 
+  const handleClickCancer = useCallback(() => {
+      navigate("/riñon/cancer-de-riñon", {
+      });
+      }, [navigate]);
+
   return (
     <div className="kidney-container">
       <h2 className="kidney-title">
@@ -28,6 +33,12 @@ const Kidney = () => {
           <img src="/images/glomerulonefritis.png" alt="Ícono de Glomerulonefritis" />
           <button onClick={handleGlomerulonefritis} className="kidney-button">
             Glomerulonefritis
+          </button>
+        </div>
+
+        <div className="button-team">
+          <button onClick={handleClickCancer} className="boton2">
+            Cáncer de Riñón
           </button>
         </div>
       </div>

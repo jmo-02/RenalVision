@@ -33,6 +33,7 @@
   justify-content: center;
   width: 100%;
   max-width: 250px;
+
 }
 
 .kidney-button {
@@ -46,6 +47,8 @@
   transition: background-color 0.3s;
   width: 100%;
   max-width: 250px;
+  box-shadow: #4c63af 0px 10px 20px -10px;
+
 }
 
 .kidney-button:hover {

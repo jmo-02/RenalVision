@@ -23,6 +23,7 @@
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   flex-wrap: wrap;
+  
 }
 
 .glomerulo-card {
@@ -49,6 +50,8 @@
   font-size: 1.05rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  box-shadow: #000105 0px 10px 20px -10px;
+
 }
 
 .glomerulo-card button:hover,

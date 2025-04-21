@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useGLTF } from '@react-three/drei';
 
 const GlomeruloModel = (props) => {
-  const { scene } = useGLTF('/models-3d/glomerulus.glb');
-
-  useEffect(() => {
-    scene.traverse((child) => {
-      if (child.isMesh) {
-        child.castShadow = true;
-        child.receiveShadow = true; // opcional
-      }
-    });
-  }, [scene]);
+  const { nodes, materials } = useGLTF('/models-3d/glomerulus.glb');
 
   return (
-    <primitive 
-      object={scene} 
-      {...props} 
-      dispose={null} 
-    />
+    <group {...props}>
+      {Object.entries(nodes).map(([name, node]) => {
+        if (!node.isMesh) return null;
+        return (
+          <mesh
+            geometry={node.geometry}
+            material={node.material || materials[node.material.name]}
+            castShadow
+            receiveShadow
+          />
+        );
+      })}
+    </group>
   );
 };
 

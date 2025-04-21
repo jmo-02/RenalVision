@@ -9,6 +9,8 @@
     line-height: 1.6;
     font-size: 1.1rem;
     text-align: justify;
+    box-shadow: #000000 0px 10px 20px -10px;
+
   }
   
   .section-container h3 {

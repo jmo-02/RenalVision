@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './NotFound.css';
 
 const NotFound = () => {
-  return <div>¡¡¡ NOT FOUND !!!</div>;
   const navigate = useNavigate();
 
   return (

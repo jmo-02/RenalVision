@@ -6,7 +6,7 @@ section {
 }
 
 .imagen1 {
-  height: 200px;
+  height: 180px;
   width: 200px;
   transition: all 0.3s ease;
   color: var(--verde);
@@ -42,8 +42,7 @@ section {
   margin-top: 1rem;
   padding: 1.5rem;
   padding-left: 1rem;
-
-  margin-top: 1.5rem; /* Baja el botón */
+  margin-top: 1.5rem;
 }
 .boton:hover {
   background: #318aac;
@@ -54,8 +53,8 @@ section {
 .home {
   display: flex;
   align-items: center;
-  justify-content: center; /* Separa en dos columnas */
-  width: 100%;
+  justify-content: center;
+  width:80%;
 }
 
 .content {

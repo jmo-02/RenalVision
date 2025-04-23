@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background-color: #f0f0f0;
 }
 
@@ -16,8 +15,9 @@
     padding-right: 15rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.51);
-    width: 900px; 
-    height: 580px;/* Ancho del panel */
+    max-width: 800px; 
+    height: 300px;
+    margin-top: 10px;
 }
 
 .about-us .content h3 {

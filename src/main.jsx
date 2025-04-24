@@ -6,6 +6,8 @@ import Login from "./pages/login/Login";
 import NotFound from "./pages/not-found/NotFound";
 import "./index.css";
 import Layout from "./layout/Layout";
+import KidneyCancer from "./pages/kidney/kidney-cancer/KidneyCancer";
+import WhatIsCancer from "./pages/kidney/kidney-cancer/what-is-cancer/WhatIsCancer"; 
 import KidneyStones from "./pages/kidney/kidney-stones/KidneyStones";
 import Kidney from "./pages/kidney/Kidney";
 import Profile from "./pages/profile/Profile";
@@ -32,18 +34,18 @@ createRoot(document.getElementById("root")).render(
         <Route path="*" element={<NotFound />} />
         <Route path="riñon">
           <Route index element={<Kidney />} />
-          <Route path="calculos-renales">
-            <Route index element={<KidneyStones />} />
-            <Route path="que-es" element={<WhatIs />} />
-            <Route path="sintomas" element={<KidneyStoneSymptoms />} />
-            <Route path="tratamientos" element={<KidneyStoneTreatment />} />
-          </Route>
+          <Route path="calculos-renales" element={<KidneyStones />} />
+          
           <Route path="glomerulonefritis" >
             <Route index element={<Glomerulonephritis />} />
             <Route path="info" element={<GlomerulonephritisWhatIs />} />
             <Route path="sintomas" element={<GlomerulonephritisSymptoms />} />
             <Route path="tratamientos" element={<GlomerulonephritisTreatment />} />
           </Route>
+          <Route path="cancer-de-riñon">
+          <Route index element={<KidneyCancer />} />
+          <Route path="que-es-cancer" element={<WhatIsCancer />} />
+        </Route>
         </Route>
       </Routes>
     </Layout>

@@ -7,6 +7,7 @@ const Lights = () => {
   
   const directionalLightRef = useRef();
   // useHelper(directionalLightRef, DirectionalLightHelper);
+  
 
   return (
       <>

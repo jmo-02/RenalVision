@@ -30,10 +30,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="*" element={<NotFound />} />
         <Route path="riñon">
           <Route index element={<Kidney />} />
-          <Route path="calculos-renales">
-            <Route index element={<KidneyStones />} />
-            <Route path="que-es" element={<WhatIs />} />
-          </Route>
+          <Route path="calculos-renales" element={<KidneyStones />} />
+          
           <Route path="glomerulonefritis" >
             <Route index element={<Glomerulonephritis />} />
             <Route path="info" element={<GlomerulonephritisWhatIs />} />

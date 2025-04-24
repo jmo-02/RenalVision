@@ -9,29 +9,31 @@
 
 .about-us .content {
     
-    background-color: #BBF3F2;
-    padding: 30px;
-    padding-left: 15rem;
-    padding-right: 15rem;
+    background-color: var(--verde);
+    padding: 40px;
+    padding-left: 12rem;
+    padding-right: 12rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.51);
     max-width: 800px; 
-    height: 300px;
+    height: auto;
     margin-top: 10px;
+    text-align: center;
 }
 
 .about-us .content h3 {
-    font-size: 2.5rem;
-    color: black;
-    line-height: 1.8;
+    font-size: 4.8rem;
+    color: #BBF3F2;
+    line-height: 1.2;
     text-shadow: var(--text-shadow);
 }
 
 
 
 .about-us .content p {
-    font-size: 1.5rem;
-    color: var(--black);
-    line-height: 1.8;
+    font-size: 2rem;
+    color: #f1f1f1;
+    line-height: 1.5;
+    text-align: justify;
     padding: 1rem 0;
 }

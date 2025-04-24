@@ -13,6 +13,10 @@ import Kidney from "./pages/kidney/Kidney";
 import Profile from "./pages/profile/Profile";
 import WhatIs from "./pages/kidney/kidney-stones/what-is/WhatIs";
 import AboutUs from "./pages/about-us/AboutUs";
+import KidneyStoneTreatment from "./pages/kidney/kidney-stones/treatment/KidneyStoneTreatment";
+import KidneyStoneSymptoms from "./pages/kidney/kidney-stones/symptoms/KidneyStoneSymptoms";
+
+// import App from "./App";
 import Glomerulonephritis from "./pages/kidney/glomerulonephritis/Glomerulonephritis";
 import GlomerulonephritisWhatIs from "./pages/kidney/glomerulonephritis/what-is/GlomerulonephritisWhatIs";
 import GlomerulonephritisSymptoms from "./pages/kidney/glomerulonephritis/symptoms/GlomerulonephritisSymptoms";
@@ -30,10 +34,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="*" element={<NotFound />} />
         <Route path="riñon">
           <Route index element={<Kidney />} />
-          <Route path="calculos-renales">
-            <Route index element={<KidneyStones />} />
-            <Route path="que-es" element={<WhatIs />} />
-          </Route>
+          <Route path="calculos-renales" element={<KidneyStones />} />
+          
           <Route path="glomerulonefritis" >
             <Route index element={<Glomerulonephritis />} />
             <Route path="info" element={<GlomerulonephritisWhatIs />} />

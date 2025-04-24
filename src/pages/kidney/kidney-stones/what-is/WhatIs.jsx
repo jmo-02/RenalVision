@@ -3,17 +3,22 @@ import { Canvas } from "@react-three/fiber";
 import React from "react";
 import KidneyWithStones from "../models-3d/KidneyWithStones";
 import "./WhatIs.css";
+import Lights from "../lights/Lights";
+import Recipient from "../models-3d/Recipient";
 
 
 const WhatIs = () => {
   return (
     <section className="whatis" id="whatis">
       <div className="model-3d">
-        <Canvas camera={{ position: [0, 0, 7] }}>
+        <Canvas shadows camera={{ position: [0, 0, 20],fov:45 }}>
           <OrbitControls />
-          <ambientLight intensity={1.5} />
-          <directionalLight position={[5, 2, 10]} intensity={2} />
+          <Lights/>
+          
+          {/* <ambientLight intensity={1.5} />
+          <directionalLight position={[5, 2, 10]} intensity={2} /> */}
           <KidneyWithStones scale={9} />
+          <Recipient/>
         </Canvas>
       </div>
       <div className="content">

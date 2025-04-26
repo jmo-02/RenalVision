@@ -8,12 +8,12 @@ const LightsModel = () => {
 
   return (
       <>
-    <ambientLight intensity={0.3} />
+    <ambientLight intensity={5} />
   
     <directionalLight
       castShadow
       position={[5, 10, 5]}
-      intensity={1.2}
+      intensity={1.5}
       shadow-mapSize-width={1024}
       shadow-mapSize-Height={1024}
       shadow-bias={-0.0001}

@@ -18,6 +18,12 @@ const Kidney = () => {
       });
       }, [navigate]);
 
+      const handleClickChronic = useCallback(() => {
+    navigate("/riñon/E-R-C", {});
+  }, [navigate]);
+
+
+
   return (
     <div className="kidney-container">
       <h2 className="kidney-title">
@@ -39,6 +45,12 @@ const Kidney = () => {
         <div className="button-team">
           <button onClick={handleClickCancer} className="button boton2">
             Cáncer de Riñón
+          </button>
+        </div>
+
+        <div className="button-team2">
+          <button onClick={handleClickChronic} className="button boton3">
+            Enfermedad Renal Cronica
           </button>
         </div>
       </div>

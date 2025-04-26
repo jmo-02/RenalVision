@@ -4,16 +4,16 @@ import { useRef } from 'react'
 import { DirectionalLightHelper, HemisphereLightHelper, PointLightHelper, SpotLightHelper } from 'three';
 
 
-const LightsModel = () => {
+const LightsModels = () => {
 
   return (
       <>
-    <ambientLight intensity={5} />
+    <ambientLight intensity={15} />
   
     <directionalLight
       castShadow
       position={[5, 10, 5]}
-      intensity={1.5}
+      intensity={4}
       shadow-mapSize-width={1024}
       shadow-mapSize-Height={1024}
       shadow-bias={-0.0001}
@@ -32,4 +32,4 @@ const LightsModel = () => {
   );
 };
 
-export default LightsModel;
+export default LightsModels;

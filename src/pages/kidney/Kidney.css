@@ -12,7 +12,7 @@
 }
 
 .kidney-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 40px  ;
   color: #003b4a;
@@ -41,7 +41,7 @@
   border: none;
   padding: 15px 30px;
   border-radius: 8px;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -70,6 +70,38 @@
   height: auto;
   border-radius: 10px;
   margin-top: 25px;
+}
+
+
+.button-team > button.boton2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+}
+
+.boton2 {
+  background-color: #007a99;
+  border: none;
+  padding: 15px 80px;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: #4c63af 0px 10px 20px -10px;
+}
+
+.boton2:hover {
+  background-color: #009fb7;
+}
+
+.button{
+  font-size: 1.8rem !important;
+  padding: 18px 36px;
+  
 }
 
 /* Responsivo */

@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import KidneyWithStones from "./models-3d/KidneyWithStones";
-import Recipient from "./models-3d/Recipient";
-import Lights from "./lights/Lights";
+import KidneyWithCancer from "./models-3D/KidneyWithCancer";
+import LightsModel from "./lightsmodel/LightsModel";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import "./KidneyStones.css";
+import "./KidneyCancer.css"
 
-const KidneyStones = () => {
+
+const KidneyCancer = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
 
   const scrollToSection = (index) => {
@@ -15,24 +15,24 @@ const KidneyStones = () => {
   };
 
   return (
-    <div className="kidney-stones-container">
-      {/* Sección 1 */}
+    <div className="kidney-cancer-container">
+      {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
         <div className="content">
-          <h3>¿QUÉ SON LOS CÁLCULOS RENALES?</h3>
+          <h3>¿QUE ES EL CANCER DE RIÑON?</h3>
           <p>
-            Los cálculos renales son masas sólidas formadas por minerales que se
-            acumulan en los riñones. Se forman cuando la orina está muy
-            concentrada, lo que permite que los minerales se cristalicen y se
-            agrupen.
+            El cáncer de riñón, también conocido como cáncer renal,
+            es una enfermedad en la que las células del tejido renal comienzan a crecer de manera anormal y descontrolada,
+            dando lugar a la formación de un tumor maligno. Este crecimiento desregulado ocurre como consecuencia de mutaciones genéticas en el ADN de las células renales,
+            las cuales interfieren con sus funciones normales, como la división controlada,
+            la reparación del daño celular y la muerte programada.
           </p>
         </div>
         <div className="model-3d">
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            <Lights />
-            <KidneyWithStones scale={7} />
-            <Recipient />
+            <LightsModel />
+            <KidneyWithCancer scale={7} />
           </Canvas>
         </div>
         <div className="button1">
@@ -47,17 +47,17 @@ const KidneyStones = () => {
         <div className="model-3d">
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            <Lights />
-            {/* <KidneyWithStones scale={7} /> */}
-            <Recipient />
+            <LightsModel />
+            {/* Aquí puedes colocar otro modelo 3D o dejarlo vacío */}
           </Canvas>
         </div>
         <div className="content">
           <h3 className="h3_2">CAUSAS Y SÍNTOMAS</h3>
           <p className="p_2">
-            Pueden originarse por deshidratación, dieta alta en sodio o
-            proteínas, e incluso factores genéticos. Los síntomas incluyen dolor
-            lumbar intenso, sangre en la orina y náuseas.
+            El cáncer de riñón puede ser causado por varios factores de riesgo,
+            aunque a menudo no se identifican causas específicas. Algunas de las causas y factores de riesgo comunes incluyen el tabaquismo,
+            obesidad, presión arterial alta, exposición a productos químicos, etc. Algunos síntomas serían sangre en la orina, pérdida de peso inexplicable,
+            fatiga extrema, hinchazón en el abdomen, etc.
           </p>
         </div>
         <button className="scroll-button-up1" onClick={() => scrollToSection(0)}>
@@ -73,9 +73,11 @@ const KidneyStones = () => {
         <div className="content">
           <h3>PREVENCIÓN Y TRATAMIENTO</h3>
           <p>
-            Beber suficiente agua es clave. El tratamiento puede incluir
-            medicamentos, litotricia o cirugía. Evitar alimentos ricos en
-            oxalato también ayuda.
+           No fumar, mantener un peso saludable, controlar la presion arterial,
+           evitar la exposicion a sustancias toxicas y controlar enfermedades
+           renales son algunas de las prevenciones para evitar el cancer renal.
+           El tratamiento puede incluir
+           medicamentos,cirugía, terapias dirigidas, inmunoterapia, entre otras.
           </p>
           <button
             className="scroll-button-up2"
@@ -87,9 +89,8 @@ const KidneyStones = () => {
         <div className="model-3d">
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            <Lights />
-            {/* <KidneyWithStones scale={7} /> */}
-            <Recipient />
+            <LightsModel />
+            {/* Puedes agregar un modelo diferente o el mismo */}
           </Canvas>
         </div>
       </section>
@@ -97,4 +98,4 @@ const KidneyStones = () => {
   );
 };
 
-export default KidneyStones;
+export default KidneyCancer;

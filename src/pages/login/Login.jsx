@@ -9,7 +9,7 @@ const Login = () => {
 
   const handleLogin = useCallback(() => {
     loginGoogleWithPopUp()
-      .then(() => navigate("/about-us"))
+      .then(() => navigate("/sobre-nosotros"))
       .catch(() => navigate("/"));
   }, [loginGoogleWithPopUp, navigate]);
 

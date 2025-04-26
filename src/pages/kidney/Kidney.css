@@ -80,7 +80,44 @@
   max-width: 250px;
 }
 
+/* Ajuste para aumentar el padding del botón 2 */
 .boton2 {
+  background-color: #007a99;
+  border: none;
+  padding: 15px 120px; /* Se incrementa aún más el padding horizontal */
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+   max-width: 250px; 
+  box-shadow: #4c63af 0px 10px 20px -10px;
+}
+
+.boton2:hover {
+  background-color: #009fb7;
+}
+
+.button{
+  font-size: 1.8rem !important;
+  padding: 18px 36px;
+  
+}
+
+/* Ajuste para separar el botón de Enfermedad Renal Crónica */
+.button-team2 {
+  margin-top: 35px; /* Añade un margen superior para separar el botón */
+}
+
+.button-team2 > button.boton3 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+}
+
+.boton3 {
   background-color: #007a99;
   border: none;
   padding: 15px 80px;
@@ -94,7 +131,7 @@
   box-shadow: #4c63af 0px 10px 20px -10px;
 }
 
-.boton2:hover {
+.boton3:hover {
   background-color: #009fb7;
 }
 
@@ -103,6 +140,7 @@
   padding: 18px 36px;
   
 }
+
 
 /* Responsivo */
 @media (max-width: 768px) {

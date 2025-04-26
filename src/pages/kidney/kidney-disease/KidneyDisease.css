@@ -1,0 +1,198 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100svh;
+}
+
+/* Scroll Snap y altura completa */
+.kidney-disease-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100svh;
+}
+
+.section1 {
+    scroll-snap-align: start;
+    position: relative;
+    height: 100svh;
+    padding: 5px 9%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.section2 {
+    scroll-snap-align: start;
+    height: 100svh;
+    padding: 10px 9%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    background: linear-gradient(180deg, #0DBBB5, var(--verde)); /* Ajusta el ángulo y los colores */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.section2 h3 {
+    color: #ffffff;
+}
+
+.h3_2 {
+    color: #BBF3F2 !important;
+}
+
+.p_2 {
+    color: #f1f1f1 !important;
+}
+
+.section3 {
+    scroll-snap-align: start;
+    height: 100svh;
+    padding: 2rem 9%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+}
+
+/* Modelo 3D */
+.model-3d {
+    padding-top: 0px;
+    max-width: 45%;
+    width: 900px;
+    height: 600px;
+}
+
+/* Contenido */
+.content {
+    flex: 1 1 45rem;
+    max-width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.content h3 {
+    font-size: 3.5rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-align: center;
+    padding-left: 1rem;
+    text-shadow: var(--text-shadow);
+}
+
+.content p {
+    font-size: 2rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    text-align: justify;
+    padding: 1rem 0;
+}
+
+/* Botón scroll hacia abajo - sección 1 */
+.scroll-button1 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-button1:hover {
+    background-color: rgba(230, 230, 230, 0.95);
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Botón scroll hacia arriba - sección 2 */
+.scroll-button-up1 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    background-color: #0DBBB5;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-button-up1:hover {
+    background-color: #075F73;
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Botón scroll hacia abajo - sección 2 */
+.scroll-button2 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    background-color: #38A3A5;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-button2:hover {
+    background-color: #0DBBB5;
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Botón scroll hacia arriba - sección 3 */
+.scroll-button-up2 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-button-up2:hover {
+    background-color: rgba(230, 230, 230, 0.95);
+    transform: translateX(-50%) scale(1.05);
+}
+
+.scroll-button1 svg {
+    color: #075F73; /* Azul para el botón de bajar en sección 1 */
+}
+
+.scroll-button2 svg {
+    color: #ffffff; /* Verde para el botón de bajar en sección 2 */
+}
+
+.scroll-button-up1 svg {
+    color: #ffffff; /* Blanco para el botón de subir en sección 2 */
+}
+
+.scroll-button-up2 svg {
+    color: #075F73; /* Azul para el botón de subir en sección 3 */
+}

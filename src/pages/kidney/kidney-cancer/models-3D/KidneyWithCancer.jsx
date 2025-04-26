@@ -14,7 +14,7 @@ const KidneyWithCancer = (props) => {
   return (
     <group {...props} dispose={null}>
         <group ref={kidneyWithCancerRef}>
-          <mesh
+         <mesh
              geometry={nodes.KidneyCancer.geometry}
              material={materials.KidneyCancerModel}
              castShadow

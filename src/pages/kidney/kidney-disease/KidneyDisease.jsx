@@ -31,10 +31,6 @@ const KidneyDisease = () => {
         <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
           <OrbitControls />
           <LightsModel />
-          {/* Agregar luces adicionales */}
-          <ambientLight intensity={0.5} /> {/* Luz ambiental para iluminación general */}
-          <directionalLight position={[5, 5, 5]} intensity={1} castShadow /> {/* Luz direccional */}
-          <pointLight position={[-5, -5, 5]} intensity={0.8} /> {/* Luz puntual */}
           <ChronicDisease scale={7} />
         </Canvas>
         </div>

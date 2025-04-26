@@ -3,37 +3,20 @@ import { Canvas } from "@react-three/fiber";
 import React from "react";
 import KidneyWithCancer from "../models-3D/KidneyWithCancer";
 import "./WhatIsCancer.css";
+import LightsModel from "../lightsmodel/LightsModel";
 
 
 const WhatIsCancer = () => {
   return (
     <section className="whatiscancer" id="whatiscancer">
       <div className="model-3d">
-        <Canvas shadows camera={{ position: [0, 0, 7] }}>
-        <ambientLight 
-          intensity={1.5} />
-          <directionalLight
-          position={[5, 5, 5]}
-          intensity={2} 
-          castShadow
-            shadow-mapSize-width={2048}
-            shadow-mapSize-height={2048}
-            shadow-camera-near={1}
-            shadow-camera-far={22}
-            shadow-camera-left={-10}
-            shadow-camera-right={10}
-            shadow-camera-top={10}
-            shadow-camera-bottom={-10}
-          />
-
-           {/* Plano que recibe sombra */}
-           <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
-            <planeGeometry args={[30, 30]} />
-            <shadowMaterial opacity={0.3} />
-          </mesh>
-
-          <KidneyWithCancer scale={5} />
-          <OrbitControls />
+        <Canvas shadows camera={{ position: [10, 0, 20],fov:40 }}>
+        <OrbitControls />
+          <LightsModel/>
+          
+          {/* <ambientLight intensity={1.5} />
+          <directionalLight position={[5, 2, 10]} intensity={2} /> */}
+          <KidneyWithCancer scale={7} />
         </Canvas>
       </div>
       <div className="content">

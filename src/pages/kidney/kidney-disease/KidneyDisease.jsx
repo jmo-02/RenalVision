@@ -1,12 +1,11 @@
 import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import ChronicDisease from "./models-3D/ChronicDisease"; 
+import ChronicDisease from "./models-3d/ChronicDisease";
 import LightsModel from "./lightsmodels/LightsModels";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import "./KidneyDisease.css";
 
-  
 const KidneyDisease = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
 
@@ -28,15 +27,15 @@ const KidneyDisease = () => {
           </p>
         </div>
         <div className="model-3d">
-        <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-          <OrbitControls />
-          <LightsModel />
-          {/* Agregar luces adicionales */}
-          <ambientLight intensity={0.5} /> {/* Luz ambiental para iluminación general */}
-          <directionalLight position={[5, 5, 5]} intensity={1} castShadow /> {/* Luz direccional */}
-          <pointLight position={[-5, -5, 5]} intensity={0.8} /> {/* Luz puntual */}
-          <ChronicDisease scale={7} />
-        </Canvas>
+          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+            <OrbitControls />
+            <LightsModel />
+            {/* Agregar luces adicionales */}
+            <ambientLight intensity={0.5} /> {/* Luz ambiental para iluminación general */}
+            <directionalLight position={[5, 5, 5]} intensity={1} castShadow /> {/* Luz direccional */}
+            <pointLight position={[-5, -5, 5]} intensity={0.8} /> {/* Luz puntual */}
+            <ChronicDisease scale={7} />
+          </Canvas>
         </div>
         <div className="button1">
           <button className="scroll-button1" onClick={() => scrollToSection(1)}>

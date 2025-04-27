@@ -1,7 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React from "react";
-import ChronicDisease from "../models-3D/ChronicDisease";
+import ChronicDisease from "../models-3d/ChronicDisease";
 import "./WhatIsChronic.css";
 import LightsModel from "../lightsmodels/LightsModels";
 

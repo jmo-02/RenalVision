@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float } from '@react-three/drei'; // <-- Float agregado aquí
+import { OrbitControls} from '@react-three/drei'; // <-- Float agregado aquí
 import GlomeruloModel from './models-3d/Glomerulo';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import './Glomerulonephritis.css';

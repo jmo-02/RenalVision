@@ -15,23 +15,18 @@ const Home = () => {
 
   return (
     <section className="home">
-
       <div className="content">
-
-        <div className="logo2">
-          <FontAwesomeIcon icon={faStaffSnake} className="imagen1" /> ¡Bienvenido a RenalVision!
-        </div>
-
-        <p>
-          Adentrate a descubrir mas sobre tus riñones
-        </p>
-
-        <button onClick={handleClick} className="boton">
-          Descubrelo
+        <div className="logo2 fade-in">
+          <span className="logo-text">
+            <FontAwesomeIcon icon={faStaffSnake} className="imagen1" />
+            ¡Bienvenido a RenalVision!
+          </span>
+        </div >
+        <p className="fade-in">Adentrate a descubrir más sobre tus riñones</p>
+        <button onClick={handleClick} className="boton fade-in">
+          Descúbrelo
         </button>
-
       </div>
-
     </section>
   );
 };

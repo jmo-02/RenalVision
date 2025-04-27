@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Float } from '@react-three/drei'; // <-- Float agregado aquí
 import GlomeruloModel from './models-3d/Glomerulo';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import './Glomerulonephritis.css';
@@ -25,8 +26,15 @@ const Glomerulonephritis = () => {
           </p>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [7, 2, 5], fov: 50 }}>
-            <GlomeruloModel />
+          <Canvas shadows camera={{ position: [4, 2, 10], fov: 50 }}>            
+            <GlomeruloModel /> 
+            <OrbitControls 
+              enableZoom={true} // <-- corregido aquí
+              minDistance={8}
+              maxDistance={20}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={0}
+            />
           </Canvas>
           <p className="label-model">Glomérulo</p>
         </div>
@@ -39,14 +47,14 @@ const Glomerulonephritis = () => {
       <section ref={sectionRefs[1]} className="glomerulo-section section-2">
         <div className="content full-width">
           <h3>Síntomas de la Glomerulonefritis</h3>
-          <ul>
-              <li>Orina de color oscuro (como té o cola).</li>
-              <li>Disminución de la cantidad de orina.</li>
-              <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
-              <li>Presión arterial alta.</li>
-              <li>Cansancio o fatiga.</li>
-              <li>Náuseas o pérdida del apetito.</li>
-            </ul>
+          <ul className="large-text"> {/* <-- nueva clase */}
+            <li>Orina de color oscuro (como té o cola).</li>
+            <li>Disminución de la cantidad de orina.</li>
+            <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
+            <li>Presión arterial alta.</li>
+            <li>Cansancio o fatiga.</li>
+            <li>Náuseas o pérdida del apetito.</li>
+          </ul>
         </div>
         <button className="scroll-button-up1" onClick={() => scrollToSection(0)}>
           <ChevronUp size={40} />
@@ -60,25 +68,25 @@ const Glomerulonephritis = () => {
       <section ref={sectionRefs[2]} className="glomerulo-section section-3">
         <div className="content full-width">
           <h3>Tratamientos</h3>
-            <ul>
-              <li><strong>Medicamentos:</strong>
-                <ul>
-                  <li>Antibióticos (si la causa es una infección).</li>
-                  <li>Corticoides o inmunosupresores (para controlar la inflamación).</li>
-                  <li>Antihipertensivos (para bajar la presión y proteger el riñón).</li>
-                  <li>Diuréticos (para eliminar el exceso de líquidos).</li>
-                </ul>
-              </li>
-              <li><strong>Cambios en la alimentación:</strong>
-                <ul>
-                  <li>Reducir el consumo de sal.</li>
-                  <li>Controlar las proteínas o el potasio según el caso.</li>
-                  <li>Limitar líquidos si hay retención.</li>
-                </ul>
-              </li>
-              <li><strong>Diálisis:</strong> en casos graves o crónicos.</li>
-              <li><strong>Trasplante renal:</strong> si el riñón deja de funcionar completamente.</li>
-            </ul>
+          <ul className="large-text"> {/* <-- nueva clase */}
+            <li><strong>Medicamentos:</strong>
+              <ul>
+                <li>Antibióticos (si la causa es una infección).</li>
+                <li>Corticoides o inmunosupresores (para controlar la inflamación).</li>
+                <li>Antihipertensivos (para bajar la presión y proteger el riñón).</li>
+                <li>Diuréticos (para eliminar el exceso de líquidos).</li>
+              </ul>
+            </li>
+            <li><strong>Cambios en la alimentación:</strong>
+              <ul>
+                <li>Reducir el consumo de sal.</li>
+                <li>Controlar las proteínas o el potasio según el caso.</li>
+                <li>Limitar líquidos si hay retención.</li>
+              </ul>
+            </li>
+            <li><strong>Diálisis:</strong> en casos graves o crónicos.</li>
+            <li><strong>Trasplante renal:</strong> si el riñón deja de funcionar completamente.</li>
+          </ul>
         </div>
         <button className="scroll-button-up2" onClick={() => scrollToSection(1)}>
           <ChevronUp size={40} />

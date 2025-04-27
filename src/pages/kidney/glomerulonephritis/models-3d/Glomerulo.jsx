@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-
+ /*modelo*/
 const GlomeruloModel = (props) => {
   const groupRef = useRef();
   const { nodes, materials } = useGLTF('/models-3d/glomerulus.glb');

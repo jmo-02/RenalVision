@@ -1,8 +1,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  overflow-x: hidden;
   font-family: sans-serif;
 }
 
@@ -10,21 +10,26 @@ html, body {
 .glomerulo-scroll-container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  height: calc(100svh - 80px); /* deja espacio para el header */
-  margin-top: 80px; /* header ocupa espacio arriba */
+  height: calc(100vh - 60px);
 }
 
 /* Secciones principales */
 .glomerulo-section {
   scroll-snap-align: start;
-  height: calc(100svh - 80px); /* deja espacio para el header */
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 5px 9%;
+  padding: 80px 5% 120px 5%; /* Padding amplio para los botones */
   position: relative;
 }
+
+.section-1 {
+  align-items: flex-start;
+  padding-top: 100px; /* Puedes ajustar el número si quieres más espacio */
+}
+
 
 /* Sección 2 estilo */
 .section-2 {
@@ -40,69 +45,74 @@ html, body {
 
 /* Contenido compartido */
 .content {
-  flex: 1 1 45rem;
-  max-width: 55%;
+  flex: 1 1 600px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: justify;
 }
 
-.content h2,
-.content h3 {
+.content h2, .content h3 {
   font-size: 3rem;
-  line-height: 1.4;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.content p,
-.content ul {
-  font-size: 1.5rem;
+.content p, .content ul {
+  font-size: 1.8rem;
   line-height: 1.6;
 }
 
 .content ul {
-  list-style-type: none; 
+  list-style-type: none;
   padding-left: 2rem;
 }
 
 .content ul li {
   position: relative;
-  margin-bottom: 0.8rem;
-  padding-left: 1rem;
-  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
 }
 
-/* Bolita negra personalizada */
 .content ul li::before {
   content: '•';
   position: absolute;
   left: 0;
-  top: 0.2rem;
-  color: #000;
-  font-size: 1.5rem;
-  line-height: 1;
+  top: 0.4rem;
+  font-size: 1.8rem;
 }
 
-/* Bolitas blancas en sección 2 */
 .section-2 ul li::before {
   color: #fff;
 }
 
-/* Modelo 3D solo para la sección 1 */
+/* Modelo 3D */
 .model-3d {
-  flex: 1 1 40%;
-  max-width: 40%;
-  height: 450px;
+  flex: 0 0 auto;
+  max-width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
 }
 
+.model-3d canvas{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Etiqueta debajo del modelo */
 .label-model {
   text-align: center;
   font-weight: bold;
-  margin-top: 10px;
   font-size: 2rem;
+  margin-bottom: 100px;
+ 
 }
+
 
 /* Botones scroll */
 .scroll-button1,
@@ -115,27 +125,29 @@ html, body {
   z-index: 20;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 50px;
-  padding: 10px;
+  padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.scroll-button1 {
-  bottom: 50px;
+/* Botón abajo */
+.scroll-button1, .scroll-button2 {
+  bottom: 20px;
 }
 
+/* Botón especial sección 2 */
 .scroll-button2 {
-  bottom: 20px;
   background-color: #38A3A5;
   color: white;
 }
 
-.scroll-button-up1,
-.scroll-button-up2 {
+/* Botón arriba */
+.scroll-button-up1, .scroll-button-up2 {
   top: 20px;
 }
 
+/* Hover */
 .scroll-button2:hover {
   background-color: #0DBBB5;
 }
@@ -145,4 +157,21 @@ html, body {
 .scroll-button1:hover {
   background-color: rgba(230, 230, 230, 0.95);
   transform: translateX(-50%) scale(1.05);
+}
+
+/* RESPONSIVE: móviles */
+@media (max-width: 768px) {
+  .glomerulo-section {
+    padding: 60px 4% 100px 4%;
+  }
+  
+  .content, .model-3d {
+    flex: 1 1 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .model-3d {
+    margin-top: 30px;
+  }
 }

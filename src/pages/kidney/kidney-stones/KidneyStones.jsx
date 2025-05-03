@@ -6,6 +6,11 @@ import Recipient from "./models-3d/Recipient";
 import Lights from "./lights/Lights";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import "./KidneyStones.css";
+import SymptomsKidneyStone from "./models-3d/SymptomsKidneyStone";
+import RecipientSymptoms from "./models-3d/RecipientSymptoms";
+import LightsSymptoms from "./lights/LightsSymptoms";
+import StagingSymptoms from "./staging/StagingSymptoms";
+import TitleSymptoms from "./texts/TitleSymptoms";
 
 const KidneyStones = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -45,22 +50,39 @@ const KidneyStones = () => {
       {/* Sección 2 */}
       <section ref={sectionRefs[1]} className="section2">
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-            <OrbitControls />
-            <Lights />
-            {/* <KidneyWithStones scale={7} /> */}
-            <Recipient />
+          <Canvas
+            className="canvas2"
+            shadows
+            camera={{ position: [0, 10, 15], fov: 45 }}
+          >
+            <OrbitControls target={[0, 4, 0]} />
+            <LightsSymptoms />
+            <StagingSymptoms />
+            <SymptomsKidneyStone scale={5} position={[0, 0, 0]} />
+            {/* <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"}/> */}
+            <RecipientSymptoms />
           </Canvas>
         </div>
+
         <div className="content">
-          <h3 className="h3_2">CAUSAS Y SÍNTOMAS</h3>
+          <Canvas>
+            <OrbitControls />
+            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
+          </Canvas>
           <p className="p_2">
-            Pueden originarse por deshidratación, dieta alta en sodio o
-            proteínas, e incluso factores genéticos. Los síntomas incluyen dolor
-            lumbar intenso, sangre en la orina y náuseas.
+            Los cálculos renales pueden formarse debido a múltiples factores
+            como la deshidratación, una dieta rica en sodio, oxalatos o
+            proteínas animales, así como predisposición genética o enfermedades
+            metabólicas. Entre los síntomas más comunes se encuentran el dolor
+            intenso en la parte baja de la espalda o costado, presencia de
+            sangre en la orina, necesidad frecuente de orinar, náuseas, vómito
+            y, en algunos casos, fiebre si hay infección asociada.
           </p>
         </div>
-        <button className="scroll-button-up1" onClick={() => scrollToSection(0)}>
+        <button
+          className="scroll-button-up1"
+          onClick={() => scrollToSection(0)}
+        >
           <ChevronUp size={40} />
         </button>
         <button className="scroll-button2" onClick={() => scrollToSection(2)}>

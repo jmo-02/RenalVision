@@ -18,6 +18,8 @@
     "@react-three/fiber": "^9.1.2",
     "@types/three": "^0.175.0",
     "firebase": "^11.5.0",
+    "framer-motion": "^12.9.4",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.503.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

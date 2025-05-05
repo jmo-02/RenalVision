@@ -1,4 +1,5 @@
-import { NavLink } from "react-router";
+
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStaffSnake } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,7 @@ import useAuthStore from "../../stores/use-auth-store";
 
 const Header = () => {
   const { userLooged } = useAuthStore();
+  
 
   return (
     <header>
@@ -23,9 +25,21 @@ const Header = () => {
             Inicio
           </NavLink>
 
-          <NavLink to="/riñon" end className="link">
+        {/* Desplegable con hover */}
+        <div className="dropdown">
+            <div className="link">Enfermedades</div>
+            <div className="dropdown-menu">
+              <NavLink to="/riñon/calculos-renales" className="dropdown-item">Calculos Renales</NavLink>
+              <NavLink to="/riñon/cancer-de-riñon" className="dropdown-item">Cáncer de Riñon</NavLink>
+              <NavLink to="/riñon/glomerulonefritis" className="dropdown-item">Glomerulonefritis</NavLink>
+              <NavLink to="/riñon/E-R-C" className="dropdown-item">Enfermedad Cronica</NavLink>
+            </div>
+          </div>
+
+         {/*  <NavLink to="/riñon" end className="link">
             Enfermedades
           </NavLink>
+ */}
 
           {userLooged && (
             <NavLink to="/quiz" end className="link">

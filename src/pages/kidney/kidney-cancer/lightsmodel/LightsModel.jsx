@@ -8,7 +8,7 @@ const LightsModel = () => {
 
   return (
       <>
-    <ambientLight intensity={5} />
+    <ambientLight intensity={15} />
   
     <directionalLight
       castShadow

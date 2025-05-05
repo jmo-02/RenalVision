@@ -27,17 +27,27 @@ html,body{
   .section2{
       scroll-snap-align: start;
       height: 100svh;
-      padding: 10px 9%;
+      /* padding: 10px 9%; */
       display: flex;
-      flex-wrap: wrap;
+      /* flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: center; */
       gap: 1.5rem;
       position: relative;
       background: linear-gradient(180deg, #0DBBB5, var(--verde)); /* Ajusta el ángulo y los colores */;
       box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
   }
   
+  .canvas2 {
+    position: relative !important;
+    top: 0;
+    border-radius: 45px;
+    left: 0;
+    max-width: 100%;
+    height: 100% !important;
+    z-index: 0; /* Esto asegura que el canvas quede en el fondo */
+  }
+
   .section2 h3{
       color: #ffffff;
   }
@@ -62,12 +72,15 @@ html,body{
       position: relative;
   }
     
-    /*Modelo 3D*/
+    /* Estilos del Canvas con fondo HDR */
   .model-3d{
       padding-top: 0px;
       max-width: 45%;
       width: 900px;
       height: 600px;
+      /* background-color: #000; /* Asegura que el fondo sea negro mientras no se haya cargado */
+  /* border-radius: 12px;
+  border: 4px solid #4caf50; /* Borde verde alrededor del canvas */ 
   }
     
     /* Contenido */

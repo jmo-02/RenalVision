@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useRef, useEffect } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import KidneyWithCancer from "./models-3D/KidneyWithCancer";
 import LightsModel from "./lightsmodel/LightsModel";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import "./KidneyCancer.css"
+import SymptomsKidneyCancer from "./models-3D/SymptomsKidneyCancer";
+import StaggingSymptoms from "./stagging/StaggingSymptoms";
+import RecipientSymptoms from "./models-3D/RecipientSymptoms";
+import LightsSymptoms from "./lightsmodel/LightsSymptoms";
+import TitleSymptoms from "./textss/TitleSymptoms";
 
 
 const KidneyCancer = () => {
@@ -13,6 +18,8 @@ const KidneyCancer = () => {
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  
 
   return (
     <div className="kidney-cancer-container">
@@ -45,14 +52,25 @@ const KidneyCancer = () => {
       {/* Sección 2 */}
       <section ref={sectionRefs[1]} className="section2">
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-            <OrbitControls />
-            <LightsModel />
-            {/* Aquí puedes colocar otro modelo 3D o dejarlo vacío */}
+          <Canvas 
+          className="canvas2"
+          shadows
+           camera={{ position: [0, 10, 12], fov: 45 }}>
+             <ZoomControl />
+            <color attach="background" args={["#f0f0f0"]} />
+            <OrbitControls  target={[0, 4, 0]} />
+            <LightsSymptoms />
+            <StaggingSymptoms />
+            <RecipientSymptoms />  
+            <SymptomsKidneyCancer scale={5} position={[0, 0, 0]} />
           </Canvas>
         </div>
+
         <div className="content">
-          <h3 className="h3_2">CAUSAS Y SÍNTOMAS</h3>
+        <Canvas>
+            <OrbitControls />
+            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
+          </Canvas>
           <p className="p_2">
             El cáncer de riñón puede ser causado por varios factores de riesgo,
             aunque a menudo no se identifican causas específicas. Algunas de las causas y factores de riesgo comunes incluyen el tabaquismo,
@@ -98,4 +116,26 @@ const KidneyCancer = () => {
   );
 };
 
+// Componente para manejar el zoom
+const ZoomControl = () => {
+  const { camera } = useThree();
+
+  useEffect(() => {
+    const handleZoom = (e) => {
+      if (e.key === "+" || e.key === "=") {
+        camera.position.z -= 1; // Acercar
+      } else if (e.key === "-") {
+        camera.position.z += 1; // Alejar
+      }
+    };
+
+    window.addEventListener("keydown", handleZoom);
+
+    return () => {
+      window.removeEventListener("keydown", handleZoom);
+    };
+  }, [camera]);
+
+  return null; // Este componente no necesita renderizar nada
+};
 export default KidneyCancer;

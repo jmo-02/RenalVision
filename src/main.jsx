@@ -15,8 +15,6 @@ import WhatIs from "./pages/kidney/kidney-stones/what-is/WhatIs";
 import AboutUs from "./pages/about-us/AboutUs";
 import Glomerulonephritis from "./pages/kidney/glomerulonephritis/Glomerulonephritis";
 import GlomerulonephritisWhatIs from "./pages/kidney/glomerulonephritis/what-is/GlomerulonephritisWhatIs";
-import GlomerulonephritisSymptoms from "./pages/kidney/glomerulonephritis/symptoms/GlomerulonephritisSymptoms";
-import GlomerulonephritisTreatment from "./pages/kidney/glomerulonephritis/treatment/GlomerulonephritisTreatment";
 import KidneyDisease from "./pages/kidney/kidney-disease/KidneyDisease";
 import WhatIsChronic from "./pages/kidney/kidney-disease/what-is-disease/WhatIsChronic";
 
@@ -39,8 +37,6 @@ createRoot(document.getElementById("root")).render(
           <Route path="glomerulonefritis">
             <Route index element={<Glomerulonephritis />} />
             <Route path="info" element={<GlomerulonephritisWhatIs />} />
-            <Route path="sintomas" element={<GlomerulonephritisSymptoms />} />
-            <Route path="tratamientos" element={<GlomerulonephritisTreatment />} />
           </Route>
           <Route path="cancer-de-riñon">
             <Route index element={<KidneyCancer />} />

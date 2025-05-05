@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls} from '@react-three/drei'; // <-- Float agregado aquí
 import GlomeruloModel from './models-3d/Glomerulo';
+import SymptomsModel from './models-3d/Symptoms-Glumerulonefritis';
+import StagingSymptoms from "../kidney-stones/staging/StagingSymptoms";
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import './Glomerulonephritis.css';
 
@@ -26,15 +27,9 @@ const Glomerulonephritis = () => {
           </p>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [4, 2, 10], fov: 50 }}>            
+          <Canvas shadows camera={{ position: [4, 2, -11], fov: 50}}>            
             <GlomeruloModel /> 
-            <OrbitControls 
-              enableZoom={true} // <-- corregido aquí
-              minDistance={8}
-              maxDistance={20}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={0}
-            />
+          
           </Canvas>
           <p className="label-model">Glomérulo</p>
         </div>
@@ -45,17 +40,26 @@ const Glomerulonephritis = () => {
 
       {/* Sección 2 */}
       <section ref={sectionRefs[1]} className="glomerulo-section section-2">
-        <div className="content full-width">
-          <h3>Síntomas de la Glomerulonefritis</h3>
-          <ul className="large-text"> {/* <-- nueva clase */}
-            <li>Orina de color oscuro (como té o cola).</li>
-            <li>Disminución de la cantidad de orina.</li>
-            <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
-            <li>Presión arterial alta.</li>
-            <li>Cansancio o fatiga.</li>
-            <li>Náuseas o pérdida del apetito.</li>
-          </ul>
+        <div className="symptoms-layout">
+          <div className="model-3d-sesion2">
+            <Canvas shadows camera={{ position: [0, 2, 5], fov: 50 }}>
+              <StagingSymptoms />
+              <SymptomsModel/>
+            </Canvas>
+          </div>
+          <div className="content">
+            <h3>Síntomas de la Glomerulonefritis</h3>
+            <ul className="large-text">
+              <li>Orina de color oscuro (como té o cola).</li>
+              <li>Disminución de la cantidad de orina.</li>
+              <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
+              <li>Presión arterial alta.</li>
+              <li>Cansancio o fatiga.</li>
+              <li>Náuseas o pérdida del apetito.</li>
+            </ul>
+          </div>
         </div>
+
         <button className="scroll-button-up1" onClick={() => scrollToSection(0)}>
           <ChevronUp size={40} />
         </button>
@@ -63,6 +67,7 @@ const Glomerulonephritis = () => {
           <ChevronDown size={40} />
         </button>
       </section>
+
 
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="glomerulo-section section-3">

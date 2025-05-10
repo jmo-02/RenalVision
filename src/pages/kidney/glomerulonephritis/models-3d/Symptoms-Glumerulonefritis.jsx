@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useGLTF, useAnimations, OrbitControls, Environment } from "@react-three/drei";
+import { useGLTF, useAnimations, OrbitControls} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import useStudentStore from "../../../../stores/use-symptomsmodel-store";
 
-const SymptomsModel = (props) => {
+const SymptomsModel = ({onModelClick, ...props}) => {
   const groupRef = useRef();
   const { nodes, materials, animations } = useGLTF("/models-3d/symptoms-glomerulonefritis.glb");
   const { actions } = useAnimations(animations, groupRef);
@@ -52,9 +52,12 @@ const SymptomsModel = (props) => {
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
       />
-      
+      <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
+        <planeGeometry args={[20, 20]} />
+        <shadowMaterial opacity={0.5} />
+      </mesh>
 
-      <group ref={groupRef} {...props} dispose={null} scale={3} position={[0, -1.5, 0]}>
+      <group ref={groupRef} {...props} dispose={null} scale={3} position={[0, -1.5, 0]} onClick={onModelClick}>
         <group name="Scene">
           <group name="Armature">
             <skinnedMesh

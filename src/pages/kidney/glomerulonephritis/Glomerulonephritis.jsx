@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import GlomeruloModel from './models-3d/Glomerulo';
 import SymptomsModel from './models-3d/Symptoms-Glumerulonefritis';
 import StagingSymptoms from "../kidney-stones/staging/StagingSymptoms";
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { OrbitControls } from '@react-three/drei';
+import SymptomsTitle3D from './components-html-3d/Title-Section2';
+import Causes3D from './components-html-3d/Botton-Section2';
 import './Glomerulonephritis.css';
 
 const Glomerulonephritis = () => {
@@ -11,6 +14,10 @@ const Glomerulonephritis = () => {
 
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  const [showCauses, setShowCauses] = useState(false);
+  const handleModelClick = () => {
+    setShowCauses(prev => !prev);
   };
 
   return (
@@ -29,7 +36,6 @@ const Glomerulonephritis = () => {
         <div className="model-3d">
           <Canvas shadows camera={{ position: [4, 2, -11], fov: 50}}>            
             <GlomeruloModel /> 
-          
           </Canvas>
           <p className="label-model">Glomérulo</p>
         </div>
@@ -44,11 +50,25 @@ const Glomerulonephritis = () => {
           <div className="model-3d-sesion2">
             <Canvas shadows camera={{ position: [0, 2, 5], fov: 50 }}>
               <StagingSymptoms />
-              <SymptomsModel/>
+              <SymptomsModel onModelClick= {handleModelClick}/>
+              <Causes3D showCauses={showCauses}/>
             </Canvas>
           </div>
           <div className="content">
-            <h3>Síntomas de la Glomerulonefritis</h3>
+            <div className='title-symptoms'>
+              <Canvas>
+                <OrbitControls
+                  enableZoom={false}
+                  minDistance={5}
+                  maxDistance={20}
+                  maxPolarAngle={Math.PI / 2}
+                  minPolarAngle={Math.PI / 2}
+                />
+                <SymptomsTitle3D title = {"Síntomas de la Glomerulonefritis"}/>
+                
+              </Canvas>
+            </div>
+            
             <ul className="large-text">
               <li>Orina de color oscuro (como té o cola).</li>
               <li>Disminución de la cantidad de orina.</li>

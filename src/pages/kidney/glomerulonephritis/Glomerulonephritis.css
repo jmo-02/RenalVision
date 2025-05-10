@@ -124,6 +124,7 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  border-radius: 10px;
 }
 
 .model-3d-sesion2 canvas{

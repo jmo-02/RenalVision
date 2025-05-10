@@ -1,0 +1,10 @@
+.titulo1{
+    color: #BBF3F2 !important ;
+}
+/*Titulo 3d sesion 2*/
+.title-symptoms {
+    width: 100%;
+    max-width: 600px; /* ajustá el ancho máximo */
+    height: 120px;     /* ajustá la altura según necesites */
+    margin: 0 auto;    /* centra horizontalmente */
+  }

@@ -23,9 +23,13 @@ const KidneyStones = () => {
     <div className="kidney-stones-container">
       {/* Sección 1 */}
       <section ref={sectionRefs[0]} className="section1">
+        <div className="div-title">
+          <h1 className="title-page">CÁLCULOS RENALES</h1>
+        </div>
         <div className="content">
-          <h3>¿QUÉ SON LOS CÁLCULOS RENALES?</h3>
-          <p>
+          
+          <h3>¿QUÉ SON?</h3>
+          <p className="p1">
             Los cálculos renales son masas sólidas formadas por minerales que se
             acumulan en los riñones. Se forman cuando la orina está muy
             concentrada, lo que permite que los minerales se cristalicen y se
@@ -94,7 +98,7 @@ const KidneyStones = () => {
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
           <h3>PREVENCIÓN Y TRATAMIENTO</h3>
-          <p>
+          <p className="p3">
             Beber suficiente agua es clave. El tratamiento puede incluir
             medicamentos, litotricia o cirugía. Evitar alimentos ricos en
             oxalato también ayuda.

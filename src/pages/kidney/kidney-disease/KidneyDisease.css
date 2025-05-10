@@ -34,18 +34,11 @@ html, body {
     justify-content: center; */
     gap: 1.5rem;
     position: relative;
-    background: linear-gradient(180deg, #0DBBB5, var(--verde)); /* Ajusta el ángulo y los colores */;
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    background: var(--verde);
+    /* background: linear-gradient(180deg, #0DBBB5, var(--verde));  */
+    /* Ajusta el ángulo y los colores */
+    
 }
-.canvas2 {
-    position: relative !important;
-    top: 0;
-    border-radius: 45px;
-    left: 0;
-    max-width: 100%;
-    height: 100% !important;
-    z-index: 0; /* Esto asegura que el canvas quede en el fondo */
-  }
 
 .section2 h3 {
     color: #ffffff;

@@ -1,8 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls} from '@react-three/drei'; // <-- Float agregado aquí
 import GlomeruloModel from './models-3d/Glomerulo';
+import SymptomsModel from './models-3d/Symptoms-Glumerulonefritis';
+import StagingSymptoms from "../kidney-stones/staging/StagingSymptoms";
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { OrbitControls } from '@react-three/drei';
+import SymptomsTitle3D from './components-html-3d/Title-Section2';
+import Causes3D from './components-html-3d/Botton-Section2';
 import './Glomerulonephritis.css';
 
 const Glomerulonephritis = () => {
@@ -10,6 +14,10 @@ const Glomerulonephritis = () => {
 
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  const [showCauses, setShowCauses] = useState(false);
+  const handleModelClick = () => {
+    setShowCauses(prev => !prev);
   };
 
   return (
@@ -26,15 +34,8 @@ const Glomerulonephritis = () => {
           </p>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [4, 2, 10], fov: 50 }}>            
+          <Canvas shadows camera={{ position: [4, 2, -11], fov: 50}}>            
             <GlomeruloModel /> 
-            <OrbitControls 
-              enableZoom={true} // <-- corregido aquí
-              minDistance={8}
-              maxDistance={20}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={0}
-            />
           </Canvas>
           <p className="label-model">Glomérulo</p>
         </div>
@@ -45,17 +46,40 @@ const Glomerulonephritis = () => {
 
       {/* Sección 2 */}
       <section ref={sectionRefs[1]} className="glomerulo-section section-2">
-        <div className="content full-width">
-          <h3>Síntomas de la Glomerulonefritis</h3>
-          <ul className="large-text"> {/* <-- nueva clase */}
-            <li>Orina de color oscuro (como té o cola).</li>
-            <li>Disminución de la cantidad de orina.</li>
-            <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
-            <li>Presión arterial alta.</li>
-            <li>Cansancio o fatiga.</li>
-            <li>Náuseas o pérdida del apetito.</li>
-          </ul>
+        <div className="symptoms-layout">
+          <div className="model-3d-sesion2">
+            <Canvas shadows camera={{ position: [0, 2, 5], fov: 50 }}>
+              <StagingSymptoms />
+              <SymptomsModel onModelClick= {handleModelClick}/>
+              <Causes3D showCauses={showCauses}/>
+            </Canvas>
+          </div>
+          <div className="content">
+            <div className='title-symptoms'>
+              <Canvas>
+                <OrbitControls
+                  enableZoom={false}
+                  minDistance={5}
+                  maxDistance={20}
+                  maxPolarAngle={Math.PI / 2}
+                  minPolarAngle={Math.PI / 2}
+                />
+                <SymptomsTitle3D title = {"Síntomas de la Glomerulonefritis"}/>
+                
+              </Canvas>
+            </div>
+            
+            <ul className="large-text">
+              <li>Orina de color oscuro (como té o cola).</li>
+              <li>Disminución de la cantidad de orina.</li>
+              <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
+              <li>Presión arterial alta.</li>
+              <li>Cansancio o fatiga.</li>
+              <li>Náuseas o pérdida del apetito.</li>
+            </ul>
+          </div>
         </div>
+
         <button className="scroll-button-up1" onClick={() => scrollToSection(0)}>
           <ChevronUp size={40} />
         </button>
@@ -63,6 +87,7 @@ const Glomerulonephritis = () => {
           <ChevronDown size={40} />
         </button>
       </section>
+
 
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="glomerulo-section section-3">

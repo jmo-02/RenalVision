@@ -7,7 +7,7 @@ const LightsSymptoms = () => {
   
   const directionalLightRef = useRef();
   const targetRef = useRef();
-//   useHelper(directionalLightRef, DirectionalLightHelper);
+  useHelper(directionalLightRef, DirectionalLightHelper);
   const { scene } = useThree();
   
   useEffect(() => {
@@ -37,18 +37,18 @@ const LightsSymptoms = () => {
     <directionalLight
       ref={directionalLightRef}
       color={"white"}
-      position={[3.5, 8, 5]}
+      position={[10, 15, -10]}
       intensity={7}
       castShadow={true}
       shadow-mapSize={[2048, 2048]}
-      shadow-camera-left={-10}
-      shadow-camera-right={10}
-      shadow-camera-top={10}
-      shadow-camera-bottom={-10}
+      shadow-camera-left={-15}
+      shadow-camera-right={15}
+      shadow-camera-top={15}
+      shadow-camera-bottom={-15}
       shadow-camera-near={1}
-      shadow-camera-far={30}
+      shadow-camera-far={40}
     />
-    <mesh ref={targetRef} position={[0, 3, 0]} visible={false} />
+    <mesh ref={targetRef} position={[0, 0, 0]} visible={false} />
     </>
   )
 }

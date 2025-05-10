@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
+import { OrbitControls} from '@react-three/drei';
  /*modelo*/
 const GlomeruloModel = (props) => {
   const groupRef = useRef();
@@ -11,7 +12,6 @@ const GlomeruloModel = (props) => {
       groupRef.current.rotation.y += 0.004;
     }
   });
-
   return (
     <>
       <ambientLight intensity={1} />
@@ -21,6 +21,13 @@ const GlomeruloModel = (props) => {
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
+      />
+      <OrbitControls 
+        enableZoom={true}
+        minDistance={8}
+        maxDistance={20}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={0}
       />
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
         <planeGeometry args={[20, 20]} />

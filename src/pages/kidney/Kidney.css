@@ -76,8 +76,8 @@
 .button-team > button.boton2 {
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 250px;
+  width: 250px;
+  max-width: 450px;
 }
 
 /* Ajuste para aumentar el padding del botón 2 */

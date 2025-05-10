@@ -21,7 +21,7 @@ html, body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 80px 5% 120px 5%; /* Padding amplio para los botones */
+  padding: 80px 5% 100px 4%; /* Padding amplio para los botones */
   position: relative;
 }
 
@@ -33,6 +33,7 @@ html, body {
 
 /* Sección 2 estilo */
 .section-2 {
+  align-items: flex-start;
   background: linear-gradient(180deg, #0DBBB5, #075F73);
   color: #ffffff;
 }
@@ -87,7 +88,7 @@ html, body {
   color: #fff;
 }
 
-/* Modelo 3D */
+/* Modelo 3D sesion 1 */
 .model-3d {
   flex: 0 0 auto;
   max-width: 400px;
@@ -112,6 +113,49 @@ html, body {
   margin-bottom: 100px;
  
 }
+
+/* Modelo 3D sesion 2 */
+.model-3d-sesion2 {
+  flex: 0 0 auto;
+  max-width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  border-radius: 10px;
+}
+
+.model-3d-sesion2 canvas{
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1;
+  
+}
+
+.symptoms-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+
+.section-2 .content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.large-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+
+
 
 
 /* Botones scroll */
@@ -175,3 +219,5 @@ html, body {
     margin-top: 30px;
   }
 }
+
+

@@ -24,14 +24,14 @@ html, body {
     justify-content: center;
 }
 
-.section2 {
+.section2{
     scroll-snap-align: start;
     height: 100svh;
-    padding: 10px 9%;
+    /* padding: 10px 9%; */
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     gap: 1.5rem;
     position: relative;
     background: var(--verde);
@@ -64,13 +64,22 @@ html, body {
     position: relative;
 }
 
-/* Modelo 3D */
-.model-3d {
-    padding-top: 0px;
-    max-width: 45%;
-    width: 900px;
-    height: 600px;
+  /*Modelo 3D*/
+.model-3d{
+    padding-top: 5px;
+    display: flex;
+    flex: 0 0 65%;
+    border-radius: 50px;
+    position: relative;
+    /* max-width: 65%;
+    width: 1500px; */
+    height: 500px;
+
+    margin-right: 1rem;
+    
+    
 }
+
 
 /* Contenido */
 .content {

@@ -5,6 +5,12 @@ import ChronicDisease from "./models-3d/ChronicDisease";
 import LightsModel from "./lightsmodels/LightsModels";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import "./KidneyDisease.css";
+import SymptomsKidneyDisease from "./models-3d/SymptomsKidneyDisease";
+import TitleSymptoms from "./text-staging/TitleSymptoms";
+import RecipientSymptoms from "./models-3d/RecipientSymptoms";
+import LightsSymptoms from "./lightsmodels/LightsSymptoms";
+import StagingSymptoms from "./staging-erc/StagingSymptoms";
+
 
 const KidneyDisease = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -47,14 +53,22 @@ const KidneyDisease = () => {
       {/* Section 2 */}
       <section ref={sectionRefs[1]} className="section2">
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-            <OrbitControls />
-            <LightsModel />
-            {/* Puedes agregar otro modelo aquí si es necesario */}
+          <Canvas 
+          className="canvas2"
+          shadows camera={{ position: [0, 10, 12], fov: 45 }}>
+            <OrbitControls target={[0, 4, 0]} />
+            <TitleSymptoms />
+            <LightsSymptoms />
+            <StagingSymptoms />
+            <RecipientSymptoms /> 
+            <SymptomsKidneyDisease scale={10} position={[0, 0, 0]} />  
           </Canvas>
         </div>
         <div className="content">
-          <h3 className="h3_2">CAUSAS Y SÍNTOMAS</h3>
+        <Canvas>
+          <OrbitControls />
+          <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
+        </Canvas>
           <p className="p_2">
             Las causas comunes de la enfermedad renal crónica incluyen diabetes,
             hipertensión, infecciones recurrentes y enfermedades hereditarias.
@@ -92,11 +106,12 @@ const KidneyDisease = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsModel />
-            <ChronicDisease scale={7} />
+
           </Canvas>
         </div>
       </section>
     </div>
+    
   );
 };
 

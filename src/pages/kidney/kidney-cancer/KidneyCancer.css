@@ -34,8 +34,9 @@ html,body{
       justify-content: center;
       gap: 1.5rem;
       position: relative;
-      background: linear-gradient(180deg, #0DBBB5, var(--verde)); /* Ajusta el ángulo y los colores */;
-      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+      /* background: linear-gradient(180deg, #0DBBB5, var(--verde));  */
+      /* Ajusta el ángulo y los colores */;
+      /* box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5); */
   }
   
   .section2 h3{

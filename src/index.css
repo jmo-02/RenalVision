@@ -15,7 +15,7 @@ body,
   background-color: rgb(239, 239, 237);
   width: 100%;
   user-select: none;
-  overflow-x: hidden;
+  overflow-x: visible;
   font-family: "Poppins", "Manrope", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -76,4 +76,5 @@ button:hover {
 
 html {
   font-size: 65.5%; /* 1rem = 10px */
+  overflow: visible;
 }

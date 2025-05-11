@@ -7,7 +7,7 @@ const LightsSymptoms = () => {
   
   const directionalLightRef = useRef();
   const targetRef = useRef();
-  useHelper(directionalLightRef, DirectionalLightHelper);
+  // useHelper(directionalLightRef, DirectionalLightHelper);
   const { scene } = useThree();
   
   useEffect(() => {

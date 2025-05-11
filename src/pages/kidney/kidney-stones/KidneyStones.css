@@ -18,6 +18,7 @@ html,body{
 .section1{
     scroll-snap-align: start;
     position: relative;
+    overflow: visible;
     height: 100svh;
     padding: 5px 9%;
     display: flex;
@@ -44,7 +45,7 @@ html,body{
     margin-bottom: 20px;
     color: #BBF3F2;
     text-shadow: var(--text-shadow);
-    font-weight: bol
+    font-weight: bold;
 }d
 
 .section2{
@@ -181,7 +182,7 @@ html,body{
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    background-color: #0DBBB5;
+    background-color: rgba(255, 255, 255, 0.85);;
     border: none;
     border-radius: 50px;
     padding: 10px;
@@ -191,7 +192,7 @@ html,body{
 }
   
 .scroll-button-up1:hover {
-    background-color: #075F73;
+    background-color: rgba(255, 255, 255, 0.85);
     transform: translateX(-50%) scale(1.05);
 }
   
@@ -212,7 +213,7 @@ html,body{
 }
   
 .scroll-button2:hover {
-    background-color: #0DBBB5;
+    background-color: rgba(255, 255, 255, 0.85);;
     transform: translateX(-50%) scale(1.05);
 }
   
@@ -243,11 +244,11 @@ html,body{
 }
   
 .scroll-button2 svg {
-    color: #ffffff; /* Verde para el botón de bajar en sección 2 */
+    color: #075F73; /* Verde para el botón de bajar en sección 2 */
 }
   
-.scroll-button-up1 svg {
-    color: #ffffff; /* Amarillo para el botón de subir en sección 2 */
+.scroll-button-up1 svg{
+    color: #075F73;
 }
   
 .scroll-button-up2 svg {

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import GlomeruloModel from './models-3d/Glomerulo';
 import SymptomsModel from './models-3d/Symptoms-Glumerulonefritis';
@@ -11,21 +11,37 @@ import './Glomerulonephritis.css';
 
 const Glomerulonephritis = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+  const [showCauses, setShowCauses] = useState(false);
+  const [showHint, setShowHint] = useState(true); // Control del mensaje emergente
+
+  useEffect(() => {
+    // Este temporizador hará desaparecer el mensaje después de 5 segundos
+    const timer = setTimeout(() => {
+      setShowHint(false);
+    }, 5000);
+
+    // Limpiar el temporizador cuando el componente se desmonte
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleModelClick = () => {
+    setShowCauses(prev => !prev);
+    setShowHint(false); // Ocultar el mensaje cuando el modelo es clickeado
+  };
 
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-  const [showCauses, setShowCauses] = useState(false);
-  const handleModelClick = () => {
-    setShowCauses(prev => !prev);
   };
 
   return (
     <div className="glomerulo-scroll-container">
       {/* Sección 1 */}
       <section ref={sectionRefs[0]} className="glomerulo-section section-1">
+        <div className="top-title">
+          <h1>Glomerulonefritis</h1>
+        </div>
         <div className="content">
-          <h2>Glomerulonefritis</h2>
+          <h2>¿Qué es?</h2>
           <p>
             La glomerulonefritis es la inflamación de los glomérulos,
             las unidades de filtración del riñón. Puede ser de aparición
@@ -34,8 +50,8 @@ const Glomerulonephritis = () => {
           </p>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [4, 2, -11], fov: 50}}>            
-            <GlomeruloModel /> 
+          <Canvas shadows camera={{ position: [4, 2, -11], fov: 50 }}>
+            <GlomeruloModel />
           </Canvas>
           <p className="label-model">Glomérulo</p>
         </div>
@@ -48,27 +64,33 @@ const Glomerulonephritis = () => {
       <section ref={sectionRefs[1]} className="glomerulo-section section-2">
         <div className="symptoms-layout">
           <div className="model-3d-sesion2">
+            {/* Aquí está el Canvas con el modelo 3D */}
             <Canvas shadows camera={{ position: [0, 2, 5], fov: 50 }}>
               <StagingSymptoms />
-              <SymptomsModel onModelClick= {handleModelClick}/>
-              <Causes3D showCauses={showCauses}/>
+              <SymptomsModel onModelClick={handleModelClick} />
+              <Causes3D showCauses={showCauses} />
             </Canvas>
+            {showHint && (
+              <div className="modal-overlay">
+                <div className="modal-content">
+                  <p className="modal-text">👉 Presiona el modelo para ver las causas</p>
+                </div>
+              </div>
+            )}
           </div>
           <div className="content">
-            <div className='title-symptoms'>
+            <div className="title-symptoms">
               <Canvas>
                 <OrbitControls
                   enableZoom={false}
-                  minDistance={5}
-                  maxDistance={20}
+                    minDistance={5}
+                    maxDistance={20}
                   maxPolarAngle={Math.PI / 2}
                   minPolarAngle={Math.PI / 2}
                 />
-                <SymptomsTitle3D title = {"Síntomas de la Glomerulonefritis"}/>
-                
+                <SymptomsTitle3D title={"Síntomas de la Glomerulonefritis"} />
               </Canvas>
             </div>
-            
             <ul className="large-text">
               <li>Orina de color oscuro (como té o cola).</li>
               <li>Disminución de la cantidad de orina.</li>
@@ -88,12 +110,11 @@ const Glomerulonephritis = () => {
         </button>
       </section>
 
-
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="glomerulo-section section-3">
         <div className="content full-width">
           <h3>Tratamientos</h3>
-          <ul className="large-text"> {/* <-- nueva clase */}
+          <ul className="large-text">
             <li><strong>Medicamentos:</strong>
               <ul>
                 <li>Antibióticos (si la causa es una infección).</li>

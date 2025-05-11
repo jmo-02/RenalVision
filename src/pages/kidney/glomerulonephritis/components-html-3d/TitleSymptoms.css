@@ -1,4 +1,6 @@
 .titulo1{
+    transform: scale(1.5);
+    transform-origin: center;
     color: #BBF3F2 !important ;
 }
 /*Titulo 3d sesion 2*/

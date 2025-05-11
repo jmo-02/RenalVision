@@ -24,6 +24,11 @@ html,body{
       justify-content: center;   
   }
   
+  /* Agregar estilo para el texto en la sección 1 */
+  .section1 .content p {
+      color: white;
+  }
+  
   .section2{
       scroll-snap-align: start;
       height: 100svh;
@@ -212,4 +217,3 @@ html,body{
   .scroll-button-up2 svg {
       color: #075F73; /* Rojo para el botón de subir en sección 3 */
   }
-    

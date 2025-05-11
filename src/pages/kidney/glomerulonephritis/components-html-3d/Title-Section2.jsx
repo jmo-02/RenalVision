@@ -15,11 +15,11 @@ const SymptomsTitle3D = ({ title }) => {
   });
 
   return (
-    <group ref={htmlRef} position={[0, -1, 2]}>
+    <group ref={htmlRef} position={[0, -0.5, 0.5]}>
       <Html
         center
         transform
-        distanceFactor={16}
+        distanceFactor={14}
         wrapperClass="title"
       >
         <h1 className="titulo1">{title}</h1>

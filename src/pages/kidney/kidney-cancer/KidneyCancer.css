@@ -26,7 +26,19 @@ html,body{
   
   /* Agregar estilo para el texto en la sección 1 */
   .section1 .content p {
-      color: white;
+      background: rgba(6, 86, 110, 0.12); /* Más transparente */
+      border-radius: 32px;
+      border: 1.5px solid rgba(6, 86, 110, 0.22);
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+      padding: 32px 40px;
+      margin: 0 0 18px 0;
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1.6;
+      text-align: justify;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(2px);
   }
   
   .section2{
@@ -64,6 +76,22 @@ html,body{
   
   .p_2{
       color: #f1f1f1 !important;
+  }
+  
+  .section2 .content .p_2 {
+    background: rgba(6, 86, 110, 0.20); /* Un poco más opaco */
+    border-radius: 32px;
+    border: 1.5px solid rgba(6, 86, 110, 0.28);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+    padding: 32px 40px;
+    margin: 0 0 18px 0;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(2px);
   }
   
   .section3{
@@ -116,6 +144,21 @@ html,body{
       padding: 1rem 0;
   }
   
+  .section3 .content p {
+    background: rgba(6, 86, 110, 0.12); /* Fondo transparente */
+    border-radius: 32px;
+    border: 1.5px solid rgba(6, 86, 110, 0.22);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    padding: 32px 40px;
+    margin: 0 0 18px 0;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+  }
   
   /* Botón scroll hacia abajo - sección 1 */
   .scroll-button1 {
@@ -217,3 +260,8 @@ html,body{
   .scroll-button-up2 svg {
       color: #075F73; /* Rojo para el botón de subir en sección 3 */
   }
+  
+  .section3 .content h3 {
+    font-size: 5rem;
+  }
+

@@ -5,7 +5,7 @@ import { useRef } from "react";
 const KidneyWithStones = (props) => {
   const kidneyWithStonesRef = useRef();
 
-  useFrame((state, delta) => {
+  useFrame((state , delta) => {
     kidneyWithStonesRef.current.rotation.y -= 0.5 * delta;
   });
 

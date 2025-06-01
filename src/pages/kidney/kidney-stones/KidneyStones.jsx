@@ -11,6 +11,10 @@ import RecipientSymptoms from "./models-3d/RecipientSymptoms";
 import LightsSymptoms from "./lights/LightsSymptoms";
 import StagingSymptoms from "./staging/StagingSymptoms";
 import TitleSymptoms from "./texts/TitleSymptoms";
+import TreatmentKidneyStone from "./models-3d/TreatmentKidneyStone";
+import RecipientTreatment from "./models-3d/RecipientTreatment";
+import LightsTreatment from "./lights/LightsTreatment";
+import StagingTreatment from "./staging/StagingTreatment";
 
 const KidneyStones = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -27,7 +31,7 @@ const KidneyStones = () => {
           <h1 className="title-page">CÁLCULOS RENALES</h1>
         </div>
         <div className="content">
-          
+
           <h3>¿QUÉ SON?</h3>
           <p className="p1">
             Los cálculos renales son masas sólidas formadas por minerales que se
@@ -70,8 +74,7 @@ const KidneyStones = () => {
 
         <div className="content">
           <Canvas>
-            <OrbitControls />
-            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
+            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} position={[0, -1, 2]} />
           </Canvas>
           <p className="p_2">
             Los cálculos renales pueden formarse debido a múltiples factores
@@ -97,11 +100,17 @@ const KidneyStones = () => {
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
-          <h3>PREVENCIÓN Y TRATAMIENTO</h3>
+          <Canvas>
+            <TitleSymptoms title={" PREVENCION  "} position={[0, 1, 1.5]} />
+            <TitleSymptoms title={" Y TRATAMIENTOs  "} position={[0, -1.5, 1.5]} />
+
+          </Canvas>
+          {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
           <p className="p3">
-            Beber suficiente agua es clave. El tratamiento puede incluir
-            medicamentos, litotricia o cirugía. Evitar alimentos ricos en
-            oxalato también ayuda.
+            Beber suficiente agua ayuda a prevenir la formación de cálculos renales.
+            Además, una dieta baja en sal y alimentos ricos en oxalato reduce el riesgo.
+            El tratamiento puede incluir medicamentos, litotricia para romper las piedras o c
+            irugía en casos severos. Llevar hábitos saludables es clave para evitar recurrencias.
           </p>
           <button
             className="scroll-button-up2"
@@ -111,11 +120,12 @@ const KidneyStones = () => {
           </button>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+          <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            <Lights />
-            {/* <KidneyWithStones scale={7} /> */}
-            <Recipient />
+            <LightsTreatment />
+            <StagingTreatment />
+            <TreatmentKidneyStone scale={7} position={[0, 0, 0]} />
+            <RecipientTreatment />
           </Canvas>
         </div>
       </section>

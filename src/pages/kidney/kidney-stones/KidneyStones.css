@@ -71,6 +71,10 @@ html,body{
     height: 100% !important;
     z-index: 0; /* Esto asegura que el canvas quede en el fondo */
   }
+
+.canvas3 {
+     border-radius: 45px;
+}
   
 .section2 h3{
     color: va;
@@ -121,6 +125,12 @@ html,body{
     margin-right: 1rem;
     
     
+}
+
+
+.section3 .model-3d {
+  padding-left: 5rem; /* Ajusta este valor según la separación que desees */
+  
 }
 
 

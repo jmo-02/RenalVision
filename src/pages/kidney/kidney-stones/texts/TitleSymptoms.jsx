@@ -3,22 +3,20 @@ import React, { useRef } from "react";
 import "./TitleSymptoms.css";
 import { useFrame } from "@react-three/fiber";
 
-const TitleSymptoms = ({ title }) => {
+const TitleSymptoms = ({ title, position = [0, -1, 2] }) => { 
   const htmlRef = useRef();
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (htmlRef.current) {
-      // Oscila en el eje Y (vertical), puedes ajustar amplitud y velocidad
-      htmlRef.current.position.y = Math.sin(t * 1.5) * 0.05 - 1; // -1 es la posición base
+      htmlRef.current.position.y = Math.sin(t * 1.5) * 0.05 + position[1];
     }
   });
 
   return (
-    <group ref={htmlRef} position={[0, -1, 2]}>
+    <group ref={htmlRef} position={position}>
       <Html
         center
-        // position={[0, -1, 2]}
         transform
         distanceFactor={15}
         wrapperClass="title"

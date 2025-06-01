@@ -16,6 +16,7 @@ html, body {
 .section1 {
     scroll-snap-align: start;
     position: relative;
+    overflow: visible;
     height: 100svh;
     padding: 5px 9%;
     display: flex;
@@ -34,18 +35,11 @@ html, body {
     justify-content: center; */
     gap: 1.5rem;
     position: relative;
-    background: linear-gradient(180deg, #0DBBB5, var(--verde)); /* Ajusta el ángulo y los colores */;
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    background: var(--verde);
+    /* background: linear-gradient(180deg, #0DBBB5, var(--verde));  */
+    /* Ajusta el ángulo y los colores */
+    
 }
-.canvas2 {
-    position: relative !important;
-    top: 0;
-    border-radius: 45px;
-    left: 0;
-    max-width: 100%;
-    height: 100% !important;
-    z-index: 0; /* Esto asegura que el canvas quede en el fondo */
-  }
 
 .section2 h3 {
     color: #ffffff;
@@ -143,7 +137,7 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    background-color: #0DBBB5;
+    background-color: rgba(255, 255, 255, 0.85);;
     border: none;
     border-radius: 50px;
     padding: 10px;
@@ -153,7 +147,7 @@ html, body {
 }
 
 .scroll-button-up1:hover {
-    background-color: #075F73;
+    background-color: rgba(255, 255, 255, 0.85);
     transform: translateX(-50%) scale(1.05);
 }
 
@@ -164,7 +158,7 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    background-color: #38A3A5;
+    background-color: rgba(255, 255, 255, 0.85);
     border: none;
     border-radius: 50px;
     padding: 10px;
@@ -174,7 +168,7 @@ html, body {
 }
 
 .scroll-button2:hover {
-    background-color: #0DBBB5;
+    background-color: rgba(255, 255, 255, 0.85); 
     transform: translateX(-50%) scale(1.05);
 }
 
@@ -203,12 +197,16 @@ html, body {
     color: #075F73; /* Azul para el botón de bajar en sección 1 */
 }
 
+.scroll-button-up1 svg{
+    color: #075F73;
+}
+
 .scroll-button2 svg {
-    color: #ffffff; /* Verde para el botón de bajar en sección 2 */
+    color: #075F73; /* Verde para el botón de bajar en sección 2 */
 }
 
 .scroll-button-up1 svg {
-    color: #ffffff; /* Blanco para el botón de subir en sección 2 */
+    color: #075F73; /* Blanco para el botón de subir en sección 2 */
 }
 
 .scroll-button-up2 svg {

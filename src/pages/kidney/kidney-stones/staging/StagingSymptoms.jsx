@@ -3,23 +3,23 @@ import React from "react";
 
 const StagingSymptoms = () => {
   return (
-    <>   
+    <>
       <Environment
-          files={[
-              "px.png",
-              "nx.png",
-              "py.png",
-              "ny.png",
-              "pz.png",
-              "nz.png",
-          ]}
-          path='/staging/staging-kidney-stones/escene-2/'
-          // ground={{
-          //     height: 60,
-          //     radius: 100,
-          //     scale: 4,
-          // }}
-          background
+        files={[
+          "px.png",
+          "nx.png",
+          "py.png",
+          "ny.png",
+          "pz.png",
+          "nz.png",
+        ]}
+        path='/staging/staging-kidney-stones/escene-2/'
+        // ground={{
+        //     height: 60,
+        //     radius: 100,
+        //     scale: 4,
+        // }}
+        background
 
       />
       {/* <Sparkles

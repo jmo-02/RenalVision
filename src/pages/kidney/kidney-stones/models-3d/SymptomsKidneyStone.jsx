@@ -4,8 +4,8 @@ import { useFrame } from "@react-three/fiber";
 
 const SymptomsKidneyStone = (props) => {
   const symptomsRef = useRef();
-  const [showInfo, setShowInfo] = useState(false);
-  const [animate, setAnimate] = useState(true); // estado para animar o no
+  const [animate, setAnimate] = useState(true); // para animar o no
+  const [showInfo, setShowInfo] = useState(true); // por defecto visible
 
   // animación de flotación
   useFrame(({ clock }) => {
@@ -15,19 +15,15 @@ const SymptomsKidneyStone = (props) => {
     }
   });
 
-  // evento de teclado para pausar/reanudar la animación
+  // evento de teclado (Enter)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Enter") {
-        setAnimate((prev) => !prev); // alterna la animación
+        setAnimate((prev) => !prev);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   const { nodes, materials } = useGLTF("/models-3d/symptoms-kidney-stone.glb");
@@ -36,8 +32,8 @@ const SymptomsKidneyStone = (props) => {
     <group {...props} dispose={null}>
       <group
         ref={symptomsRef}
-        onClick={() => setShowInfo(true)}
-        onDoubleClick={() => setShowInfo(false)}
+        onDoubleClick={() => setAnimate((prev) => !prev)}
+        onClick={() => setShowInfo((prev) => !prev)}
       >
         <mesh
           receiveShadow
@@ -47,22 +43,22 @@ const SymptomsKidneyStone = (props) => {
           castShadow
         />
         {showInfo && (
-          <Html position={[-0.2, 0.8, 0]} center distanceFactor={10}>
+          <Html position={[-0.3, 0.7, 0]} center distanceFactor={15}>
             <div
               style={{
-                background: "rgba(6,86,110,0.6)",
+                background: "rgba(6,86,110,0.6)", // azul translúcido
                 color: "white",
-                padding: "12px 56px",
-                borderRadius: "50px",
+                padding: "8px 56px",
                 width: "100%",
+                borderRadius: "10px",
+                fontSize: "17px",
                 whiteSpace: "normal",
-                textAlign: "justify",
-                fontSize: "24px",
-                lineHeight: "1.2",
+                textAlign: "center",
               }}
             >
-              Los cálculos renales pueden deberse a deshidratación, exceso de
-              sodio o proteínas.
+              Clic para ocultar o mostrar este texto.<br />
+              <br />
+              Con doble clic o con la tecla Enter puedes pausar la animación.
             </div>
           </Html>
         )}

@@ -10,6 +10,7 @@ import TitleSymptoms from "./text-staging/TitleSymptoms";
 import RecipientSymptoms from "./models-3d/RecipientSymptoms";
 import LightsSymptoms from "./lightsmodels/LightsSymptoms";
 import StagingSymptoms from "./staging-erc/StagingSymptoms";
+import Model3dTemporary from "./models-3d/Model3dTemporary"; // <-- Agrega esta línea
 
 
 const KidneyDisease = () => {
@@ -23,10 +24,14 @@ const KidneyDisease = () => {
     <div className="kidney-disease-container">
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
+        <div className="div-title">
+          <h1 className="title-page">Enfermedad Renal Crónica</h1>
+        </div>
         <div className="content">
-          <h3>¿QUÉ ES LA ENFERMEDAD RENAL CRÓNICA?</h3>
+          
+          <h3>¿QUÉ ES?</h3>
           <p>
-            La enfermedad renal crónica (ERC) es una afección progresiva en la
+            (ERC) es una afección progresiva en la
             que los riñones pierden gradualmente su capacidad para filtrar
             desechos y líquidos del cuerpo. Esto puede llevar a una acumulación
             de toxinas en el organismo y afectar otras funciones vitales.
@@ -84,7 +89,7 @@ const KidneyDisease = () => {
         </button>
       </section>
 
-      {/* Section 3 */}
+        {/* Section 3 */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
           <h3>PREVENCIÓN Y TRATAMIENTO</h3>
@@ -106,12 +111,14 @@ const KidneyDisease = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsModel />
-
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+            <pointLight position={[-5, -5, 5]} intensity={0.8} />
+            <Model3dTemporary scale={4} /> {/* Nombre correcto */}
           </Canvas>
         </div>
       </section>
-    </div>
-    
+    </div>   
   );
 };
 

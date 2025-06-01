@@ -1,6 +1,8 @@
 import  { useCallback } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import './Kidney.css'; 
+import { Canvas } from '@react-three/fiber';
+import HealthyKidney from './models-3d/HealthyKidney';
 
 const Kidney = () => {
   const navigate = useNavigate();
@@ -53,6 +55,23 @@ const Kidney = () => {
             Enfermedad Renal Cronica
           </button>
         </div>
+      </div>
+
+      {/* Modelo 3D a la derecha */}
+      <div className="model-3d-home">
+        <Canvas camera={{ position: [0, 0, 25], fov: 45 }} style={{ width: '350px', height: '350px', background: 'transparent' }} shadows>
+          <ambientLight intensity={2} />
+          <directionalLight
+            position={[0, 0, 40]}
+            intensity={38}
+            color="rgb(255, 255, 255)"
+            target-position={[0, -2, 0]} // apunta directamente al modelo
+            castShadow
+          />
+          <pointLight position={[0, 10, 10]} intensity={3.5} color="#fff" />
+          <pointLight position={[-10, 10, 10]} intensity={2.5} color="#fff" />
+          <HealthyKidney scale={6} position={[0, -2, 0]} />
+        </Canvas>
       </div>
 
       <Outlet />

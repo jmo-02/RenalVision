@@ -52,19 +52,27 @@ const SymptomsKidneyCancer = (props) => {
               style={{
                 background: "rgba(6,86,110,0.6)",
                 color: "white",
-                padding: "12px 56px",
+                padding: "20px 40px", // Aumenta el padding
                 borderRadius: "50px",
-                width: "100%",
+                width: "420px", // Fija un ancho mayor
+                minWidth: "320px", // Asegura un ancho mínimo
+                maxWidth: "90vw", // Limita el ancho máximo en pantallas pequeñas
                 whiteSpace: "normal",
                 textAlign: "justify",
                 fontSize: "24px",
                 lineHeight: "1.2",
               }}
             >
-              El cáncer de riñón puede deberse a factores genéticos,
-              tabaquismo, obesidad y exposición a 
-              
-              sustancias tóxicas.
+              Clic en el modelo para mostrar
+              este texto y doble click para  
+              ocultarlo.
+              <br/> 
+              <br/> 
+              Con la tecla Enter puedes pausar 
+              o reanudar la animacion y con
+              las teclas + y - puedes acercar 
+              el modelo.
+            
             </div>
           </Html>
         )}

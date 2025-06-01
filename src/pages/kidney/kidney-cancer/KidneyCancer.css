@@ -264,4 +264,16 @@ html,body{
   .section3 .content h3 {
     font-size: 5rem;
   }
+  
+  .main-title {
+    width: 100%;
+    text-align: center;
+    font-size: 3.9rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+    color: rgba(183, 241, 239, 0.99);
+  }
 

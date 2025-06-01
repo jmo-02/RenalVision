@@ -25,8 +25,9 @@ const KidneyCancer = () => {
     <div className="kidney-cancer-container">
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
+        <h2 className="main-title">CÁNCER DE RIÑÓN</h2>
         <div className="content">
-          <h3>¿QUE ES EL CANCER DE RIÑON?</h3>
+          <h3>¿QUÉ ES?</h3>
           <p>
             El cáncer de riñón, también conocido como cáncer renal,
             es una enfermedad en la que las células del tejido renal comienzan a crecer de manera anormal y descontrolada,

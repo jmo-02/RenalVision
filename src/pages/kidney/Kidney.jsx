@@ -62,8 +62,8 @@ const Kidney = () => {
         <Canvas camera={{ position: [0, 0, 25], fov: 45 }} style={{ width: '350px', height: '350px', background: 'transparent' }} shadows>
           <ambientLight intensity={2} />
           <directionalLight
-            position={[0, 0, 40]}
-            intensity={38}
+            position={[5, 10, 10]}
+            intensity={40}
             color="rgb(255, 255, 255)"
             target-position={[0, -2, 0]} // apunta directamente al modelo
             castShadow

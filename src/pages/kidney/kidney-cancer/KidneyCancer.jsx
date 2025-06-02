@@ -11,7 +11,7 @@ import RecipientSymptoms from "./models-3D/RecipientSymptoms";
 import LightsSymptoms from "./lightsmodel/LightsSymptoms";
 import TitleSymptoms from "./textss/TitleSymptoms";
 import TreatmentKidneyCancer from "./models-3D/TreatmentKidneyCancer";
-import RecipientTreatment from "./models-3d/RecipientTreatment";
+import RecipientTreatment from "./models-3D/RecipientTreatment";
 import LightsTreatment from "./lightsmodel/LightsTreatment";
 import StaggingTreatment from "./stagging/StaggingTreatment";
 

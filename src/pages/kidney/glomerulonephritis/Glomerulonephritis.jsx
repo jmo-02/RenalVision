@@ -101,6 +101,7 @@ const Glomerulonephritis = () => {
               <li>Presión arterial alta.</li>
               <li>Cansancio o fatiga.</li>
               <li>Náuseas o pérdida del apetito.</li>
+              <li>Migraña</li>
             </ul>
           </div>
         </div>

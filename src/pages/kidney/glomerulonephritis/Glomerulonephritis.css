@@ -137,16 +137,18 @@ html, body {
 
 .top-title {
   position: absolute;
-  top: 20px;
+  top: 40px;
   width: 100%;
   text-align: center;
   z-index: 10;
+
 }
 
 .top-title h1 {
-  font-size: 3rem;
-  color: rgb(255, 255, 255);
+  font-size: 3.5rem;
+  color: rgba(183, 241, 239, 0.99);
   margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Modelo 3D sesion 1 */
@@ -297,6 +299,9 @@ html, body {
   .content {
     font-size: 2rem;
     padding: 0 4rem;
+    max-width: 600px;
+    height: 100%;
+    
   }
 
   .content h2, .content h3 {

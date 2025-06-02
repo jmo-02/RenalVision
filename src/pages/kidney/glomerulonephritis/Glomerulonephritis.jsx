@@ -42,7 +42,7 @@ const Glomerulonephritis = () => {
         </div>
         <div className="content">
           <h2>¿Qué es?</h2>
-          <p>
+          <p className= 'p1-glomerulo'>
             La glomerulonefritis es la inflamación de los glomérulos,
             las unidades de filtración del riñón. Puede ser de aparición
             aguda o crónica y está asociada a diversas causas, como procesos
@@ -64,7 +64,6 @@ const Glomerulonephritis = () => {
       <section ref={sectionRefs[1]} className="glomerulo-section section-2">
         <div className="symptoms-layout">
           <div className="model-3d-sesion2">
-            {/* Aquí está el Canvas con el modelo 3D */}
             <Canvas shadows camera={{ position: [0, 2, 5], fov: 50 }}>
               <StagingSymptoms />
               <SymptomsModel onModelClick={handleModelClick} />
@@ -91,7 +90,7 @@ const Glomerulonephritis = () => {
                 <SymptomsTitle3D title={"Síntomas de la Glomerulonefritis"} />
               </Canvas>
             </div>
-            <ul className="large-text">
+            <ul className="Symptoms-list">
               <li>Orina de color oscuro (como té o cola).</li>
               <li>Disminución de la cantidad de orina.</li>
               <li>Hinchazón en cara, manos, abdomen o piernas (edema).</li>
@@ -114,7 +113,7 @@ const Glomerulonephritis = () => {
       <section ref={sectionRefs[2]} className="glomerulo-section section-3">
         <div className="content full-width">
           <h3>Tratamientos</h3>
-          <ul className="large-text">
+          <ul className="treatment-list">
             <li><strong>Medicamentos:</strong>
               <ul>
                 <li>Antibióticos (si la causa es una infección).</li>

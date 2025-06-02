@@ -93,7 +93,10 @@ const KidneyCancer = () => {
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
-          <h3>PREVENCIÓN Y TRATAMIENTO</h3>
+          <Canvas>
+            <OrbitControls />
+            <TitleSymptoms title={"PREVENCIÓN Y TRATAMIENTO"} />
+          </Canvas>
           <p>
            No fumar, mantener un peso saludable, controlar la presion arterial,
            evitar la exposicion a sustancias toxicas y controlar enfermedades

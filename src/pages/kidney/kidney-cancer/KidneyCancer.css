@@ -148,7 +148,7 @@ html,body{
     border-radius: 32px;
     border: 1.5px solid rgba(6, 86, 110, 0.22);
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
-    padding: 32px 40px;
+    padding: 32px 30px;
     margin: 0 0 18px 0;
     color: #fff;
     font-size: 2rem;
@@ -162,7 +162,7 @@ html,body{
   /* Botón scroll hacia abajo - sección 1 */
   .scroll-button1 {
       position: absolute;
-      bottom: 20px;
+      bottom: 40px; /* Subo los botones 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -183,7 +183,7 @@ html,body{
     /* Botón scroll hacia arriba - sección 2 */
   .scroll-button-up1 {
       position: absolute;
-      top: 20px;
+      top: 40px; /* Subo los botones de subir 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -204,7 +204,7 @@ html,body{
     /* Botón scroll hacia abajo - sección 2 */
   .scroll-button2 {
       position: absolute;
-      bottom: 20px;
+      bottom: 40px; /* Subo los botones 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -225,7 +225,7 @@ html,body{
     /* Botón scroll hacia arriba - sección 3 */
   .scroll-button-up2 {
       position: absolute;
-      top: 20px;
+      top: 40px; /* Subo los botones de subir 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;

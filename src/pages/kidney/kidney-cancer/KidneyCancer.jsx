@@ -10,7 +10,10 @@ import StaggingSymptoms from "./stagging/StaggingSymptoms";
 import RecipientSymptoms from "./models-3D/RecipientSymptoms";
 import LightsSymptoms from "./lightsmodel/LightsSymptoms";
 import TitleSymptoms from "./textss/TitleSymptoms";
-
+import TreatmentKidneyCancer from "./models-3D/TreatmentKidneyCancer";
+import RecipientTreatment from "./models-3d/RecipientTreatment";
+import LightsTreatment from "./lightsmodel/LightsTreatment";
+import StaggingTreatment from "./stagging/StaggingTreatment";
 
 const KidneyCancer = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -106,13 +109,15 @@ const KidneyCancer = () => {
           </button>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-            <OrbitControls />
-            <LightsModel />
-            {/* Puedes agregar un modelo diferente o el mismo */}
-          </Canvas>
+          <Canvas className= "canvas3" shadows camera={{ position: [0, 10, 12], fov: 45 }}>
+           <OrbitControls />
+            <LightsTreatment />
+            <StaggingTreatment />
+            <TreatmentKidneyCancer scale={4} position={[0, 0, 0]} />
+            <RecipientTreatment />
+            </Canvas>
         </div>
-      </section>
+     </section>
     </div>
   );
 };

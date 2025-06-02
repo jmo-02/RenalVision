@@ -15,6 +15,10 @@ const Causes3D = ({ showCauses }) => {
           <li>Enfermedades vasculares</li>
           <li>Diabetes mellitus</li>
         </ul>
+        <p className="hint">
+          Presiona R
+          <br /> 
+          para cerrar el texto</p>
       </div>
     </Html>
   );

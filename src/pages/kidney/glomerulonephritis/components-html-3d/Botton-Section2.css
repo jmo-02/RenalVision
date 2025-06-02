@@ -32,3 +32,6 @@
     background-color: #BBF3F2; /* Color del círculo */
     border-radius: 50%; /* Hace que sea un círculo */
 }
+.hint{
+    text-align: center;
+}

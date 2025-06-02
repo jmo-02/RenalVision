@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import GlomeruloModel from './models-3d/Glomerulo';
 import SymptomsModel from './models-3d/Symptoms-Glumerulonefritis';
 import StagingSymptoms from "../kidney-stones/staging/StagingSymptoms";
+import TreatmentModel from './models-3d/Treatment-Glomerulonefritis';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { OrbitControls } from '@react-three/drei';
 import SymptomsTitle3D from './components-html-3d/Title-Section2';
@@ -12,17 +13,20 @@ import './Glomerulonephritis.css';
 const Glomerulonephritis = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
   const [showCauses, setShowCauses] = useState(false);
-  const [showHint, setShowHint] = useState(true); // Control del mensaje emergente
-
+  const [showHint, setShowHint] = useState(true);
+  
   useEffect(() => {
-    // Este temporizador hará desaparecer el mensaje después de 5 segundos
-    const timer = setTimeout(() => {
-      setShowHint(false);
-    }, 5000);
-
-    // Limpiar el temporizador cuando el componente se desmonte
-    return () => clearTimeout(timer);
+    const handleKeyDown = (event) => {
+      if (event.key.toLowerCase() === 'r') {
+        setShowCauses(false);}};
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);};
   }, []);
+  useEffect(() => {
+    if (!showCauses) {
+      setShowHint(true);
+    }}, [showCauses])
 
   const handleModelClick = () => {
     setShowCauses(prev => !prev);
@@ -38,10 +42,10 @@ const Glomerulonephritis = () => {
       {/* Sección 1 */}
       <section ref={sectionRefs[0]} className="glomerulo-section section-1">
         <div className="top-title">
-          <h1>Glomerulonefritis</h1>
+          <h1>GLOMERULONEFRITIS</h1>
         </div>
         <div className="content">
-          <h2>¿Qué es?</h2>
+          <h2>¿QUÉ ES?</h2>
           <p className= 'p1-glomerulo'>
             La glomerulonefritis es la inflamación de los glomérulos,
             las unidades de filtración del riñón. Puede ser de aparición
@@ -87,7 +91,7 @@ const Glomerulonephritis = () => {
                   maxPolarAngle={Math.PI / 2}
                   minPolarAngle={Math.PI / 2}
                 />
-                <SymptomsTitle3D title={"Síntomas de la Glomerulonefritis"} />
+                <SymptomsTitle3D title={"SÍNTOMAS DE LA GLOMERULONEFRITIS"} />
               </Canvas>
             </div>
             <ul className="Symptoms-list">
@@ -112,7 +116,7 @@ const Glomerulonephritis = () => {
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="glomerulo-section section-3">
         <div className="content full-width">
-          <h3>Tratamientos</h3>
+          <h3>TRATAMIENTOS</h3>
           <ul className="treatment-list">
             <li><strong>Medicamentos:</strong>
               <ul>
@@ -132,6 +136,11 @@ const Glomerulonephritis = () => {
             <li><strong>Diálisis:</strong> en casos graves o crónicos.</li>
             <li><strong>Trasplante renal:</strong> si el riñón deja de funcionar completamente.</li>
           </ul>
+        </div>
+        <div className="model-3d">
+          <Canvas shadows camera={{ position: [4, 2, -11], fov: 50 }}>
+            <TreatmentModel />
+          </Canvas>
         </div>
         <button className="scroll-button-up2" onClick={() => scrollToSection(1)}>
           <ChevronUp size={40} />

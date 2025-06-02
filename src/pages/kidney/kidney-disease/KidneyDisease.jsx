@@ -25,7 +25,7 @@ const KidneyDisease = () => {
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
         <div className="div-title">
-          <h1 className="title-page">Enfermedad Renal Crónica</h1>
+          <h1 className="title-page">ENFERMEDAD RENAL CRÓNICA</h1>
         </div>
         <div className="content">
           

@@ -12,7 +12,6 @@ import LightsSymptoms from "./lightsmodels/LightsSymptoms";
 import StagingSymptoms from "./staging-erc/StagingSymptoms";
 import Model3dTemporary from "./models-3d/Model3dTemporary"; // <-- Agrega esta línea
 
-
 const KidneyDisease = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
 
@@ -25,10 +24,9 @@ const KidneyDisease = () => {
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
         <div className="div-title">
-          <h1 className="title-page">Enfermedad Renal Crónica</h1>
+          <h1 className="title-page">ENFERMEDAD RENAL CRÓNICA</h1>
         </div>
         <div className="content">
-          
           <h3>¿QUÉ ES?</h3>
           <p>
             (ERC) es una afección progresiva en la
@@ -71,7 +69,7 @@ const KidneyDisease = () => {
         </div>
         <div className="content">
         <Canvas>
-          <OrbitControls />
+          {/* <OrbitControls /> */}
           <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
         </Canvas>
           <p className="p_2">
@@ -92,7 +90,10 @@ const KidneyDisease = () => {
         {/* Section 3 */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
-          <h3>PREVENCIÓN Y TRATAMIENTO</h3>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <TitleSymptoms title={"PREVENCIÓN\nY TRATAMIENTOS"} />
+          </Canvas>
           <p>
             Mantener un estilo de vida saludable, controlar la presión arterial
             y los niveles de azúcar en sangre, y realizar chequeos médicos
@@ -114,7 +115,7 @@ const KidneyDisease = () => {
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
             <pointLight position={[-5, -5, 5]} intensity={0.8} />
-            <Model3dTemporary scale={4} /> {/* Nombre correcto */}
+            <Model3dTemporary scale={4} />
           </Canvas>
         </div>
       </section>

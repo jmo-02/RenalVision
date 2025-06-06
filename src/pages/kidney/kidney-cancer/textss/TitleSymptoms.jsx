@@ -18,12 +18,19 @@ const TitleSymptoms = ({ title }) => {
     <group ref={htmlRef} position={[0, -1, 2]}>
       <Html
         center
-        // position={[0, -1, 2]}
         transform
         distanceFactor={15}
         wrapperClass="title"
       >
-        <h1 className="titulo1">{title}</h1>
+        {/* Permitir salto de línea con '\n' en el título */}
+        <h1 className="titulo1">
+          {title.split(/\n|<br\s*\/?>/).map((line, idx) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx !== title.split(/\n|<br\s*\/?>/).length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </h1>
       </Html>
     </group>
   );

@@ -72,8 +72,8 @@ const KidneyCancer = () => {
 
         <div className="content">
         <Canvas>
-            <OrbitControls />
-            {/* <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} /> */}
+            {/* <OrbitControls /> */}
+            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} position={[0, -1, 2]} />
           </Canvas>
           <p className="p_2">
             El cáncer de riñón puede ser causado por varios factores de riesgo,
@@ -94,8 +94,8 @@ const KidneyCancer = () => {
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
           <Canvas>
-            <OrbitControls />
-            <TitleSymptoms title={"PREVENCIÓN Y TRATAMIENTO"} />
+            {/* <OrbitControls /> */}
+            <TitleSymptoms title={"PREVENCIÓN Y \n TRATAMIENTO"} />
           </Canvas>
           <p>
            No fumar, mantener un peso saludable, controlar la presion arterial,

@@ -73,7 +73,7 @@ const KidneyCancer = () => {
         <div className="content">
         <Canvas>
             <OrbitControls />
-            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
+            {/* <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} /> */}
           </Canvas>
           <p className="p_2">
             El cáncer de riñón puede ser causado por varios factores de riesgo,

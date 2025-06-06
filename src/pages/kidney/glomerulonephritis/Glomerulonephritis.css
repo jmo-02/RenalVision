@@ -295,7 +295,7 @@ html, body {
 
 /*Pantallas grandes*/
 /* RESPONSIVE: pantallas grandes (computadoras de escritorio) */
-@media (min-width: 1367px) {
+/* @media (min-width: 1367px) {
   .content {
     font-size: 2rem;
     padding: 0 4rem;
@@ -362,3 +362,4 @@ html, body {
   padding: 10px 40px 0 40px !important; 
 }
 
+ */

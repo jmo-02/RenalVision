@@ -149,7 +149,7 @@ html,body{
     border: 1.5px solid rgba(6, 86, 110, 0.22);
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
     padding: 32px 30px;
-    margin: 0 0 18px 0;
+    margin: 1rem 0 18px 0;
     color: #fff;
     font-size: 2rem;
     line-height: 1.6;
@@ -262,6 +262,7 @@ html,body{
   
   .section3 .content h3 {
     font-size: 3rem;
+    margin-top: -1.5rem;
   }
   
   .main-title {

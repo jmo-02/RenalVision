@@ -95,7 +95,7 @@ const KidneyCancer = () => {
         <div className="content">
           <Canvas>
             <OrbitControls />
-            <TitleSymptoms title={"PREVENCIÓN Y TRATAMIENTO"} />
+            <TitleSymptoms title={"PREVENCIÓN Y \n TRATAMIENTO"} />
           </Canvas>
           <p>
            No fumar, mantener un peso saludable, controlar la presion arterial,

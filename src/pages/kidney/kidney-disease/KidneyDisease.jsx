@@ -10,7 +10,10 @@ import TitleSymptoms from "./text-staging/TitleSymptoms";
 import RecipientSymptoms from "./models-3d/RecipientSymptoms";
 import LightsSymptoms from "./lightsmodels/LightsSymptoms";
 import StagingSymptoms from "./staging-erc/StagingSymptoms";
-import Model3dTemporary from "./models-3d/Model3dTemporary"; // <-- Agrega esta línea
+import Model3dTemporary from "./models-3d/Model3dTemporary"; 
+import LightsTreatment from "./lightsmodels/LightsTreatment";
+import StagingTreatment from "./staging-erc/StagingTreatment";
+import RecipientTreatment from "./models-3d/RecipientTreatment";
 
 const KidneyDisease = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -111,10 +114,14 @@ const KidneyDisease = () => {
         <div className="model-3d">
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            <LightsModel />
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-            <pointLight position={[-5, -5, 5]} intensity={0.8} />
+            {/* Elimina uno de los sets de luces personalizados */}
+            {/* <LightsTreatment /> */}
+            {/* <LightsModel /> */}
+            <ambientLight intensity={0.3} /> {/* Baja la intensidad */}
+            <directionalLight position={[5, 5, 5]} intensity={0.7} castShadow />
+            <pointLight position={[-5, -5, 5]} intensity={0.5} />
+            <StagingTreatment />
+            <RecipientTreatment />
             <Model3dTemporary scale={4} />
           </Canvas>
         </div>

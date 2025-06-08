@@ -26,7 +26,19 @@ html,body{
   
   /* Agregar estilo para el texto en la sección 1 */
   .section1 .content p {
-      color: white;
+      background: rgba(6, 86, 110, 0.12); /* Más transparente */
+      border-radius: 32px;
+      border: 1.5px solid rgba(6, 86, 110, 0.22);
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+      padding: 32px 40px;
+      margin: 0 0 18px 0;
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1.6;
+      text-align: justify;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(2px);
   }
   
   .section2{
@@ -66,6 +78,22 @@ html,body{
       color: #f1f1f1 !important;
   }
   
+  .section2 .content .p_2 {
+    background: rgba(6, 86, 110, 0.20); /* Un poco más opaco */
+    border-radius: 32px;
+    border: 1.5px solid rgba(6, 86, 110, 0.28);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+    padding: 32px 40px;
+    margin: 0 0 18px 0;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+  }
+  
   .section3{
       scroll-snap-align: start;
       height: 100svh;
@@ -81,12 +109,11 @@ html,body{
     /* Estilos del Canvas con fondo HDR */
   .model-3d{
       padding-top: 0px;
-      max-width: 45%;
-      width: 900px;
-      height: 600px;
-      /* background-color: #000; /* Asegura que el fondo sea negro mientras no se haya cargado */
-  /* border-radius: 12px;
-  border: 4px solid #4caf50; /* Borde verde alrededor del canvas */ 
+      max-width: 30%;
+      width: 400px;
+      height: 300px;
+      border-radius: 32px;
+      overflow: hidden;
   }
     
     /* Contenido */
@@ -116,11 +143,26 @@ html,body{
       padding: 1rem 0;
   }
   
+  .section3 .content p {
+    background: rgba(6, 86, 110, 0.12); /* Fondo transparente */
+    border-radius: 32px;
+    border: 1.5px solid rgba(6, 86, 110, 0.22);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    padding: 32px 30px;
+    margin: 1rem 0 18px 0;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+  }
   
   /* Botón scroll hacia abajo - sección 1 */
   .scroll-button1 {
       position: absolute;
-      bottom: 20px;
+      bottom: 40px; /* Subo los botones 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -141,7 +183,7 @@ html,body{
     /* Botón scroll hacia arriba - sección 2 */
   .scroll-button-up1 {
       position: absolute;
-      top: 20px;
+      top: 40px; /* Subo los botones de subir 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -162,7 +204,7 @@ html,body{
     /* Botón scroll hacia abajo - sección 2 */
   .scroll-button2 {
       position: absolute;
-      bottom: 20px;
+      bottom: 40px; /* Subo los botones 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -183,7 +225,7 @@ html,body{
     /* Botón scroll hacia arriba - sección 3 */
   .scroll-button-up2 {
       position: absolute;
-      top: 20px;
+      top: 40px; /* Subo los botones de subir 20px más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -217,3 +259,39 @@ html,body{
   .scroll-button-up2 svg {
       color: #075F73; /* Rojo para el botón de subir en sección 3 */
   }
+  
+  .section3 .content h3 {
+    font-size: 3rem;
+    margin-top: -1.5rem;
+  }
+  
+  .main-title {
+    width: 100%;
+    text-align: center;
+    font-size: 3.9rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+    color: rgba(183, 241, 239, 0.99);
+  }
+  
+  .section2 .content {
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+    max-width: 55%;
+  }
+  
+  @media (max-width: 900px) {
+    .section2 .content {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      text-align: left;
+    }
+  }
+

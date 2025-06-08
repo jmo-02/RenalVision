@@ -10,7 +10,10 @@ import TitleSymptoms from "./text-staging/TitleSymptoms";
 import RecipientSymptoms from "./models-3d/RecipientSymptoms";
 import LightsSymptoms from "./lightsmodels/LightsSymptoms";
 import StagingSymptoms from "./staging-erc/StagingSymptoms";
-
+import Model3dTemporary from "./models-3d/Model3dTemporary"; 
+import LightsTreatment from "./lightsmodels/LightsTreatment";
+import StagingTreatment from "./staging-erc/StagingTreatment";
+import RecipientTreatment from "./models-3d/RecipientTreatment";
 
 const KidneyDisease = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -23,10 +26,13 @@ const KidneyDisease = () => {
     <div className="kidney-disease-container">
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
+        <div className="div-title">
+          <h1 className="title-page">ENFERMEDAD RENAL CRÓNICA</h1>
+        </div>
         <div className="content">
-          <h3>¿QUÉ ES LA ENFERMEDAD RENAL CRÓNICA?</h3>
+          <h3>¿QUÉ ES?</h3>
           <p>
-            La enfermedad renal crónica (ERC) es una afección progresiva en la
+            (ERC) es una afección progresiva en la
             que los riñones pierden gradualmente su capacidad para filtrar
             desechos y líquidos del cuerpo. Esto puede llevar a una acumulación
             de toxinas en el organismo y afectar otras funciones vitales.
@@ -66,7 +72,7 @@ const KidneyDisease = () => {
         </div>
         <div className="content">
         <Canvas>
-          <OrbitControls />
+          {/* <OrbitControls /> */}
           <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
         </Canvas>
           <p className="p_2">
@@ -84,10 +90,13 @@ const KidneyDisease = () => {
         </button>
       </section>
 
-      {/* Section 3 */}
+        {/* Section 3 */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
-          <h3>PREVENCIÓN Y TRATAMIENTO</h3>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <TitleSymptoms title={"PREVENCIÓN\nY TRATAMIENTOS"} />
+          </Canvas>
           <p>
             Mantener un estilo de vida saludable, controlar la presión arterial
             y los niveles de azúcar en sangre, y realizar chequeos médicos
@@ -105,13 +114,19 @@ const KidneyDisease = () => {
         <div className="model-3d">
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            <LightsModel />
-
+            {/* Elimina uno de los sets de luces personalizados */}
+            {/* <LightsTreatment /> */}
+            {/* <LightsModel /> */}
+            <ambientLight intensity={0.3} /> {/* Baja la intensidad */}
+            <directionalLight position={[5, 5, 5]} intensity={0.7} castShadow />
+            <pointLight position={[-5, -5, 5]} intensity={0.5} />
+            <StagingTreatment />
+            <RecipientTreatment />
+            <Model3dTemporary scale={4} />
           </Canvas>
         </div>
       </section>
-    </div>
-    
+    </div>   
   );
 };
 

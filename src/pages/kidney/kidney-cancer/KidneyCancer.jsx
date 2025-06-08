@@ -10,7 +10,10 @@ import StaggingSymptoms from "./stagging/StaggingSymptoms";
 import RecipientSymptoms from "./models-3D/RecipientSymptoms";
 import LightsSymptoms from "./lightsmodel/LightsSymptoms";
 import TitleSymptoms from "./textss/TitleSymptoms";
-
+import TreatmentKidneyCancer from "./models-3D/TreatmentKidneyCancer";
+import RecipientTreatment from "./models-3D/RecipientTreatment";
+import LightsTreatment from "./lightsmodel/LightsTreatment";
+import StaggingTreatment from "./stagging/StaggingTreatment";
 
 const KidneyCancer = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -25,8 +28,9 @@ const KidneyCancer = () => {
     <div className="kidney-cancer-container">
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
+        <h2 className="main-title">CÁNCER DE RIÑÓN</h2>
         <div className="content">
-          <h3>¿QUE ES EL CANCER DE RIÑON?</h3>
+          <h3>¿QUÉ ES?</h3>
           <p>
             El cáncer de riñón, también conocido como cáncer renal,
             es una enfermedad en la que las células del tejido renal comienzan a crecer de manera anormal y descontrolada,
@@ -68,8 +72,8 @@ const KidneyCancer = () => {
 
         <div className="content">
         <Canvas>
-            <OrbitControls />
-            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} />
+            {/* <OrbitControls /> */}
+            <TitleSymptoms title={"CAUSAS Y SÍNTOMAS"} position={[0, -1, 2]} />
           </Canvas>
           <p className="p_2">
             El cáncer de riñón puede ser causado por varios factores de riesgo,
@@ -89,7 +93,10 @@ const KidneyCancer = () => {
       {/* Sección 3 */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
-          <h3>PREVENCIÓN Y TRATAMIENTO</h3>
+          <Canvas>
+            {/* <OrbitControls /> */}
+            <TitleSymptoms title={"PREVENCIÓN Y \n TRATAMIENTO"} />
+          </Canvas>
           <p>
            No fumar, mantener un peso saludable, controlar la presion arterial,
            evitar la exposicion a sustancias toxicas y controlar enfermedades
@@ -105,13 +112,15 @@ const KidneyCancer = () => {
           </button>
         </div>
         <div className="model-3d">
-          <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
-            <OrbitControls />
-            <LightsModel />
-            {/* Puedes agregar un modelo diferente o el mismo */}
-          </Canvas>
+          <Canvas className= "canvas3" shadows camera={{ position: [0, 10, 12], fov: 45 }}>
+           <OrbitControls />
+            <LightsTreatment />
+            <StaggingTreatment />
+            <TreatmentKidneyCancer scale={4} position={[0, 0, 0]} />
+            <RecipientTreatment />
+            </Canvas>
         </div>
-      </section>
+     </section>
     </div>
   );
 };

@@ -30,3 +30,5 @@ const TitleSymptoms = ({ title }) => {
 };
 
 export default TitleSymptoms;
+
+

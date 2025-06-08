@@ -212,3 +212,9 @@ html, body {
 .scroll-button-up2 svg {
     color: #075F73; /* Azul para el botón de subir en sección 3 */
 }
+
+.titulo1 {
+  white-space: pre-line;
+  position: relative;
+  top: -16px; /* Ajusta este valor según lo que necesites */
+}

@@ -14,6 +14,9 @@ import TreatmentKidneyCancer from "./models-3D/TreatmentKidneyCancer";
 import RecipientTreatment from "./models-3D/RecipientTreatment";
 import LightsTreatment from "./lightsmodel/LightsTreatment";
 import StaggingTreatment from "./stagging/StaggingTreatment";
+import TitlesPage from "./textss/TitlesPage";
+import LightsTitles from "./lightsmodel/LightsTitles";
+// import Title1 from "./textss/Title1";
 
 const KidneyCancer = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -23,13 +26,18 @@ const KidneyCancer = () => {
   };
 
   
-
   return (
     <div className="kidney-cancer-container">
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
-        <h2 className="main-title">CÁNCER DE RIÑÓN</h2>
-        <div className="content">
+        <div className="div-title">
+          <Canvas shadows>
+            <TitlesPage title={"CÁNCER DE RIÑÓN"} />
+            <LightsTitles />
+          </Canvas>
+        </div>
+          <div className="content">
+
           <h3>¿QUÉ ES?</h3>
           <p>
             El cáncer de riñón, también conocido como cáncer renal,

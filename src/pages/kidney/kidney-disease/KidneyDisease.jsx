@@ -14,6 +14,9 @@ import Model3dTemporary from "./models-3d/Model3dTemporary";
 import LightsTreatment from "./lightsmodels/LightsTreatment";
 import StagingTreatment from "./staging-erc/StagingTreatment";
 import RecipientTreatment from "./models-3d/RecipientTreatment";
+import TitlePage from "./text-staging/TitlePage";
+import LightsTitle from "./lightsmodels/LightsTitle";
+import Title1 from "./text-staging/Title1";
 
 const KidneyDisease = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -27,7 +30,10 @@ const KidneyDisease = () => {
       {/* Section 1 */}
       <section ref={sectionRefs[0]} className="section1">
         <div className="div-title">
-          <h1 className="title-page">ENFERMEDAD RENAL CRÓNICA</h1>
+          <Canvas shadows>
+            <TitlePage title={"ENFERMEDAD RENAL CRÓNICA"} />
+            <LightsTitle />
+          </Canvas>
         </div>
         <div className="content">
           <h3>¿QUÉ ES?</h3>
@@ -42,10 +48,9 @@ const KidneyDisease = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsModel />
-            {/* Agregar luces adicionales */}
-            <ambientLight intensity={0.5} /> {/* Luz ambiental para iluminación general */}
-            <directionalLight position={[5, 5, 5]} intensity={1} castShadow /> {/* Luz direccional */}
-            <pointLight position={[-5, -5, 5]} intensity={0.8} /> {/* Luz puntual */}
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+            <pointLight position={[-5, -5, 5]} intensity={0.8} />
             <ChronicDisease scale={7} />
           </Canvas>
         </div>

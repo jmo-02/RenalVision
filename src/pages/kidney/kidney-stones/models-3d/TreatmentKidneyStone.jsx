@@ -53,7 +53,7 @@ const TreatmentKidneyStone = (props) => {
           material={materials.TreatmentMaterial}
         />
         {showInfo && (
-          <Html position={[-0.3, 0.3, 0]} center distanceFactor={10}>
+          <Html position={[-0.3, -0.2, 0]} center distanceFactor={10}>
             <div
               style={{
                 background: "rgba(6,86,110,0.6)",

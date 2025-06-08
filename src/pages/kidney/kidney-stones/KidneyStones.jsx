@@ -15,6 +15,9 @@ import TreatmentKidneyStone from "./models-3d/TreatmentKidneyStone";
 import RecipientTreatment from "./models-3d/RecipientTreatment";
 import LightsTreatment from "./lights/LightsTreatment";
 import StagingTreatment from "./staging/StagingTreatment";
+import TitlePage from "./texts/TitlePage";
+import LightsTitle from "./lights/LightsTitle";
+import Title1 from "./texts/Title1";
 
 const KidneyStones = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)];
@@ -28,11 +31,15 @@ const KidneyStones = () => {
       {/* Sección 1 */}
       <section ref={sectionRefs[0]} className="section1">
         <div className="div-title">
-          <h1 className="title-page">CÁLCULOS RENALES</h1>
+          <Canvas shadows>
+            <TitlePage title={"CALCULOS RENALES"}/>
+            <LightsTitle/>
+          </Canvas>
         </div>
         <div className="content">
 
-          <h3>¿QUÉ SON?</h3>
+
+          <h3 className="h3-1">¿QUÉ SON?</h3>
           <p className="p1">
             Los cálculos renales son masas sólidas formadas por minerales que se
             acumulan en los riñones. Se forman cuando la orina está muy
@@ -123,6 +130,7 @@ const KidneyStones = () => {
           <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsTreatment />
+            <Title1 title={"TRATAMIENTO"}/>
             <StagingTreatment />
             <TreatmentKidneyStone scale={7} position={[0, 0, 0]} />
             <RecipientTreatment />

@@ -108,8 +108,8 @@ const KidneyStones = () => {
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
           <Canvas>
-            <TitleSymptoms title={" PREVENCION  "} position={[0, 1, 1.5]} />
-            <TitleSymptoms title={" Y TRATAMIENTOs  "} position={[0, -1.5, 1.5]} />
+            <TitleSymptoms title={" PREVENCION  "} position={[0, 0.5, 2]} />
+            <TitleSymptoms title={" Y TRATAMIENTOs  "} position={[0, -2, 2]} />
 
           </Canvas>
           {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}

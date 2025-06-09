@@ -27,7 +27,7 @@ const GlomeruloModel = (props) => {
         minDistance={8}
         maxDistance={20}
         maxPolarAngle={Math.PI / 2}
-        minPolarAngle={0}
+        minPolarAngle={Math.PI / 6}
       />
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
         <planeGeometry args={[20, 20]} />

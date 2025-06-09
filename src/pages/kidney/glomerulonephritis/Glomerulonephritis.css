@@ -1,97 +1,135 @@
 html, body {
-  margin: 0;
-  padding: 0;
   height: 100%;
   overflow-x: hidden;
   font-family: sans-serif;
 }
 
 /* Contenedor scroll vertical con snap */
-.glomerulo-scroll-container {
+.gl-scroll-container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: calc(100vh - 60px);
 }
 
 /* Secciones principales */
-.glomerulo-section {
+.gl-section {
   scroll-snap-align: start;
-  min-height: 100vh;
+  min-height: 100%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 80px 5% 100px 4%; /* Padding amplio para los botones */
+  padding: 100px 2% 80px 2%;
   position: relative;
 }
 
-.section-1 {
+.gl-section-1 {
   align-items: flex-start;
-  padding-top: 100px; /* Puedes ajustar el número si quieres más espacio */
+  padding-top: 2px;
   background: linear-gradient(180deg, #0DBBB5 20%, var(--verde) 70%);
 }
-.section-1 h2 {
+.gl-section-1 .title-w {
   color: #f3f3f3;
-}
-.section-1 p {
-  color: #ffffff !important;
+  font-size: 3.5rem;
 }
 
+.gl-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20rem;
+  width: 100%;
+  max-width: 1600px;
+  padding: 80px 0 100px 0;
+}
+.gl-p1-glomerulo {
+  color: #ffffff;
+  font-size: 3.0rem;
+  background: rgba(6, 86, 110, 0.12);
+  border-radius: 22px;
+  border: 2.5px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px 0 40px !important;
+}
+
+
 /* Sección 2 estilo */
-.section-2 {
+.gl-section-2 {
   align-items: flex-start;
   background: var(--verde);
   color: #ffffff;
 }
-.model-3d-sesion2 {
+.gl-model-3d-sesion2 {
   position: relative;
   width: 100%;
   height: 100%;
 }
- /*Ventana emergnte*/
-.model-3d-sesion2 {
+.gl-model-3d-sesion2 {
   position: relative;
 }
 
-.modal-overlay {
+.gl-modal-overlay {
   position: absolute;
   top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 20%;
-  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   z-index: 10;
 }
-
-.modal-content {
+.gl-modal-content {
   background-color: #ffffff;
   padding: 10px 20px;
   border-radius: 8px;
   text-align: center;
 }
-
-.modal-text {
+.gl-modal-text {
   font-size: 1.5rem;
   color: #333;
 }
 
-
-
-
 /* Sección 3 estilo */
-.section-3 {
+.gl-section-3 {
   background-color: #f5f5f5;
   color: #ffffff;
   background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
 }
+.gl-treatment-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rem;
+  padding: 2rem;
+}
+.gl-treatment-list {
+  border-radius: 20px;
+  border: 3px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 14 24px 34px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px 0 40px !important;
+}
+/*sesion 3 texto 2d*/
+.gl-info-treatment {
+  margin-top: 1rem;
+  background: #fff2f2;
+  padding: 12px;
+  border-radius: 8px;
+  color: #990000;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+
 
 /* Contenido compartido */
-.content {
+.gl-content {
   flex: 1 1 600px;
   max-width: 600px;
   display: flex;
@@ -100,29 +138,29 @@ html, body {
   text-align: justify;
 }
 
-.content h2, .content h3 {
+.gl-content h2, .gl-content h3 {
   font-size: 3rem;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.content p, .content ul {
+.gl-content p, .gl-content ul {
   font-size: 1.8rem;
   line-height: 1.6;
 }
 
-.content ul {
+.gl-content ul {
   list-style-type: none;
   padding-left: 2rem;
 }
 
-.content ul li {
+.gl-content ul li {
   position: relative;
   margin-bottom: 1rem;
   padding-left: 2rem;
 }
 
-.content ul li::before {
+.gl-content ul li::before {
   content: '•';
   position: absolute;
   left: 0;
@@ -130,32 +168,27 @@ html, body {
   font-size: 1.8rem;
 }
 
-.section-2 ul li::before {
+.gl-section-2 ul li::before {
   color: #fff;
 }
 
-
-.top-title {
+.gl-top-title {
   position: absolute;
-  top: 40px;
-  width: 100%;
+  text-align: center;
+  top: 10px;
+  left: 22%;
+  width: 60%;
   text-align: center;
   z-index: 10;
-
+ 
 }
 
-.top-title h1 {
-  font-size: 3.5rem;
-  color: rgba(183, 241, 239, 0.99);
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
+
 
 /* Modelo 3D sesion 1 */
-.model-3d {
+.gl-model-3d {
   flex: 0 0 auto;
-  max-width: 400px;
-  height: 200px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,21 +196,16 @@ html, body {
   position: relative;
 }
 
-.model-3d canvas{
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.label-model {
+.gl-label-model {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
   margin-bottom: 100px;
- 
+  color: #ffffff;
 }
 
 /* Modelo 3D sesion 2 */
-.model-3d-sesion2 {
+.gl-model-3d-sesion2 {
   flex: 0 0 auto;
   max-width: 500px;
   height: 400px;
@@ -189,14 +217,14 @@ html, body {
   border-radius: 10px;
 }
 
-.model-3d-sesion2 canvas{
+.gl-model-3d-sesion2 canvas{
   width: 100% !important;
   height: 100% !important;
   flex: 1;
-  
+  border-radius: 10px;
 }
 
-.symptoms-layout {
+.gl-symptoms-layout {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -205,31 +233,25 @@ html, body {
   padding: 2rem;
 }
 
-.section-2 .content {
+.gl-section-2 .gl-content {
   flex: 1;
   min-width: 300px;
 }
 
-.Symptoms-list {
+.gl-symptoms-list {
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
   padding: 10px 40px 0 40px !important; 
 }
-.treatment-list {
-  background: rgba(0, 0, 0, 0.12);
-  border-radius: 20px;
-  border: 3px solid rgba(6, 86, 110, 0.22);
-  box-shadow: 14 24px 34px 0 rgba(0,0,0,0.08);
-  padding: 10px 40px 0 40px !important; 
-}
+
 
 /* Botones scroll */
-.scroll-button1,
-.scroll-button2,
-.scroll-button-up1,
-.scroll-button-up2 {
+.gl-scroll-button1,
+.gl-scroll-button2,
+.gl-scroll-button-up1,
+.gl-scroll-button-up2 {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -243,60 +265,53 @@ html, body {
 }
 
 /* Botón abajo */
-.scroll-button1, .scroll-button2 {
+.gl-scroll-button1, .gl-scroll-button2 {
   bottom: 20px;
 }
 
-.scroll-button2 {
+.gl-scroll-button2 {
   background-color: #38A3A5;
   color: white;
 }
 
 /* Botón arriba */
-.scroll-button-up1, .scroll-button-up2 {
+.gl-scroll-button-up1, .gl-scroll-button-up2 {
   top: 20px;
 }
 
 /* Hover */
-.scroll-button2:hover {
+.gl-scroll-button2:hover {
   background-color: #0DBBB5;
 }
 
-.scroll-button-up1:hover,
-.scroll-button-up2:hover,
-.scroll-button1:hover {
+.gl-scroll-button-up1:hover,
+.gl-scroll-button-up2:hover,
+.gl-scroll-button1:hover {
   background-color: rgba(230, 230, 230, 0.95);
   transform: translateX(-50%) scale(1.05);
-}
-.p1-glomerulo {
-  background: rgba(6, 86, 110, 0.12);
-  border-radius: 22px;
-  border: 2.5px solid rgba(6, 86, 110, 0.22);
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
-  padding: 10px 40px 0 40px !important; 
 }
 
 /* RESPONSIVE: móviles */
 @media (max-width: 768px) {
-  .glomerulo-section {
+  .gl-section {
     padding: 60px 4% 100px 4%;
   }
   
-  .content, .model-3d {
+  .gl-content, .gl-model-3d {
     flex: 1 1 100%;
     max-width: 100%;
     text-align: center;
   }
 
-  .model-3d {
+  .gl-model-3d {
     margin-top: 30px;
   }
 }
 
 /*Pantallas grandes*/
 /* RESPONSIVE: pantallas grandes (computadoras de escritorio) */
-/* @media (min-width: 1367px) {
-  .content {
+@media (min-width: 1368px) {
+  .gl-content {
     font-size: 2rem;
     padding: 0 4rem;
     max-width: 600px;
@@ -304,62 +319,60 @@ html, body {
     
   }
 
-  .content h2, .content h3 {
+  .gl-content h2, .gl-content h3 {
     font-size: 4rem;
   }
 
-  .content p, .content ul {
+  .gl-content p, .gl-content ul {
     font-size: 3rem;
   }
 
-  .model-3d, .model-3d-sesion2 {
+  .gl-model-3d, .gl-model-3d-sesion2 {
     max-width: 700px;
     height: 500px;
   }
 
-  .modal-text {
+  .gl-modal-text {
     font-size: 2.5rem;
   }
 
-  .scroll-button1,
-  .scroll-button2,
-  .scroll-button-up1,
-  .scroll-button-up2 {
+  .gl-scroll-button1,
+  .gl-scroll-button2,
+  .gl-scroll-button-up1,
+  .gl-scroll-button-up2 {
     padding: 14px 28px;
     font-size: 1.2rem;
   }
 
-  .top-title h1 {
+  .gl-top-title h1 {
     font-size: 4rem;
   }
 
-  .Symptoms-list, .treatment-list, .p1-glomerulo {
+  .gl-symptoms-list, .gl-treatment-list, .gl-p1-glomerulo {
     padding: 20px 60px 20px 60px !important;
     font-size: 2rem;
   }
 
-  .symptoms-layout {
+  .gl-symptoms-layout {
     padding: 3rem 5%;
     gap: 3rem;
   }
 
-  .glomerulo-section {
+  .gl-section {
     padding: 100px 8% 120px 8%;
   }
 }
-.Symptoms-list {
+.gl-symptoms-list {
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
   padding: 10px 40px 0 40px !important; 
 }
-.treatment-list {
+.gl-treatment-list {
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
   padding: 10px 40px 0 40px !important; 
 }
-
- */

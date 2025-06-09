@@ -47,10 +47,12 @@ const SymptomsModel = ({onModelClick, ...props}) => {
       />
       <OrbitControls
         enableZoom
-        minDistance={8}
-        maxDistance={20}
+        minDistance={8.5}
+        maxDistance={10}
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
+        maxAzimuthAngle={Math.PI / 4}
+        minAzimuthAngle={-Math.PI / 4}
       />
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
         <planeGeometry args={[20, 20]} />

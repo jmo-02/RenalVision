@@ -1,6 +1,6 @@
 import React from "react";
 import { Html } from '@react-three/drei';
-import "./Botton-Section2.css"; // Asumiendo que este es el CSS
+import "./Event-Section2.css"; // Asumiendo que este es el CSS
 
 const Causes3D = ({ showCauses }) => {
   if (!showCauses) return null;

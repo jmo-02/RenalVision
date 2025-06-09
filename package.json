@@ -14,7 +14,7 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@react-three/drei": "^10.0.7",
+    "@react-three/drei": "^10.1.2",
     "@react-three/fiber": "^9.1.2",
     "@types/three": "^0.175.0",
     "firebase": "^11.5.0",

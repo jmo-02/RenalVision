@@ -1,10 +1,10 @@
-.titulo1-symptoms{
+.title-treatment{
     transform: scale(1.5);
     transform-origin: center;
-    color: #BBF3F2 !important ;
-    padding:200px !important;
+    color: #BBF3F2;
+    padding:200px;
 }
-/*Contenedor del titulo 3d sesion 2*/
+/*Contenedor del titulo 3d sesion 3*/
 .title-symptoms {
     width: 100%;
     max-width: 800px; 

@@ -5,8 +5,8 @@ import { useFrame } from '@react-three/fiber';
 const TreatmentKidneyStone = (props) => {
   const treatmentKidneyStonesRef = useRef();
   const [animate, setAnimate] = useState(true);
-  const [reverse, setReverse] = useState(false); // inversión
-  const [showInfo, setShowInfo] = useState(true); // por defecto visible
+  const [reverse, setReverse] = useState(false);
+  const [showInfo, setShowInfo] = useState(false); // por defecto oculto
 
   // Animación de rotación y movimiento
   useFrame((state) => {
@@ -26,10 +26,10 @@ const TreatmentKidneyStone = (props) => {
     }
   }, []);
 
-  // Tecla espacio para invertir
+  // Tecla Enter para invertir
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === ' ') {
+      if (e.key === 'Enter') {
         setReverse((prev) => !prev);
       }
     };
@@ -43,8 +43,9 @@ const TreatmentKidneyStone = (props) => {
     <group {...props} dispose={null}>
       <group
         ref={treatmentKidneyStonesRef}
-        onDoubleClick={() => setAnimate((prev) => !prev)} // clic izquierdo: pausa/reanuda
-        onClick={() => setShowInfo((prev) => !prev)} // doble clic: ocultar/mostrar texto
+        onDoubleClick={() => setAnimate((prev) => !prev)}
+        onPointerOver={() => setShowInfo(true)}  // 👈 Hover: mostrar texto
+        onPointerOut={() => setShowInfo(false)}  // 👈 Salir: ocultar texto
       >
         <mesh
           castShadow
@@ -66,9 +67,7 @@ const TreatmentKidneyStone = (props) => {
                 textAlign: "center",
               }}
             >
-              Clic para ocultar o mostrar este texto.<br />
-              <br />
-              Con doble clic pausas la animación o con la tecla Espacio puedes invertirla.
+              Doble clic para pausar o con la tecla Espacio invierte la animación.
             </div>
           </Html>
         )}

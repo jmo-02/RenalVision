@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Sky } from "@react-three/drei";
 import KidneyWithStones from "./models-3d/KidneyWithStones";
 import Recipient from "./models-3d/Recipient";
 import Lights from "./lights/Lights";
@@ -26,10 +26,11 @@ import Title3D from "./texts/Title3D";
 import Title4 from "./texts/Title4";
 import RecipientPrevention from "./models-3d/RecipientPrevention";
 import Button from "./texts/Button";
+import VideoKidneyStones from "./video/VideoKidneyStones";
 
 
 const KidneyStones = () => {
-  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -60,7 +61,7 @@ const KidneyStones = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <Lights />
-            <Button/>
+            <Button />
             <KidneyWithStones scale={7} />
             <Title2 title={"RIÑON AFECTADO"} />
             <Recipient />
@@ -187,10 +188,47 @@ const KidneyStones = () => {
             <OrbitControls />
             <LightsPrevention />
             <StagingPrevention />
-            <Title3D title={"CUIDA TUS"}/>
-            <Title4 title={"RIÑONES"}/>
+            <Title3D title={"CUIDA TUS"} />
+            <Title4 title={"RIÑONES"} />
             <PreventionKidneyStone scale={6} position={[0, -1, 0]} />
             <RecipientPrevention />
+          </Canvas>
+        </div>
+        <button className="scroll-button2" onClick={() => scrollToSection(4)}>
+          <ChevronDown size={40} />
+        </button>
+      </section>
+
+      {/* Sección 5 */}
+      <section ref={sectionRefs[4]} className="section5">
+        <button
+          className="scroll-button-up2"
+          onClick={() => scrollToSection(3)}
+        >
+          <ChevronUp size={40} />
+        </button>
+        <div className="content">
+          <Canvas>
+            <TitleSymptoms title={" VIDEO INFORMATIVO  "} position={[0, -2, 2]} />
+
+          </Canvas>
+          {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
+          <p className="p4">
+              En esta sección se presenta un video sobre los 
+              cálculos renales.El contenido muestra visualmente cómo se forman y afectan 
+              al sistema urinario. Este recurso busca complementar la información general sobre el tema.
+              <br></br><br></br>
+              Haz clic sobre el video para reproducirlo o pausarlo.
+          </p>
+          
+          
+
+        </div>
+        <div className="model-3d">
+          <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+            <OrbitControls />
+            
+            <VideoKidneyStones/>
           </Canvas>
         </div>
       </section>

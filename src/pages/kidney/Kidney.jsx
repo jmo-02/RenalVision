@@ -56,24 +56,6 @@ const Kidney = () => {
           </button>
         </div>
       </div>
-
-      {/* Modelo 3D a la derecha */}
-      <div className="model-3d-home">
-        <Canvas camera={{ position: [0, 0, 25], fov: 45 }} style={{ width: '350px', height: '350px', background: 'transparent' }} shadows>
-          <ambientLight intensity={2} />
-          <directionalLight
-            position={[5, 10, 10]}
-            intensity={40}
-            color="rgb(255, 255, 255)"
-            target-position={[0, -2, 0]} // apunta directamente al modelo
-            castShadow
-          />
-          <pointLight position={[0, 10, 10]} intensity={3.5} color="#fff" />
-          <pointLight position={[-10, 10, 10]} intensity={2.5} color="#fff" />
-          <HealthyKidney scale={6} position={[0, -2, 0]} />
-        </Canvas>
-      </div>
-
       <Outlet />
     </div>
   );

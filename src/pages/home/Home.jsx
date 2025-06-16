@@ -3,6 +3,51 @@ import "./Home.css";
 import { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStaffSnake } from "@fortawesome/free-solid-svg-icons";
+import { Canvas } from '@react-three/fiber';
+import { useGLTF } from "@react-three/drei";
+import { useRef } from "react";
+import { useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
+import { OrbitControls } from '@react-three/drei';
+
+
+const HealthyKidneyGLB = (props) => {
+  const { scene } = useGLTF("/models-3d/healthy-kidney.glb");
+  const ref = useRef();
+
+  useFrame(({ clock }) => {
+    if (ref.current) {
+      // Pulso suave: escala varía suavemente entre 620 y 680 (ajusta según tu escala base)
+      const base = 630;
+      const amplitude = 30;
+      const pulse = base + Math.sin(clock.getElapsedTime() * 2) * amplitude;
+      ref.current.scale.set(pulse, pulse, pulse);
+
+    }
+  });
+  return <primitive ref={ref} object={scene} {...props} />;
+};
+
+function LuzSincronizadaConCamara() {
+  const lightRef = useRef();
+  const { camera } = useThree();
+
+  useFrame(() => {
+    if (lightRef.current) {
+      // La luz sigue la posición de la cámara
+      lightRef.current.position.copy(camera.position);
+    }
+  });
+
+  return (
+    <directionalLight
+      ref={lightRef}
+      intensity={25}
+      color="rgb(255, 255, 255)"
+      castShadow
+    />
+  );
+}
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,6 +72,26 @@ const Home = () => {
           Descúbrelo
         </button>
       </div>
+
+      {/* Model 3D for the right */}
+            <div className="model-3d-home">
+              <Canvas camera={{ position: [0, 0, 25], fov: 45 }} style={{ width: '350px', height: '350px', background: 'transparent' }} shadows>
+                <ambientLight intensity={2} />
+                    <LuzSincronizadaConCamara />
+                <directionalLight
+                  position={[5, 10, 10]}
+                  intensity={40}
+                  color="rgb(255, 255, 255)"
+                  target-position={[0, -2, 0]} // apunta directamente al modelo
+                  castShadow
+                />
+                <pointLight position={[0, 10, 10]} intensity={3.5} color="#fff" />
+                <pointLight position={[-10, 10, 10]} intensity={2.5} color="#fff" />
+                <HealthyKidneyGLB scale={650} position={[0, 0, 0]} />
+                <OrbitControls />
+                
+              </Canvas>
+            </div>
     </section>
   );
 };

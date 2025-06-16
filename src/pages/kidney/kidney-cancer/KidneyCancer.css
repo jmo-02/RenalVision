@@ -114,6 +114,7 @@ html,body{
       height: 300px;
       border-radius: 32px;
       overflow: hidden;
+      transform: translateY(70px);
   }
     
     /* Contenido */
@@ -162,7 +163,7 @@ html,body{
   /* Botón scroll hacia abajo - sección 1 */
   .scroll-button1 {
       position: absolute;
-      bottom: 40px; /* Subo los botones 20px más arriba */
+      bottom: 80px; /* Subido más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -183,7 +184,7 @@ html,body{
     /* Botón scroll hacia arriba - sección 2 */
   .scroll-button-up1 {
       position: absolute;
-      top: 40px; /* Subo los botones de subir 20px más arriba */
+      top: 20px; /* Más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -204,7 +205,7 @@ html,body{
     /* Botón scroll hacia abajo - sección 2 */
   .scroll-button2 {
       position: absolute;
-      bottom: 40px; /* Subo los botones 20px más arriba */
+      bottom: 80px; /* Subido más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
@@ -225,7 +226,7 @@ html,body{
     /* Botón scroll hacia arriba - sección 3 */
   .scroll-button-up2 {
       position: absolute;
-      top: 40px; /* Subo los botones de subir 20px más arriba */
+      top: 20px; /* Más arriba */
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;

@@ -15,11 +15,17 @@ import RecipientTreatment from "./models-3D/RecipientTreatment";
 import LightsTreatment from "./lightsmodel/LightsTreatment";
 import StaggingTreatment from "./stagging/StaggingTreatment";
 import TitlesPage from "./textss/TitlesPage";
+import Title2 from "./textss/Title2";
 import LightsTitles from "./lightsmodel/LightsTitles";
+import LightsPrevention from "./lightsmodel/LightsPrevention";
+import StaggingPrevention from "./stagging/StaggingPrevention";
+import Title3D from "./textss/Title3D";
+import PreventionKidneyCancer from "./models-3D/PreventionKidneyCancer";
+import RecipientPrevention from "./models-3D/RecipientPrevention";
 // import Title1 from "./textss/Title1";
 
 const KidneyCancer = () => {
-  const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -51,7 +57,8 @@ const KidneyCancer = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsModel />
-            <KidneyWithCancer scale={7} />
+            <KidneyWithCancer scale={6.7} />
+            <Title2 title={"RIÑÓN ENFERMO"} />
           </Canvas>
         </div>
         <div className="button1">
@@ -129,6 +136,44 @@ const KidneyCancer = () => {
             </Canvas>
         </div>
      </section>
+
+     {/* Sección 4 */}
+      <section ref={sectionRefs[3]} className="section4">
+        <button
+          className="scroll-button-up2"
+          onClick={() => scrollToSection(2)}
+        >
+          <ChevronUp size={40} />
+        </button>
+        <div className="content">
+          <Canvas>
+            <TitleSymptoms title={" PREVENCIONES  "} position={[0, -0.5, 2]} />
+
+          </Canvas>
+          {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
+          <p className="p4">
+           Para prevenir el cáncer de riñón, es importante no fumar, mantener un peso saludable,
+           controlar la presión arterial y evitar el uso excesivo de analgésicos.
+           También ayuda beber suficiente agua, llevar una dieta balanceada y hacerse chequeos médicos,
+           especialmente si hay antecedentes familiares.
+          </p>
+
+        </div>
+        <div className="model-3d">
+          <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+            <OrbitControls />
+            <LightsPrevention />
+            <StaggingPrevention />
+            <Title3D title={"CUIDA TUS RIÑONES"} />
+            {/* <Title4 title={"RIÑONES"} /> */}
+            <PreventionKidneyCancer scale={3} position={[1, 0, 0]} />
+            <RecipientPrevention />
+          </Canvas>
+        </div>
+        <button className="scroll-button2" onClick={() => scrollToSection(4)}>
+          <ChevronDown size={40} />
+        </button>
+      </section>
     </div>
   );
 };

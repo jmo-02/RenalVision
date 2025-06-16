@@ -99,7 +99,43 @@ html,body{
     color: #ffffff !important;
 }
 
+.p4{
+    color: #ffffff !important;
+
+}
+
+
+
 .section3{
+    scroll-snap-align: start;
+    height: 100vh;
+    padding: 2rem 9%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    background: var(--verde);
+    /* box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); */
+    
+}
+
+.section4{
+    scroll-snap-align: start;
+    height: 100svh;
+    padding: 2rem 9%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    background: var(--verde);
+    /* box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.section5{
     scroll-snap-align: start;
     height: 100svh;
     padding: 2rem 9%;
@@ -111,7 +147,10 @@ html,body{
     position: relative;
     background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
     /* box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); */
-    
+}
+
+.section5 .model-3d{
+    padding-left: 5rem;
 }
   
   /*Modelo 3D*/
@@ -136,8 +175,12 @@ html,body{
   
 }
 
-
+.section4 .model-3d {
+  padding-left: 5rem; /* Ajusta este valor según la separación que desees */
   
+}
+
+
   /* Contenido */
 .content{
     max-width: 30%;
@@ -150,7 +193,7 @@ html,body{
 }
   
 .content h3 {
-    font-size: 5rem !important;
+    font-size: 3.5rem !important;
     color: #BBF3F2 !important;
     line-height: 1.8;
     text-align: center;

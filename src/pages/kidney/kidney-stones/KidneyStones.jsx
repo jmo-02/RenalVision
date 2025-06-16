@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Sky } from "@react-three/drei";
 import KidneyWithStones from "./models-3d/KidneyWithStones";
 import Recipient from "./models-3d/Recipient";
 import Lights from "./lights/Lights";
@@ -18,9 +18,19 @@ import StagingTreatment from "./staging/StagingTreatment";
 import TitlePage from "./texts/TitlePage";
 import LightsTitle from "./lights/LightsTitle";
 import Title1 from "./texts/Title1";
+import PreventionKidneyStone from "./models-3d/PreventionKidneyStone";
+import LightsPrevention from "./lights/LightsPrevention";
+import StagingPrevention from "./staging/StagingPrevention";
+import Title2 from "./texts/Title2";
+import Title3D from "./texts/Title3D";
+import Title4 from "./texts/Title4";
+import RecipientPrevention from "./models-3d/RecipientPrevention";
+import Button from "./texts/Button";
+import VideoKidneyStones from "./video/VideoKidneyStones";
+
 
 const KidneyStones = () => {
-  const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const scrollToSection = (index) => {
     sectionRefs[index]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -32,8 +42,8 @@ const KidneyStones = () => {
       <section ref={sectionRefs[0]} className="section1">
         <div className="div-title">
           <Canvas shadows>
-            <TitlePage title={"CALCULOS RENALES"}/>
-            <LightsTitle/>
+            <TitlePage title={"CALCULOS RENALES"} />
+            <LightsTitle />
           </Canvas>
         </div>
         <div className="content">
@@ -51,7 +61,9 @@ const KidneyStones = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <Lights />
+            <Button />
             <KidneyWithStones scale={7} />
+            <Title2 title={"RIÑON AFECTADO"} />
             <Recipient />
           </Canvas>
         </div>
@@ -64,7 +76,11 @@ const KidneyStones = () => {
 
       {/* Sección 2 */}
       <section ref={sectionRefs[1]} className="section2">
-        <div className="model-3d">
+        <div className="model-3d"
+          onPointerEnter={() => setShowInfo(true)}
+          onPointerLeave={() => setShowInfo(false)}
+
+        >
           <Canvas
             className="canvas2"
             shadows
@@ -108,16 +124,18 @@ const KidneyStones = () => {
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
           <Canvas>
-            <TitleSymptoms title={" PREVENCION  "} position={[0, 1, 1.5]} />
-            <TitleSymptoms title={" Y TRATAMIENTOs  "} position={[0, -1.5, 1.5]} />
+            <TitleSymptoms title={" TRATAMIENTOS  "} position={[0, -0.5, 2]} />
 
           </Canvas>
           {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
           <p className="p3">
-            Beber suficiente agua ayuda a prevenir la formación de cálculos renales.
-            Además, una dieta baja en sal y alimentos ricos en oxalato reduce el riesgo.
-            El tratamiento puede incluir medicamentos, litotricia para romper las piedras o c
-            irugía en casos severos. Llevar hábitos saludables es clave para evitar recurrencias.
+            El tratamiento de los cálculos renales depende del tamaño,
+            la localización y la composición de los mismos. Para cálculos pequeños,
+            suele recomendarse beber abundante agua para facilitar su eliminación
+            natural a través de la orina. En casos más complejos o dolorosos,
+            se pueden utilizar analgésicos para aliviar los síntomas y, si es necesario,
+            medicamentos que ayuden a disolver ciertos tipos de cálculos o a
+            relajarlos para que puedan pasar más fácilmente.
           </p>
           <button
             className="scroll-button-up2"
@@ -130,10 +148,87 @@ const KidneyStones = () => {
           <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsTreatment />
-            <Title1 title={"TRATAMIENTO"}/>
+            <Title1 title={"KIT MEDICO"} />
             <StagingTreatment />
             <TreatmentKidneyStone scale={7} position={[0, 0, 0]} />
             <RecipientTreatment />
+          </Canvas>
+        </div>
+        <button className="scroll-button2" onClick={() => scrollToSection(3)}>
+          <ChevronDown size={40} />
+        </button>
+      </section>
+
+      {/* Sección 4 */}
+      <section ref={sectionRefs[3]} className="section4">
+        <button
+          className="scroll-button-up2"
+          onClick={() => scrollToSection(2)}
+        >
+          <ChevronUp size={40} />
+        </button>
+        <div className="content">
+          <Canvas>
+            <TitleSymptoms title={" PREVENCIONES  "} position={[0, -0.5, 2]} />
+
+          </Canvas>
+          {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
+          <p className="p4">
+            Para prevenir la formación de cálculos renales,
+            es clave adoptar hábitos de vida saludables. Beber suficiente agua a lo
+            largo del día es fundamental, ya que ayuda a diluir las sustancias en la orina que
+            pueden formar cálculos. Además, se recomienda moderar el consumo de sal y proteínas animales,
+            y mantener una dieta equilibrada rica en frutas y verduras. Algunas personas pueden requerir
+            restricciones adicionales en alimentos ricos en oxalato, como las espinacas o los frutos secos.
+          </p>
+
+        </div>
+        <div className="model-3d">
+          <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+            <OrbitControls />
+            <LightsPrevention />
+            <StagingPrevention />
+            <Title3D title={"CUIDA TUS"} />
+            <Title4 title={"RIÑONES"} />
+            <PreventionKidneyStone scale={6} position={[0, -1, 0]} />
+            <RecipientPrevention />
+          </Canvas>
+        </div>
+        <button className="scroll-button2" onClick={() => scrollToSection(4)}>
+          <ChevronDown size={40} />
+        </button>
+      </section>
+
+      {/* Sección 5 */}
+      <section ref={sectionRefs[4]} className="section5">
+        <button
+          className="scroll-button-up2"
+          onClick={() => scrollToSection(3)}
+        >
+          <ChevronUp size={40} />
+        </button>
+        <div className="content">
+          <Canvas>
+            <TitleSymptoms title={" VIDEO INFORMATIVO  "} position={[0, -2, 2]} />
+
+          </Canvas>
+          {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
+          <p className="p4">
+              En esta sección se presenta un video sobre los 
+              cálculos renales.El contenido muestra visualmente cómo se forman y afectan 
+              al sistema urinario. Este recurso busca complementar la información general sobre el tema.
+              <br></br><br></br>
+              Haz clic sobre el video para reproducirlo o pausarlo.
+          </p>
+          
+          
+
+        </div>
+        <div className="model-3d">
+          <Canvas className="canvas3" shadows camera={{ position: [0, 0, 15], fov: 45 }}>
+            <OrbitControls />
+            
+            <VideoKidneyStones/>
           </Canvas>
         </div>
       </section>

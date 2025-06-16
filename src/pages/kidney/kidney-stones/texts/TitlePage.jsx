@@ -35,7 +35,7 @@ const TitlePage = ({ title }) => {
           font="/fonts/poppins-regular.json"
           bevelEnabled
           bevelSize={0.1}
-          bevelThickness={0.02}
+          bevelThickness={0.08}
           height={0.2}
           lineHeight={0.8}
           letterSpacing={0.2}

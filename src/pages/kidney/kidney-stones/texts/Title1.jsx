@@ -4,7 +4,7 @@ import React from 'react'
 const Title1 = ({ title }) => {
     return (
         <Text
-            position={[0, 3, 0]}
+            position={[0, 3.5, 0]}
             color={"#075F73"}
             anchorX={"center"}
             anchorY={"middle"}

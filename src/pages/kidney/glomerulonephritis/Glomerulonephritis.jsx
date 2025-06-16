@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import GlomeruloModel from './models-3d/Glomerulo';
 import SymptomsModel from './models-3d/Symptoms-Glumerulonefritis';
 import StagingSymptoms from "../kidney-stones/staging/StagingSymptoms";
+import StagingTreatment from "../kidney-stones/staging/StagingTreatment";
 import TreatmentModel from './models-3d/Treatment-Glomerulonefritis';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import SymptomsTitle3D from './components-html-3d/TitleSymptoms';
@@ -10,6 +11,7 @@ import TreatmentTitle3D from './components-html-3d/TitleTreatment';
 import Causes3D from './components-html-3d/Event-Section2';
 import TitlesPage from './components-html-3d/Title-Kidney';
 import LightsTitles from "../kidney-cancer/lightsmodel/LightsTitles";
+import TitleGlomerulo from './components-html-3d/Title-glomerulo2d';
 import './Glomerulonephritis.css';
 
 const Glomerulonephritis = () => {
@@ -45,9 +47,13 @@ const Glomerulonephritis = () => {
         setShowTreatmentHint(true); 
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+  window.addEventListener('keydown', handleKeyDown);
+  return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+  /*Evento sesion 4 */
+  const [showCard, setShowCard] = useState(false);
+  const toggleCard = () => setShowCard(!showCard);
+
 
 
   const scrollToSection = (index) => {
@@ -75,10 +81,10 @@ const Glomerulonephritis = () => {
             </p>
           </div>
           <div className="gl-model-3d">
-            <Canvas shadows camera={{ position: [4, 2, -11], fov: 50 }}>
-              <GlomeruloModel />
+            <Canvas shadows camera={{ position: [4, 2, -11], fov: 80 }}>
+              <GlomeruloModel  />
+              <TitleGlomerulo />
             </Canvas>
-            <p className="gl-label-model">Glomérulo</p>
           </div>
         </div>  
         <button className="gl-scroll-button1" onClick={() => scrollToSection(1)}>
@@ -161,6 +167,7 @@ const Glomerulonephritis = () => {
           </div>
           <div className="gl-model-3d">
             <Canvas shadows camera={{ position: [4, 2, -11], fov: 40 }}>
+              <StagingTreatment />
               <TreatmentModel onClick={() => {
                 setShowTreatmentInfo(true)
                 setShowTreatmentHint(false);
@@ -186,6 +193,28 @@ const Glomerulonephritis = () => {
           <ChevronUp size={40} />
         </button>
       </section>
+      {/*seccion 4 */}
+      <section ref={sectionRefs[3]} className="gl-section gl-section-4">
+        <div className="gl-content gl-full-width">
+          <h2 className='title-w'>PREVENCIÓN</h2>
+          <p className='gl-p1-glomerulo'>La glomerulonefritis no siempre se puede prevenir, pero hay medidas que ayudan a reducir su aparición o complicaciones.</p>
+          <button className='gl-button-card' onClick={toggleCard}>Mostrar Medidas Generales</button>
+          {showCard && (
+            <div className="gl-card-general-measures">
+              <h3>Que hacer</h3>
+              <ul>
+                <li>Acudir a los controles médicos regularmente.</li>
+                <li>Evitar el consumo de medicamentos sin prescripción.</li>
+                <li>No automedicarse con analgésicos o antiinflamatorios.</li>
+                <li>Reducir el estrés y mantener una buena hidratación.</li>
+                <li>Realizar actividad física moderada si el médico lo permite.</li>
+              </ul>
+            </div>
+          )}
+          
+        </div>
+      </section>
+     
     </div>
   );
 };

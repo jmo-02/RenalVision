@@ -1,14 +1,11 @@
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-  font-family: sans-serif;
-}
-
 /* Contenedor scroll vertical con snap */
 .gl-scroll-container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: calc(100vh - 60px);
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Secciones principales */
@@ -20,7 +17,7 @@ html, body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 100px 2% 80px 2%;
+  padding: 60px 2% 80px 2%;
   position: relative;
 }
 
@@ -28,6 +25,7 @@ html, body {
   align-items: flex-start;
   padding-top: 2px;
   background: linear-gradient(180deg, #0DBBB5 20%, var(--verde) 70%);
+  
 }
 .gl-section-1 .title-w {
   color: #f3f3f3;
@@ -35,12 +33,13 @@ html, body {
 }
 
 .gl-layout {
+  margin-top: 80px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20rem;
+  gap: 14rem;
   width: 100%;
   max-width: 1600px;
   padding: 80px 0 100px 0;
@@ -93,12 +92,19 @@ html, body {
   font-size: 1.5rem;
   color: #333;
 }
+.gl-symptoms-list {
+  background: rgba(6, 86, 110, 0.12);
+  border-radius: 22px;
+  border: 2.5px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px 0 40px !important; 
+}
 
 /* Sección 3 estilo */
 .gl-section-3 {
   background-color: #f5f5f5;
   color: #ffffff;
-  background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
+  background: var(--verde)80%;
 }
 .gl-treatment-layout {
   display: flex;
@@ -113,6 +119,7 @@ html, body {
   border: 3px solid rgba(6, 86, 110, 0.22);
   box-shadow: 14 24px 34px 0 rgba(0,0,0,0.08);
   padding: 10px 40px 0 40px !important;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
 }
 /*sesion 3 texto 2d*/
 .gl-info-treatment {
@@ -125,17 +132,33 @@ html, body {
   font-size: 1.5rem;
   text-align: center;
 }
+/* Sección 4 estilo */
+.gl-section-4 {
+  background-color: #f5f5f5;
+  color: #ffffff;
+  background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
+}
+.gl-button-card {
+  background: rgba(6, 86, 110, 0.12);
+  border-radius: 22px;
+  border: 2.5px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px !important;
+  margin-left: 100px;
+}
+
 
 
 
 /* Contenido compartido */
 .gl-content {
   flex: 1 1 600px;
-  max-width: 600px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: justify;
+  margin-bottom: 20px;
 }
 
 .gl-content h2, .gl-content h3 {
@@ -187,8 +210,10 @@ html, body {
 
 /* Modelo 3D sesion 1 */
 .gl-model-3d {
+  margin-bottom: 10px;
   flex: 0 0 auto;
-  height: 500px;
+  height: 300px;
+  width: 400px ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -238,13 +263,7 @@ html, body {
   min-width: 300px;
 }
 
-.gl-symptoms-list {
-  background: rgba(6, 86, 110, 0.12);
-  border-radius: 22px;
-  border: 2.5px solid rgba(6, 86, 110, 0.22);
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
-  padding: 10px 40px 0 40px !important; 
-}
+
 
 
 /* Botones scroll */
@@ -305,101 +324,5 @@ html, body {
 
   .gl-model-3d {
     margin-top: 30px;
-  }
-}
-
-/*Pantallas grandes*/
-/* RESPONSIVE: pantallas grandes (computadoras de escritorio) */
-/* Pantallas mayores a 1366px */
-@media (min-width: 1368px) {
-  .gl-section {
-    padding: 100px 10% 120px 10%;
-  }
-
-  .gl-layout {
-    gap: 12rem;
-    padding: 80px 0;
-  }
-
-  .gl-content {
-    font-size: 2rem;
-    padding: 0 4rem;
-    max-width: 700px;
-  }
-
-  .gl-content h2, .gl-content h3 {
-    font-size: 4.5rem;
-  }
-
-  .gl-content p, .gl-content ul {
-    font-size: 2.5rem;
-  }
-
-  .gl-modal-text {
-    font-size: 2.2rem;
-  }
-
-  .gl-model-3d, .gl-model-3d-sesion2 {
-    max-width: 800px;
-    height: 500px;
-  }
-
-  .gl-symptoms-list, .gl-treatment-list, .gl-p1-glomerulo {
-    padding: 30px 80px !important;
-    font-size: 2rem;
-  }
-
-  .gl-top-title h1 {
-    font-size: 5rem;
-  }
-
-  .gl-scroll-button1,
-  .gl-scroll-button2,
-  .gl-scroll-button-up1,
-  .gl-scroll-button-up2 {
-    padding: 14px 30px;
-    font-size: 1.5rem;
-  }
-}
-
-/* Pantallas aún más grandes: 1600px o más */
-@media (min-width: 1600px) {
-  .gl-section {
-    padding: 120px 12% 140px 12%;
-  }
-
-  .gl-content {
-    font-size: 2.4rem;
-    max-width: 800px;
-  }
-
-  .gl-content h2, .gl-content h3 {
-    font-size: 5rem;
-  }
-
-  .gl-content p, .gl-content ul {
-    font-size: 2.8rem;
-  }
-
-  .gl-model-3d, .gl-model-3d-sesion2 {
-    max-width: 900px;
-    height: 550px;
-  }
-
-  .gl-scroll-button1,
-  .gl-scroll-button2,
-  .gl-scroll-button-up1,
-  .gl-scroll-button-up2 {
-    font-size: 1.6rem;
-    padding: 16px 34px;
-  }
-
-  .gl-top-title h1 {
-    font-size: 6rem;
-  }
-
-  .gl-symptoms-list, .gl-treatment-list, .gl-p1-glomerulo {
-    font-size: 2.2rem;
-    padding: 30px 100px !important;
   }
 }

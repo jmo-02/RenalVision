@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import useQuizStore from "../../stores/use-quiz-store";
+import Quiz3D from "./Quiz3D";
 import "./Quiz.css";
 
 const Quiz = () => {
@@ -10,10 +11,8 @@ const Quiz = () => {
   }, [incrementQuizProgress]);
   
   return (
-    <div>
-      <h1>Quiz</h1>
-      <span>Progreso del quiz: {quiz.percentageQuizCompleted} % </span>
-      <button onClick={handleQuizNext}>Siguiente</button>
+    <div className="quiz-3d-container">
+      <Quiz3D />
     </div>
   );
 };

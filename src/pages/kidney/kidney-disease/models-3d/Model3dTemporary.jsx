@@ -5,46 +5,58 @@ import { useFrame } from "@react-three/fiber";
 const Model3dTemporary = (props) => {
   const ref = useRef();
   const [paused, setPaused] = useState(false);
-  const [direction, setDirection] = useState(-1); // -1: normal, 1: invertido
-  const [showInfo, setShowInfo] = useState(true);
+  const [direction, setDirection] = useState(-1);
+  const [showInfo, setShowInfo] = useState(false);
+  const [zoom, setZoom] = useState(1);
+  const [infoPos, setInfoPos] = useState([0, 2, 0]); // posición dinámica
 
   useFrame((state, delta) => {
     if (ref.current && !paused) ref.current.rotation.y += direction * 0.5 * delta;
+    if (ref.current) ref.current.scale.set(zoom, zoom, zoom);
+
+    // Hace que el cuadro siga el movimiento de rotación del modelo
+    if (showInfo && ref.current) {
+      const angle = ref.current.rotation.y;
+      // El cuadro se mueve suavemente en X y Z según el ángulo de rotación
+      setInfoPos([
+        Math.sin(angle) * 1.2, // X
+        2,
+        Math.cos(angle) * 1.2  // Z
+      ]);
+    }
   });
 
   const { nodes, materials } = useGLTF("/models-3d/test_tube_mutations.glb");
 
+  // Eventos de teclado para zoom + y -, pausar y dirección
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.code === "Space") {
+      if (e.key === "+") {
+        setZoom((prev) => Math.min(prev + 0.1, 3));
+      } else if (e.key === "-") {
+        setZoom((prev) => Math.max(prev - 0.1, 0.3));
+      } else if (e.code === "Space") {
         setPaused((prev) => !prev);
-        setShowInfo(false);
-      }
-      if (e.code === "Enter") {
+      } else if (e.code === "Enter") {
         setDirection((prev) => prev * -1);
-        setShowInfo(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Mostrar instrucciones al hacer click sobre el modelo
-  const handleClick = () => {
-    setShowInfo(true);
-  };
-
   return (
     <group {...props} dispose={null}>
       <group
         ref={ref}
         scale={0.01}
-        onClick={handleClick}
         tabIndex={0}
+        onPointerOver={() => setShowInfo(true)}
+        onPointerOut={() => setShowInfo(false)}
       >
-        {/* Cuadro de instrucciones */}
+        {/* Cuadro de instrucciones sigue el movimiento */}
         {showInfo && (
-          <Html position={[0, 2, 0]} center distanceFactor={20}>
+          <Html position={infoPos} center distanceFactor={20}>
             <div
               style={{
                 background: "rgba(6,86,110,0.85)",
@@ -59,14 +71,12 @@ const Model3dTemporary = (props) => {
               }}
             >
               <b>Interacción con el modelo:</b><br />
-              <ul style={{textAlign: "left", margin: "12px 0 0 0", paddingLeft: 20}}>
-                <li><b>Click</b>: Mostrar instrucciones</li>
+              <ul style={{ textAlign: "left", margin: "12px 0 0 0", paddingLeft: 20 }}>
+                <li><b>Mouse sobre el modelo</b>: Mostrar instrucciones</li>
+                <li><b>Teclas + y -</b>: Acercar o alejar el modelo</li>
                 <li><b>Barra espaciadora</b>: Pausar/continuar rotación</li>
                 <li><b>Enter</b>: Invertir dirección de rotación</li>
               </ul>
-              <div style={{marginTop: 8, fontSize: 15, opacity: 0.8}}>
-                (Este mensaje desaparecerá al interactuar con el teclado)
-              </div>
             </div>
           </Html>
         )}

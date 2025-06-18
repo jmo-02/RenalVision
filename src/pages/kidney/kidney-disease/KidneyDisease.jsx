@@ -127,7 +127,7 @@ const KidneyDisease = () => {
             <pointLight position={[-5, -5, 5]} intensity={0.5} />
             <StagingTreatment />
             <RecipientTreatment />
-            <Model3dTemporary scale={4} />
+            <Model3dTemporary scale={0.05} />
           </Canvas>
         </div>
         <button className="scroll-button2" onClick={() => scrollToSection(3)}>

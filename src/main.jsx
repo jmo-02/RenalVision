@@ -16,6 +16,7 @@ import AboutUs from "./pages/about-us/AboutUs";
 import Glomerulonephritis from "./pages/kidney/glomerulonephritis/Glomerulonephritis";
 import KidneyDisease from "./pages/kidney/kidney-disease/KidneyDisease";
 import WhatIsChronic from "./pages/kidney/kidney-disease/what-is-disease/WhatIsChronic";
+import Ranking from "./pages/quiz/Ranking";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -23,6 +24,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="quiz" element={<Quiz />} />
+        <Route path="ranking" element={<Ranking />} />
         <Route path="login" element={<Login />} />
         <Route path="/perfil" element={<Profile />} />
         <Route path="sobre-nosotros" element={<AboutUs />} />

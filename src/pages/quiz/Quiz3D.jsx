@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Physics, useBox, usePlane } from "@react-three/cannon";
 import { OrbitControls, Html } from "@react-three/drei";
@@ -16,7 +16,7 @@ const questions = [
   },
   {
     question: "¿Qué síntomas corresponden a los Cálculos Renales?",
-    model: "/models-3d/prevention-kidney-stone.glb",
+    model: "/models-3d/symptoms-kidney-stone.glb",
     options: [
       { text: "Dolor agudo lumbar, sangre en orina", correct: true },
       { text: "Fatiga, hinchazón, presión alta", correct: false },
@@ -30,6 +30,15 @@ const questions = [
       { text: "Orina oscura, hinchazón facial, presión alta", correct: true },
       { text: "Dolor lumbar, fiebre", correct: false },
       { text: "Náuseas, vómitos, dolor abdominal", correct: false },
+    ],
+  },
+  {
+    question: "¿Qué síntomas corresponden al Cáncer de Riñón?",
+    model: "/models-3d/kidney-cancer.glb",
+    options: [
+      { text: "Sangre en la orina, dolor lumbar persistente, masa abdominal", correct: true },
+      { text: "Orina espumosa, picazón", correct: false },
+      { text: "Fiebre alta, escalofríos", correct: false },
     ],
   },
 ];
@@ -113,13 +122,21 @@ const Quiz3D = () => {
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState(null);
+  const [lastCorrect, setLastCorrect] = useState(null);
+
+  useEffect(() => {
+    // Limpia lastCorrect cuando cambia la pregunta o termina el quiz
+    setLastCorrect(null);
+  }, [step, showResult]);
 
   const handleSelect = (isCorrect, idx) => {
     setAnswered(true);
     setSelectedIdx(idx);
+    setLastCorrect(isCorrect);
     setTimeout(() => {
       setAnswered(false);
       setSelectedIdx(null);
+      // NO borres setLastCorrect(null) aquí
       if (step < questions.length - 1) {
         setStep(step + 1);
       } else {
@@ -154,6 +171,25 @@ const Quiz3D = () => {
                   onSelect={() => handleSelect(opt.correct, i)}
                 />
               ))}
+              {/* Mensaje de feedback */}
+              {answered && (
+                <Html position={[0, 1.8, 0]} center>
+                  <div
+                    style={{
+                      color: lastCorrect ? "#43a047" : "#e53935",
+                      fontSize: 28,
+                      fontWeight: "bold",
+                      background: "rgba(255,255,255,0.95)",
+                      borderRadius: 12,
+                      padding: "12px 32px",
+                      boxShadow: "0 2px 16px rgba(0,0,0,0.12)",
+                      marginTop: 16,
+                    }}
+                  >
+                    {lastCorrect ? "¡Respuesta correcta!" : "Respuesta incorrecta"}
+                  </div>
+                </Html>
+              )}
             </>
           )}
           {showResult && (

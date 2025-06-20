@@ -6,7 +6,7 @@ const TreatmentKidneyCancer = (props) => {
   const treatmentKidneyCancerRef = useRef();
   const [animate, setAnimate] = useState(true);
   const [reverse, setReverse] = useState(false); // inversión
-  const [showInfo, setShowInfo] = useState(true); // por defecto visible
+  const [showInfo, setShowInfo] = useState(false); // por defecto oculto
 
   // Animación de rotación y movimiento
   useFrame((state) => {
@@ -32,6 +32,9 @@ const TreatmentKidneyCancer = (props) => {
       if (e.key === ' ') {
         setReverse((prev) => !prev);
       }
+      if (e.key === 'Enter') {
+        setAnimate((prev) => !prev);
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -43,8 +46,8 @@ const TreatmentKidneyCancer = (props) => {
     <group {...props} dispose={null}>
       <group
         ref={treatmentKidneyCancerRef}
-        onDoubleClick={() => setAnimate((prev) => !prev)} // clic izquierdo: pausa/reanuda
-        onClick={() => setShowInfo((prev) => !prev)} // doble clic: ocultar/mostrar texto
+         onPointerOver={() => setShowInfo(true)}
+         onPointerOut={() => setShowInfo(false)} // doble clic: ocultar/mostrar texto
       >
         <mesh
           castShadow
@@ -66,9 +69,11 @@ const TreatmentKidneyCancer = (props) => {
                 textAlign: "center",
               }}
             >
-              Clic para ocultar o mostrar este texto.<br />
+             Pasa el cursor sobre el modelo para mostrar
+              este texto.<br />
               <br />
-              Con doble clic pausas la animación o con la tecla Espacio puedes invertirla.
+              Con la tecla enter pausas la animación y 
+              con la tecla Espacio puedes invertirla.
             </div>
           </Html>
         )}

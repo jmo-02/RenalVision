@@ -36,8 +36,8 @@ const SymptomsKidneyCancer = (props) => {
     <group {...props} dispose={null}>
       <group
         ref={symptomsRef}
-        onClick={() => setShowInfo(true)}
-        onDoubleClick={() => setShowInfo(false)}
+         onPointerOver={() => setShowInfo(true)}
+         onPointerOut={() => setShowInfo(false)}
       >
         <mesh
           receiveShadow
@@ -63,9 +63,8 @@ const SymptomsKidneyCancer = (props) => {
                 lineHeight: "1.2",
               }}
             >
-              Clic en el modelo para mostrar
-              este texto y doble click para  
-              ocultarlo.
+              Pasa el cursor sobre el modelo para mostrar
+              este texto.
               <br/> 
               <br/> 
               Con la tecla Enter puedes pausar 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useQuizStore from "../../stores/use-quiz-store";
 import useAuthStore from "../../stores/use-auth-store";
+import Quiz3D from "./Quiz3D";
 import "./Quiz.css";
 import { useNavigate } from "react-router";
 
@@ -44,6 +45,7 @@ const Quiz = () => {
   const [current, setCurrent] = useState(0);
   const [finished, setFinished] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [showQuiz3D, setShowQuiz3D] = useState(false);
   const navigate = useNavigate();
 
   // Limpiar el estado del quiz al montar el componente
@@ -110,6 +112,10 @@ const Quiz = () => {
     }
   };
 
+  if (showQuiz3D) {
+    return <Quiz3D />;
+  }
+
   if (finished) {
     return (
       <div>
@@ -127,6 +133,7 @@ const Quiz = () => {
           Reiniciar
         </button>
         <button onClick={() => navigate("/ranking")}>Ver ranking</button>
+        <button onClick={() => setShowQuiz3D(true)}>Ver Quiz 3D</button>
       </div>
     );
   }
@@ -134,6 +141,7 @@ const Quiz = () => {
   return (
     <div>
       <h1>Quiz</h1>
+      <button onClick={() => setShowQuiz3D(true)}>Ver Quiz 3D</button>
       <span>Progreso del quiz: {quiz.percentageQuizCompleted} % </span>
       <h2>{QUESTIONS[current].question}</h2>
       {QUESTIONS[current].options.map((opt, idx) => (

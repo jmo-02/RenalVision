@@ -3,56 +3,28 @@ import { Canvas } from "@react-three/fiber";
 import { Physics, useBox, usePlane } from "@react-three/cannon";
 import { OrbitControls, Html } from "@react-three/drei";
 import Model3D from "./Model3D";
+import questions from "./Questions";
+import useQuizStore from "../../stores/use-quiz-store";
+import useAuthStore from "../../stores/use-auth-store";
 
-const questions = [
-  {
-    question: "¿Qué síntomas corresponden a la Enfermedad Renal Crónica?",
-    model: "/models-3d/Chr-Kidney-Disease.glb",
-    options: [
-      { text: "Fatiga, hinchazón, presión alta", correct: true },
-      { text: "Dolor agudo lumbar, sangre en orina", correct: false },
-      { text: "Dolor al orinar, fiebre", correct: false },
-    ],
-  },
-  {
-    question: "¿Qué síntomas corresponden a los Cálculos Renales?",
-    model: "/models-3d/symptoms-kidney-stone.glb",
-    options: [
-      { text: "Dolor agudo lumbar, sangre en orina", correct: true },
-      { text: "Fatiga, hinchazón, presión alta", correct: false },
-      { text: "Orina espumosa, picazón", correct: false },
-    ],
-  },
-  {
-    question: "¿Qué síntomas corresponden a la Glomerulonefritis?",
-    model: "/models-3d/symptoms-glomerulonefritis.glb",
-    options: [
-      { text: "Orina oscura, hinchazón facial, presión alta", correct: true },
-      { text: "Dolor lumbar, fiebre", correct: false },
-      { text: "Náuseas, vómitos, dolor abdominal", correct: false },
-    ],
-  },
-  {
-    question: "¿Qué síntomas corresponden al Cáncer de Riñón?",
-    model: "/models-3d/kidney-cancer.glb",
-    options: [
-      { text: "Sangre en la orina, dolor lumbar persistente, masa abdominal", correct: true },
-      { text: "Orina espumosa, picazón", correct: false },
-      { text: "Fiebre alta, escalofríos", correct: false },
-    ],
-  },
-];
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-function AnswerShape({ position, text, onSelect, correct, answered, selected }) {
+function AnswerShape({
+  position,
+  text,
+  onSelect,
+  correct,
+  answered,
+  selected,
+}) {
   const [ref] = useBox(() => ({
     mass: 1,
     position,
-    args: [1.6, 1.6, 1.6], // hitbox más grande
+    args: [1.6, 1.6, 1.6],
   }));
 
   const [hovered, setHovered] = useState(false);
 
-  // Color según estado global
   let color = "#2196f3";
   if (answered) {
     if (selected) color = correct ? "#43a047" : "#e53935";
@@ -66,7 +38,7 @@ function AnswerShape({ position, text, onSelect, correct, answered, selected }) 
     <mesh
       ref={ref}
       onClick={() => {
-        if (!answered) onSelect(correct);
+        if (!answered) onSelect();
       }}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
@@ -75,11 +47,7 @@ function AnswerShape({ position, text, onSelect, correct, answered, selected }) 
       scale={hovered && !answered ? 1.15 : 1}
     >
       <dodecahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial
-        color={color}
-        roughness={0.4}
-        metalness={0.2}
-      />
+      <meshStandardMaterial color={color} roughness={0.4} metalness={0.2} />
       <Html position={[0, 0, 1.2]} center>
         <div
           style={{
@@ -93,7 +61,7 @@ function AnswerShape({ position, text, onSelect, correct, answered, selected }) 
           }}
           onPointerDown={(e) => {
             e.stopPropagation();
-            if (!answered) onSelect(correct);
+            if (!answered) onSelect();
           }}
         >
           {text}
@@ -103,7 +71,6 @@ function AnswerShape({ position, text, onSelect, correct, answered, selected }) 
   );
 }
 
-// Plano invisible para que las cajas no caigan al vacío
 function Ground() {
   usePlane(() => ({
     position: [0, -2, 0],
@@ -117,26 +84,96 @@ function Ground() {
   );
 }
 
-const Quiz3D = () => {
+const Quiz3D = ({ onBack }) => {
+  // Estado local solo para feedback visual
   const [step, setStep] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState(null);
   const [lastCorrect, setLastCorrect] = useState(null);
 
-  useEffect(() => {
-    // Limpia lastCorrect cuando cambia la pregunta o termina el quiz
-    setLastCorrect(null);
-  }, [step, showResult]);
+  // Zustand store
+  const {
+    quiz,
+    incrementQuizProgress,
+    incrementCorrectAnswers,
+    incrementIncorrectAnswers,
+    addPoints,
+    clearQuiz,
+  } = useQuizStore();
 
+  // Auth
+  const { userLooged } = useAuthStore();
+  const [userId, setUserId] = useState(null);
+
+  // Limpiar quiz al montar
+  useEffect(() => {
+    clearQuiz();
+    setStep(0);
+    setShowResult(false);
+  }, []);
+
+  // Obtener userId igual que en Quiz.jsx
+  useEffect(() => {
+    const fetchUserId = async () => {
+      if (!userLooged?.email) return;
+      try {
+        const res = await fetch(
+          `${API_URL}users/email/${encodeURIComponent(userLooged.email)}`
+        );
+        if (!res.ok) throw new Error("No se pudo obtener el usuario");
+        const user = await res.json();
+        setUserId(user._id);
+      } catch (err) {
+        console.error("Error obteniendo userID:", err);
+      }
+    };
+    fetchUserId();
+  }, [userLooged]);
+
+  // Enviar resultados al terminar
+  useEffect(() => {
+    if (showResult && userId) {
+      sendResults();
+    }
+    // eslint-disable-next-line
+  }, [showResult, userId]);
+
+  const sendResults = async () => {
+    try {
+      await fetch(`${API_URL}quizzes/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          points: quiz.points,
+          correctAnswers: quiz.correctAnswers,
+          incorrectAnswers: quiz.incorrectAnswers,
+          userID: userId,
+        }),
+      });
+    } catch (error) {
+      console.error("Error enviando resultados:", error);
+    }
+  };
+
+  // Handler de respuesta
   const handleSelect = (isCorrect, idx) => {
     setAnswered(true);
     setSelectedIdx(idx);
     setLastCorrect(isCorrect);
+
+    // Lógica global
+    if (isCorrect) {
+      incrementCorrectAnswers();
+      addPoints(100);
+    } else {
+      incrementIncorrectAnswers();
+    }
+    incrementQuizProgress();
+
     setTimeout(() => {
       setAnswered(false);
       setSelectedIdx(null);
-      // NO borres setLastCorrect(null) aquí
       if (step < questions.length - 1) {
         setStep(step + 1);
       } else {
@@ -144,6 +181,9 @@ const Quiz3D = () => {
       }
     }, 1200);
   };
+
+  // Barra de progreso
+  const progress = Math.round(((step + 1) / questions.length) * 100);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
@@ -154,12 +194,39 @@ const Quiz3D = () => {
           <Ground />
           {!showResult && (
             <>
+              {/* Progreso */}
+              <Html position={[2.5, 3.8, 0]} center>
+                <div
+                  style={{
+                    color: "#222",
+                    fontSize: 18,
+                    background: "rgba(255,255,255,0.7)",
+                    padding: 8,
+                    borderRadius: 8,
+                  }}
+                >
+                  Pregunta {step + 1} de {questions.length} | Progreso:{" "}
+                  {progress}%
+                </div>
+              </Html>
               <Html position={[0, 3, 0]} center>
-                <div style={{ color: "#222", fontSize: 24, background: "rgba(255,255,255,0.8)", padding: 16, borderRadius: 8 }}>
+                <div
+                  style={{
+                    color: "#222",
+                    fontSize: 24,
+                    background: "rgba(255,255,255,0.8)",
+                    padding: 16,
+                    borderRadius: 8,
+                  }}
+                >
                   {questions[step].question}
                 </div>
               </Html>
-              <Model3D url={questions[step].model} scale={1.2} position={[0, 0.5, -3]} />
+              <Model3D
+                url={questions[step].model}
+                scale={1.2}
+                position={[0, 0.5, -3]}
+              />
               {questions[step].options.map((opt, i) => (
                 <AnswerShape
                   key={i}
@@ -186,7 +253,9 @@ const Quiz3D = () => {
                       marginTop: 16,
                     }}
                   >
-                    {lastCorrect ? "¡Respuesta correcta!" : "Respuesta incorrecta"}
+                    {lastCorrect
+                      ? "¡Respuesta correcta!"
+                      : "Respuesta incorrecta"}
                   </div>
                 </Html>
               )}
@@ -194,8 +263,39 @@ const Quiz3D = () => {
           )}
           {showResult && (
             <Html position={[0, 2, 0]} center>
-              <div style={{ color: "#222", fontSize: 32, background: "rgba(255,255,255,0.9)", padding: 24, borderRadius: 12 }}>
+              <div
+                style={{
+                  color: "#222",
+                  fontSize: 32,
+                  background: "rgba(255,255,255,0.9)",
+                  padding: 24,
+                  borderRadius: 12,
+                }}
+              >
                 ¡Quiz terminado!
+                <br />
+                Correctas: {quiz.correctAnswers}
+                <br />
+                Incorrectas: {quiz.incorrectAnswers}
+                <br />
+                Puntos: {quiz.points}
+                <br />
+                <button
+                  onClick={() => {
+                    clearQuiz();
+                    setStep(0);
+                    setShowResult(false);
+                    setAnswered(false);
+                    setSelectedIdx(null);
+                    setLastCorrect(null);
+                  }}
+                >
+                  Reiniciar
+                </button>
+                <button onClick={() => (window.location.href = "/ranking")}>
+                  Ver ranking
+                </button>
+                {onBack && <button onClick={onBack}>Volver</button>}
               </div>
             </Html>
           )}

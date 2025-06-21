@@ -23,7 +23,7 @@ function AnswerShape({
     args: [1.6, 1.6, 1.6],
   }));
 
-  const [hovered, setHovered] = useState(false);
+	const [hovered, setHovered] = useState(false);
 
   let color = "#2196f3";
   if (answered) {
@@ -72,16 +72,20 @@ function AnswerShape({
 }
 
 function Ground() {
-  usePlane(() => ({
-    position: [0, -2, 0],
-    rotation: [-Math.PI / 2, 0, 0],
-  }));
-  return (
-    <mesh receiveShadow position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeGeometry args={[20, 20]} />
-      <meshStandardMaterial color="#e0f7fa" transparent opacity={0.2} />
-    </mesh>
-  );
+	usePlane(() => ({
+		position: [0, -2, 0],
+		rotation: [-Math.PI / 2, 0, 0],
+	}));
+	return (
+		<mesh
+			receiveShadow
+			position={[0, -2, 0]}
+			rotation={[-Math.PI / 2, 0, 0]}
+		>
+			<planeGeometry args={[20, 20]} />
+			<meshStandardMaterial color="#e0f7fa" transparent opacity={0.2} />
+		</mesh>
+	);
 }
 
 const Quiz3D = ({ onBack }) => {

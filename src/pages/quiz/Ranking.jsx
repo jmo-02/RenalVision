@@ -9,7 +9,7 @@ const Ranking = () => {
     const fetchRanking = async () => {
       const res = await fetch(`${API_URL}quizzes/ranking`);
       const data = await res.json();
-      console.log("Ranking data:", data);
+      console.log("Ranking data:", data); 
       setRanking(data);
     };
     fetchRanking();
@@ -21,7 +21,7 @@ const Ranking = () => {
       <ol>
         {ranking.map((user, idx) => (
           <li key={user.userID}>
-            {user.displayName} ({user.email}) - {user.totalPoints} puntos
+            {user.displayName} - {user.totalPoints} puntos
           </li>
         ))}
       </ol>

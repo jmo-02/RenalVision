@@ -1,6 +1,8 @@
 .profile-container {
   max-width: 900px;
   margin: 60px auto;
+  margin-top: 100px;
+  margin-bottom: 150px; /* Espacio antes del footer */
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(49, 138, 172, 0.10);

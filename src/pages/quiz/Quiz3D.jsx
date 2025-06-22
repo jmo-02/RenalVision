@@ -206,32 +206,35 @@ const Quiz3D = ({ onBack }) => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Canvas shadows camera={{ position: [0, 2, 18], fov: 50 }}>
-        <ambientLight intensity={1.2} /> {/* Más luz ambiental */}
-        <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+        <ambientLight intensity={2.2} /> {/* Aumenta la luz ambiental (antes 1.2) */}
+        <directionalLight position={[10, 10, 5]} intensity={2.2} castShadow /> {/* Aumenta la luz direccional (antes 1.2) */}
         {/* Luz extra para aclarar el modelo */}
-        <pointLight position={[0, 3, 4]} intensity={2.2} color="#ffffff" />
-        <pointLight position={[-4, 6, 6]} intensity={1.5} color="#ffffff" />
+        <pointLight position={[0, 3, 4]} intensity={3.5} color="#ffffff" /> {/* Aumenta la intensidad (antes 2.2) */}
+        <pointLight position={[-4, 6, 6]} intensity={2.5} color="#ffffff" /> {/* Aumenta la intensidad (antes 1.5) */}
         {/* Fondo */}
         <color attach="background" args={["#e0f7fa"]} />
         {/* UI con Html */}
         <Html position={[0, 6, 0]} center transform>
-          <div
-            style={{
-              color: "#222",
-              fontSize: 18,
-              background: "rgba(255,255,255,0.7)",
-              padding: 8,
-              borderRadius: 8,
-              pointerEvents: "none",
-            }}
-          >
-            Pregunta {step + 1} de {questions.length} | Progreso: {progress}%
-          </div>
+          {/* Solo muestra el progreso si no se está mostrando el resultado */}
+          {!showResult && (
+            <div
+              style={{
+                color: "#222",
+                fontSize: 18,
+                background: "rgba(255,255,255,0.7)",
+                padding: 8,
+                borderRadius: 8,
+                pointerEvents: "none",
+              }}
+            >
+              Pregunta {step + 1} de {questions.length} | Progreso: {progress}%
+            </div>
+          )}
         </Html>
         {!showResult && (
           <>
-            {/* Pregunta */}
-            <Html position={[0, 4, 0]} center transform>
+            {/* Pregunta en cuadro de texto */}
+            <Html position={[0, 3.8, 0]} center transform>
               <div
                 style={{
                   color: "#222",
@@ -247,9 +250,30 @@ const Quiz3D = ({ onBack }) => {
                 {questions[step].question}
               </div>
             </Html>
-            {/* Modelo debajo */}
-            <group position={[0, 1.2, 0]}>
-              <Model3D url={questions[step].model} scale={2.2} position={[0, 0, 0]} />
+            {/* Modelo 3D a la derecha del texto, fuera del cuadro */}
+            <group position={[
+              questions[step].model === "/models-3d/kidney-cancer.glb"
+                ? 9
+                : questions[step].model === "/models-3d/symptoms-kidney-stone.glb"
+                  ? 9.5
+                  : 8,
+              questions[step].model === "/models-3d/symptoms-kidney-stone.glb"
+                ? 0.5 // antes 1.2, ahora más abajo
+                : questions[step].model === "/models-3d/glomerulonephritis/symptoms-glomerulonefritis.glb"
+                  ? 0.5 // antes 1.2, ahora más abajo
+                  : questions[step].model === "/models-3d/kidney-cancer.glb"
+                    ? 3.2
+                    : 4.7,
+              0
+            ]}>
+              <Model3D url={questions[step].model} scale={4} position={[0, 0, 0]} />
+              {/* Luz extra para modelos específicos */}
+              {questions[step].model === "/models-3d/kidney-cancer.glb" && (
+                <pointLight position={[0, 3, 4]} intensity={6} color="#fffbe6" />
+              )}
+              {questions[step].model === "/models-3d/Chr-Kidney-Disease.glb" && (
+                <pointLight position={[0, 3, 4]} intensity={6} color="#fff" />
+              )}
             </group>
             {/* Botones Falso/Verdadero */}
             <AnimatedButtons

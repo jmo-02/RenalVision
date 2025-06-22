@@ -1,18 +1,24 @@
-import { useCallback } from "react";
-import useQuizStore from "../../stores/use-quiz-store";
+import { useState } from "react";
 import Quiz3D from "./Quiz3D";
-import "./Quiz.css";
+import { useNavigate } from "react-router";
 
 const Quiz = () => {
-  const { quiz, incrementQuizProgress } = useQuizStore();
+  const [showQuiz3D, setShowQuiz3D] = useState(false);
+  const navigate = useNavigate();
 
-  const handleQuizNext = useCallback(() => {
-    incrementQuizProgress();
-  }, [incrementQuizProgress]);
-  
+  if (showQuiz3D) return <Quiz3D onBack={() => setShowQuiz3D(false)} />;
+
   return (
-    <div className="quiz-3d-container">
-      <Quiz3D />
+    <div>
+      <button onClick={() => setShowQuiz3D(true)}>
+        Iniciar Quiz 3D
+      </button>
+      <button onClick={() => navigate("/ranking")}>
+        Ver ranking
+      </button>
+      <button onClick={() => navigate("/")}>
+        Volver al inicio
+      </button>
     </div>
   );
 };

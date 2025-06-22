@@ -239,23 +239,47 @@ const Quiz3D = ({ onBack }) => {
         </Html>
         {!showResult && (
           <>
-            {/* Pregunta en cuadro de texto */}
-            <Html position={[0, 3.8, 0]} center transform>
-              <div
-                style={{
-                  color: "#222",
-                  fontSize: 24,
-                  background: "rgba(255,255,255,0.8)",
-                  padding: 16,
-                  borderRadius: 8,
-                  pointerEvents: "none",
-                  maxWidth: 400,
-                  textAlign: "center",
-                }}
-              >
-                {questions[step].question}
-              </div>
-            </Html>
+            {/* Pregunta y texto de bonus alineados horizontalmente */}
+            <group>
+              {/* Texto de bonus por rapidez a la izquierda */}
+              <Html position={[-11, 1, 0]} center transform>
+                <div
+                  style={{
+                    color: "#1976d2",
+                    fontSize: 18,
+                    fontWeight: 600,
+                    background: "none",
+                    padding: 0,
+                    borderRadius: 0,
+                    pointerEvents: "none",
+                    boxShadow: "none",
+                    textAlign: "right",
+                    minWidth: 180,
+                  }}
+                >
+                  ¡Responde en menos de 7 segundos
+                  <br />
+                  y obtén 50 puntos extra!
+                </div>
+              </Html>
+              {/* Pregunta en cuadro de texto */}
+              <Html position={[0, 3.8, 0]} center transform>
+                <div
+                  style={{
+                    color: "#222",
+                    fontSize: 24,
+                    background: "rgba(255,255,255,0.8)",
+                    padding: 16,
+                    borderRadius: 8,
+                    pointerEvents: "none",
+                    maxWidth: 400,
+                    textAlign: "center",
+                  }}
+                >
+                  {questions[step].question}
+                </div>
+              </Html>
+            </group>
             {/* Modelo 3D a la derecha del texto, fuera del cuadro */}
             <group position={[
               questions[step].model === "/models-3d/kidney-cancer.glb"
@@ -319,6 +343,7 @@ const Quiz3D = ({ onBack }) => {
                 background: "rgba(255,255,255,0.9)",
                 padding: 24,
                 borderRadius: 12,
+                textAlign: "center", // <-- centrado
               }}
             >
               ¡Quiz terminado!
@@ -329,18 +354,58 @@ const Quiz3D = ({ onBack }) => {
               <br />
               Puntos: {quiz.points}
               <br />
-              <button
-                onClick={() => {
-                  clearQuiz();
-                  navigate("/quiz"); // Redirige al inicio de la sección quiz
-                }}
-              >
-                Reiniciar
-              </button>
-              <button onClick={() => (window.location.href = "/ranking")}>
-                Ver ranking
-              </button>
-              {onBack && <button onClick={onBack}>Volver</button>}
+              <div style={{ display: "flex", gap: 16, marginTop: 24, justifyContent: "center" }}>
+                <button
+                  style={{
+                    borderRadius: 10,
+                    padding: "12px 24px",
+                    fontSize: 18,
+                    border: "none",
+                    background: "#2196f3",
+                    color: "white",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    clearQuiz();
+                    navigate("/quiz"); // Redirige al inicio de la sección quiz
+                  }}
+                >
+                  Reiniciar
+                </button>
+                <button
+                  style={{
+                    borderRadius: 10,
+                    padding: "12px 24px",
+                    fontSize: 18,
+                    border: "none",
+                    background: "#43a047",
+                    color: "white",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => (window.location.href = "/ranking")}
+                >
+                  Ver ranking
+                </button>
+                {onBack && (
+                  <button
+                    style={{
+                      borderRadius: 10,
+                      padding: "12px 24px",
+                      fontSize: 18,
+                      border: "none",
+                      background: "#757575",
+                      color: "white",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                    }}
+                    onClick={onBack}
+                  >
+                    Volver
+                  </button>
+                )}
+              </div>
             </div>
           </Html>
         )}

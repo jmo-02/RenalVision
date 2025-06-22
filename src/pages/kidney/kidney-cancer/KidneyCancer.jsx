@@ -22,7 +22,7 @@ import StaggingPrevention from "./stagging/StaggingPrevention";
 import Title3D from "./textss/Title3D";
 import PreventionKidneyCancer from "./models-3D/PreventionKidneyCancer";
 import RecipientPrevention from "./models-3D/RecipientPrevention";
-// import Title1 from "./textss/Title1";
+import ButtonAudio from "./textss/ButtonAudio";
 
 const KidneyCancer = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
@@ -57,6 +57,7 @@ const KidneyCancer = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsModel />
+            <ButtonAudio />
             <KidneyWithCancer scale={6.7} />
             <Title2 title={"RIÑÓN ENFERMO"} />
           </Canvas>

@@ -194,13 +194,13 @@ const KidneyStones = () => {
             <RecipientPrevention />
           </Canvas>
         </div>
-        <button className="scroll-button2" onClick={() => scrollToSection(4)}>
+        {/* <button className="scroll-button2" onClick={() => scrollToSection(4)}>
           <ChevronDown size={40} />
-        </button>
+        </button> */}
       </section>
 
       {/* Sección 5 */}
-      <section ref={sectionRefs[4]} className="section5">
+      {/* <section ref={sectionRefs[4]} className="section5">
         <button
           className="scroll-button-up2"
           onClick={() => scrollToSection(3)}
@@ -211,9 +211,9 @@ const KidneyStones = () => {
           <Canvas>
             <TitleSymptoms title={" VIDEO INFORMATIVO  "} position={[0, -2, 2]} />
 
-          </Canvas>
+          </Canvas> */}
           {/* <h3>PREVENCIÓN Y TRATAMIENTO</h3> */}
-          <p className="p4">
+          {/* <p className="p4">
               En esta sección se presenta un video sobre los 
               cálculos renales.El contenido muestra visualmente cómo se forman y afectan 
               al sistema urinario. Este recurso busca complementar la información general sobre el tema.
@@ -231,7 +231,7 @@ const KidneyStones = () => {
             <VideoKidneyStones/>
           </Canvas>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

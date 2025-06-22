@@ -124,17 +124,21 @@ const Home = () => {
   return (
     <>
       <section className="home" ref={inicioSectionRef}>
-        <div className="content" style={{ marginLeft: '340px' }}>
+        <div className="home-content">
           <div className="logo2 fade-in">
             <span className="logo-text">
               <FontAwesomeIcon icon={faStaffSnake} className="imagen1" />
               ¡Bienvenido a RenalVision!
             </span>
-          </div >
-          <p className="fade-in" style={{ marginLeft: '40px' }}>Adentrate a descubrir más sobre tus riñones</p>
-          {/* Botón flecha con texto dentro */}
+          </div>
+          <p className="fade-in home-intro-text">
+            RenalVision es una plataforma interactiva para aprender sobre la salud renal. Aquí encontrarás información clara, modelos 3D, recursos multimedia y consejos prácticos para cuidar tus riñones y entender su importancia.
+          </p>
+          <p className="fade-in home-bienvenida-texto">
+            Adentrate a descubrir más sobre tus riñones
+          </p>
           <div onClick={handleDescubreClick} className="flecha-abajo fade-in">
-            <span className="flecha-abajo-texto">Descúbrelo ahora</span>
+            <span className="flecha-abajo-texto">Descúbrelo</span>
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
               <circle cx="24" cy="24" r="24" className="flecha-abajo-circulo" />
               <path d="M24 16V32" stroke="white" strokeWidth="3" strokeLinecap="round"/>
@@ -143,11 +147,10 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Model 3D for the right */}
-        <div className="model-3d-home" style={{ marginLeft: '200px' }}>
+        <div className="home-model-3d">
           <Canvas
             camera={{ position: [0, 0, 25], fov: 45 }}
-            style={{ width: '350px', height: '350px', background: 'transparent' }}
+            style={{ width: '100%', height: '100%', background: 'transparent' }}
             shadows
           >
             <ambientLight intensity={2} />
@@ -156,13 +159,12 @@ const Home = () => {
               position={[5, 10, 10]}
               intensity={40}
               color="rgb(255, 255, 255)"
-              target-position={[0, -2, 0]} // apunta directamente al modelo
+              target-position={[0, -2, 0]}
               castShadow
             />
             <pointLight position={[0, 10, 10]} intensity={3.5} color="#fff" />
             <pointLight position={[-10, 10, 10]} intensity={2.5} color="#fff" />
-            {/* Mueve el modelo 3D un poquito más hacia abajo */}
-            <HealthyKidneyGLB scale={640} position={[5, -3, 0]} />
+            <HealthyKidneyGLB scale={640} position={[5, 0, 0]} />
             <OrbitControls />
           </Canvas>
         </div>
@@ -181,11 +183,11 @@ const Home = () => {
           </p>
         </div>
         <div
-          className="model-3d-home"
+          className="model-3d-descubre"
           style={{
-            width: '700px',
-            height: '800px',
-            marginTop: '60px'
+            width: '400px',
+            height: '400px',
+            marginTop: '40px'
           }}
         >
           <Canvas

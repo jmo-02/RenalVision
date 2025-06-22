@@ -131,7 +131,7 @@ html,body{
     justify-content: center;
     gap: 1.5rem;
     position: relative;
-    background: var(--verde);
+background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
     /* box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); */
 }
 

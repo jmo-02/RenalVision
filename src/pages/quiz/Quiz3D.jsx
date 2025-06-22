@@ -86,16 +86,20 @@ const Quiz3D = ({ onBack }) => {
     }
   };
 
-  // NUEVO: Handler para Falso/Verdadero
+  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
+
+  // Reinicia el tiempo al cambiar de pregunta
+  useEffect(() => {
+    setQuestionStartTime(Date.now());
+  }, [step]);
+
+  // NUEVO: Handler para Falso/Verdadero con bonus por rapidez
   const handleAnswer = (value) => {
-    // Busca la opción correcta en la pregunta actual
     const correctOption = questions[step].options.find(opt => opt.correct);
-    // Si el texto de la opción correcta es "Verdadero", entonces value debe ser true, etc.
-    // Pero para esto, las preguntas deben estar adaptadas a F/V (ver abajo)
-    // Aquí asumimos que la opción correcta es "Verdadero" si su texto es "Verdadero"
-    // Mejor: la pregunta debe tener un campo "answer: true/false"
-    // Pero para compatibilidad, usamos el primer "correct"
-    answerQuestion(value === correctOption.correct ? 0 : 1, questions, 100);
+    const elapsed = (Date.now() - questionStartTime) / 1000;
+    let bonus = 0;
+    if (elapsed <= 7) bonus = 50;
+    answerQuestion(value === correctOption.correct ? 0 : 1, questions, 100 + bonus);
   };
 
   // Barra de progreso

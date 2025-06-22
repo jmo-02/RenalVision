@@ -5,7 +5,7 @@ import useStudentStore from "../../../../stores/use-symptomsmodel-store";
 
 const SymptomsModel = ({onModelClick, ...props}) => {
   const groupRef = useRef();
-  const { nodes, materials, animations } = useGLTF("/models-3d/symptoms-glomerulonefritis.glb");
+  const { nodes, materials, animations } = useGLTF("/models-3d/glomerulonephritis/symptoms-glomerulonefritis.glb");
   const { actions } = useAnimations(animations, groupRef);
   const { currentAnimation } = useStudentStore();
 
@@ -141,6 +141,6 @@ const SymptomsModel = ({onModelClick, ...props}) => {
   );
 };
 
-useGLTF.preload("/models-3d/symptoms-glomerulonefritis.glb");
+useGLTF.preload("/models-3d/glomerulonephritis/symptoms-glomerulonefritis.glb");
 
 export default SymptomsModel;

@@ -5,7 +5,7 @@ import { OrbitControls} from '@react-three/drei';
 
 const TreatmentModel = (props) => {
   const groupRef = useRef();
-  const { nodes, materials } = useGLTF('/models-3d/treatment-bottle-glomerulonefritis.glb');
+  const { nodes, materials } = useGLTF('/models-3d/glomerulonephritis/treatment-bottle-glomerulonefritis.glb');
 
   useFrame(() => {
     if (groupRef.current) {
@@ -52,6 +52,6 @@ const TreatmentModel = (props) => {
   );
 };
 
-useGLTF.preload('/models-3d/treatment-bottle-glomerulonefritis.glb');
+useGLTF.preload('/models-3d/glomerulonephritis/treatment-bottle-glomerulonefritis.glb');
 
 export default TreatmentModel;

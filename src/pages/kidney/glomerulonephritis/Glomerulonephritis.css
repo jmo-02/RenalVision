@@ -20,12 +20,11 @@
   padding: 60px 2% 80px 2%;
   position: relative;
 }
-
+/*sesion 1*/
 .gl-section-1 {
   align-items: flex-start;
   padding-top: 2px;
-  background: linear-gradient(180deg, #0DBBB5 20%, var(--verde) 70%);
-  
+  background: linear-gradient(180deg, #0DBBB5 20%, var(--verde) 70%); 
 }
 .gl-section-1 .title-w {
   color: #f3f3f3;
@@ -96,7 +95,7 @@
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  box-shadow: 0 14px 44px 0 rgba(0,0,0,0.08);
   padding: 10px 40px 0 40px !important; 
 }
 
@@ -121,6 +120,7 @@
   padding: 10px 40px 0 40px !important;
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
 }
+
 /*sesion 3 texto 2d*/
 .gl-info-treatment {
   margin-top: 1rem;
@@ -132,23 +132,23 @@
   font-size: 1.5rem;
   text-align: center;
 }
+
 /* Sección 4 estilo */
 .gl-section-4 {
   background-color: #f5f5f5;
   color: #ffffff;
   background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
 }
-.gl-button-card {
+.gl-p1-prevention {
+  color: #ffffff;
+  font-size: 3.0rem;
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
-  padding: 10px 40px !important;
-  margin-left: 100px;
+  padding: 10px 40px 0 40px !important;
+  margin-right: 20px;
 }
-
-
-
 
 /* Contenido compartido */
 .gl-content {
@@ -205,14 +205,23 @@
   z-index: 10;
  
 }
-
-
-
-/* Modelo 3D sesion 1 */
-.gl-model-3d {
+/*modelo 3d sesion 1*/
+.gl-model-3d{
   margin-bottom: 10px;
   flex: 0 0 auto;
-  height: 300px;
+  height: 400px;
+  width: 400px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+/* modelo 3d sesion 3*/
+.gl-model-3d-sesion3 {
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+  height: 400px;
   width: 400px ;
   display: flex;
   flex-direction: column;
@@ -221,6 +230,9 @@
   position: relative;
 }
 
+.gl-model-3d-sesion3 canvas {
+  border-radius: 10px;
+}
 .gl-label-model {
   text-align: center;
   font-weight: bold;
@@ -263,8 +275,22 @@
   min-width: 300px;
 }
 
-
-
+/*modelo 3d sesion 4*/
+.gl-model-3d-sesion4 {
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+  height: 400px;
+  width: 400px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.gl-model-3d-sesion4 canvas {
+  border-radius: 10px;
+  margin-top: 60px;
+}
 
 /* Botones scroll */
 .gl-scroll-button1,

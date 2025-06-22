@@ -1,0 +1,56 @@
+.gl-section-1 {
+  align-items: flex-start;
+  padding-top: 2px;
+  background: linear-gradient(180deg, #0DBBB5 20%, var(--verde) 70%);
+}
+
+.gl-section-1 .title-w {
+  color: #f3f3f3;
+  font-size: 3.5rem;
+}
+
+.gl-layout {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14rem;
+  width: 100%;
+  max-width: 1600px;
+  padding: 80px 0 100px 0;
+}
+
+.gl-p1-glomerulo {
+  color: #ffffff;
+  font-size: 3.0rem;
+  background: rgba(6, 86, 110, 0.12);
+  border-radius: 22px;
+  border: 2.5px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px 0 40px !important;
+}
+
+.gl-top-title {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  left: 22%;
+  width: 60%;
+  text-align: center;
+  z-index: 10;
+}
+
+.gl-model-3d {
+  height: 300px; /* Ejemplo, si es específico de S1 */
+  width: 400px; /* Ejemplo, si es específico de S1 */
+}
+
+.gl-label-model {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 100px;
+  color: #ffffff;
+}

@@ -10,17 +10,18 @@ const Model3dTemporary = (props) => {
   const [zoom, setZoom] = useState(1);
   const [infoPos, setInfoPos] = useState([0, 2, 0]); // posición dinámica
 
+  // Animación y posición del cuadro de texto
   useFrame((state, delta) => {
     if (ref.current && !paused) ref.current.rotation.y += direction * 0.5 * delta;
     if (ref.current) ref.current.scale.set(zoom, zoom, zoom);
 
-    // Hace que el cuadro siga el movimiento de rotación del modelo
+    // El cuadro de texto sigue la animación de rotación y flotación del modelo
     if (showInfo && ref.current) {
       const angle = ref.current.rotation.y;
-      // El cuadro se mueve suavemente en X y Z según el ángulo de rotación
+      const floatY = 2 + Math.sin(state.clock.getElapsedTime()) * 0.08; // Flotación suave
       setInfoPos([
         Math.sin(angle) * 1.2, // X
-        2,
+        floatY,                // Y (flotando)
         Math.cos(angle) * 1.2  // Z
       ]);
     }
@@ -49,29 +50,30 @@ const Model3dTemporary = (props) => {
     <group {...props} dispose={null}>
       <group
         ref={ref}
-        scale={0.01}
+        scale={0.0065} // Más pequeño
+        position={[0, -0.2, 0]} // Un poco más abajo
         tabIndex={0}
         onPointerOver={() => setShowInfo(true)}
         onPointerOut={() => setShowInfo(false)}
       >
-        {/* Cuadro de instrucciones sigue el movimiento */}
+        {/* Cuadro de instrucciones sigue el movimiento y flotación */}
         {showInfo && (
           <Html position={infoPos} center distanceFactor={20}>
             <div
               style={{
                 background: "rgba(6,86,110,0.85)",
                 color: "white",
-                padding: "16px 32px",
-                borderRadius: "24px",
-                fontSize: "20px",
+                padding: "10px 18px",
+                borderRadius: "18px",
+                fontSize: "15px",
                 textAlign: "center",
                 boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
-                maxWidth: "350px",
-                lineHeight: "1.4",
+                maxWidth: "220px",
+                lineHeight: "1.3",
               }}
             >
               <b>Interacción con el modelo:</b><br />
-              <ul style={{ textAlign: "left", margin: "12px 0 0 0", paddingLeft: 20 }}>
+              <ul style={{ textAlign: "left", margin: "10px 0 0 0", paddingLeft: 18 }}>
                 <li><b>Mouse sobre el modelo</b>: Mostrar instrucciones</li>
                 <li><b>Teclas + y -</b>: Acercar o alejar el modelo</li>
                 <li><b>Barra espaciadora</b>: Pausar/continuar rotación</li>

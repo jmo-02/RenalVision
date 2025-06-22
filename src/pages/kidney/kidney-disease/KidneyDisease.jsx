@@ -58,6 +58,7 @@ const KidneyDisease = () => {
             <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
             <pointLight position={[-5, -5, 5]} intensity={0.8} />
             <ChronicDisease scale={7} />
+            <Title2 title={"RIÑON AFECTADO"} /> {/* <-- Añadido aquí */}
           </Canvas>
         </div>
         <div className="button1">

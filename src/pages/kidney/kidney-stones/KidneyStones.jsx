@@ -63,7 +63,7 @@ const KidneyStones = () => {
             <Lights />
             <Button />
             <KidneyWithStones scale={7} />
-            <Title2 title={"RIÑON AFECTADO"} />
+            <Title2 title={"RIÑON AFECTADO"} position={[0, 5, 0]} />
             <Recipient />
           </Canvas>
         </div>

@@ -1,50 +1,57 @@
-footer{
-    background-color:#06566e/* rgba(255, 255, 255, 0.2)*/;
+footer {
+    background-color: #06566e;
     display: flex;
+    flex-direction: column; /* Para que el contenido se apile verticalmente */
     justify-content: center;
     align-items: center;
-    
-    padding: 15px 0;
-    height: 25px;
-    backdrop-filter: blur(1px); /* para un fondo desenfocado*/
-    box-shadow: 0px -10px 30px rgba(145, 116, 116, 0.5); /* Sombra Negra hacia arriba con gran difuminado */
+    padding: 30px 0 15px 0; /* Más espacio arriba */
+    /* height: 25px;  <-- Elimina esta línea */
+    min-height: 90px; /* Opcional: asegura un mínimo */
+    backdrop-filter: blur(1px);
+    box-shadow: 0px -10px 30px rgba(145, 116, 116, 0.5);
 }
 
-.copyright-text{
-    color:#8fc5c5;
-    font-size: 20px;
-    
-    
+.copyright-text {
+    color: white;
+    padding-left: 30px;
+    padding-top: 10px;
+    font-size: 2rem; /* Igual que el header */
 }
 
-.footer-link{
-    color:#ffff/*(55, 152, 255,0.9)*/;
-    font-size: 25px;
+.footer-link {
+    color: #fff;
+    font-size: 2rem; /* Igual que el header */
     text-decoration: none; /* Elimina subrayado */
     margin-top: 10px; /* Agrega espacio entre los enlaces y el borde superior */
     display: inline-block;
 }
 
-
 .footer-link:hover {
     color: #04a9d9; /* Color más claro al pasar el mouse */
 }
 
-.ulinks{
+.ulinks {
     display: flex;
     justify-content: center; /* Centra los elementos horizontalmente */
     gap: 50px; /* Espaciado entre los elementos */
     list-style: none;
-    padding:0;
+    padding: 0;
     margin-top: 25px;
 }
 
-.ulinks li{
+.ulinks>li {
     display: inline-block;
+    position: relative;
 }
-.copyright-text {
-    color: white;
-    padding-left: 30px;
-    padding-top: 10px;
-    font-size: 20px;
+
+.footer-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    background: none;
+}
+
+.footer-submenu li {
+    display: block;
+    margin: 0;
 }

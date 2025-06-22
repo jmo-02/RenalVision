@@ -1,12 +1,12 @@
-/* Button.css */
+/* ButtonAudio.css */
 
-.btn-music{
-  Display: Flex;
-  Flex-direction: row;
-  Align-items: center;
+.btn-music-audio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.btn {
+.btn-audio {
   width: 90px;
   height: 60px;
   display: flex;
@@ -16,24 +16,25 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
-  margin-top: -170px;
-  margin-left: 160px;
+  margin-top: -270px; /* Si quieres bajarlo un poco */
+  margin-left: 130px; /* Espacio entre el texto y el botón */
 }
 
 /* Estado cuando NO está reproduciendo */
-.btn.play {
+.btn-audio.play {
   background-color: #2ad14d;
   color: white;
 }
 
 /* Estado cuando está reproduciendo */
-.btn.stop {
+.btn-audio.stop {
   background-color: #dc3545;
   color: white;
 }
 
 /* Hover (opcional) */
-.btn:hover {
+.btn-audio:hover {
   opacity: 0.9;
   transform: scale(1.05);
 }
+

@@ -48,10 +48,10 @@ const ButtonAudio = ({ position = [2.5, 4.4, 0] }) => {
   return (
     <group position={position}>
       <Html center transform distanceFactor={5} wrapperClass="music">
-        <div className="btn-music">
+        <div className="btn-music-audio">
           <button
             onClick={handleClick}
-            className={`btn ${isPlaying ? "stop" : "play"}`}
+            className={`btn-audio ${isPlaying ? "stop" : "play"}`}
           >
             {isPlaying ? <FaStop /> : <FaPlay />}
           </button>

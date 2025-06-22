@@ -44,25 +44,29 @@ const Profile = () => {
   if (!userLooged) return <Navigate to="/login" />;
 
   return (
-    <div className="profile-container">
-      <div className="profile-title">¡BIENVENIDO A TU PERFIL DE USUARIO!</div>
-      <div className="profile-info">
-        <div className="profile-row">
-          <span className="profile-label">Nombre:</span>
-          <span className="profile-value">{userLooged?.displayName}</span>
-        </div>
-        <div className="profile-row">
-          <span className="profile-label">Correo:</span>
-          <span className="profile-value">{userLooged?.email}</span>
+    <div className="login-container">
+      <div className="profile-bg">
+        <div className="profile-container">
+          <div className="profile-title">¡BIENVENIDO A TU PERFIL DE USUARIO!</div>
+          <div className="profile-info">
+            <div className="profile-row">
+              <span className="profile-label">Nombre:</span>
+              <span className="profile-value">{userLooged?.displayName}</span>
+            </div>
+            <div className="profile-row">
+              <span className="profile-label">Correo:</span>
+              <span className="profile-value">{userLooged?.email}</span>
+            </div>
+          </div>
+          <button
+            className="profile-logout-btn"
+            onClick={handleLogout}
+            title="Cerrar sesión"
+          >
+            Cerrar sesión
+          </button>
         </div>
       </div>
-      <button
-        className="profile-logout-btn"
-        onClick={handleLogout}
-        title="Cerrar sesión"
-      >
-        Cerrar sesión
-      </button>
     </div>
   );
 };

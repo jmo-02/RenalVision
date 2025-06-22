@@ -3,7 +3,7 @@ import Section1 from './sections/Section-one';
 import Section2 from './sections/Section-Two';
 import Section3 from './sections/Section-Three';
 import Section4 from './sections/Section-Four';
-import './Glomerulonephritis.css'; // Mantén tus estilos generales aquí
+import './Glomerulonephritis.css'; 
 
 const Glomerulonephritis = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];

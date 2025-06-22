@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import StagingTreatment from "../../kidney-stones/staging/StagingTreatment";
 import TreatmentModel from '../models-3d/Treatment-Glomerulonefritis';
 import TreatmentTitle3D from '../components-html-3d/TitleTreatment';
+import Title2dPrevention from '../components-html-3d/Title-treatment2d';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const Section3 = React.forwardRef(({ scrollToSection }, ref) => {
@@ -50,12 +51,13 @@ const Section3 = React.forwardRef(({ scrollToSection }, ref) => {
           </ul>
         </div>
         <div className="gl-model-3d-sesion3">
-          <Canvas shadows camera={{ position: [4, 2, -11], fov: 40 }}>
+          <Canvas shadows camera={{ position: [4, 2, 12], fov: 40 }}>
             <StagingTreatment />
             <TreatmentModel onClick={() => {
               setShowTreatmentInfo(true)
               setShowTreatmentHint(false);
             }} />
+            <Title2dPrevention />
           </Canvas>
           {showTreatmentHint && (
             <div className="gl-modal-overlay">

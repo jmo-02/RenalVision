@@ -26,7 +26,7 @@ const Section1 = React.forwardRef(({ scrollToSection }, ref) => {
           </p>
         </div>
         <div className="gl-model-3d">
-          <Canvas shadows camera={{ position: [4, 2, -11], fov: 80 }}>
+          <Canvas shadows camera={{ position: [4, 2, 17], fov: 60 }}>
             <GlomeruloModel />
             <TitleGlomerulo />
           </Canvas>

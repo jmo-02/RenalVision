@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import PreventionModel from '../models-3d/Prevention-Glomerulonefritis';
 import PreventionTitle3D from '../components-html-3d/TitlePrevention';
 import StagingSymptoms from '../../kidney-stones/staging/StagingSymptoms';
+import Titles3dPrevention from '../components-html-3d/Title3d-Prevention';
 import { ChevronUp } from 'lucide-react';
 import './Section-Four.css';
 
@@ -34,24 +35,21 @@ const Section4 = React.forwardRef(({ scrollToSection }, ref) => {
         <div className="gl-content gl-full-width">
           <div className='gl-title-prevention'>
             <Canvas>
-              <PreventionTitle3D title={"PREVENCIONES DE LA GLOMERULONEFRITIS"} />
+              <PreventionTitle3D  titleprevention={"PREVENCIONES DE LA GLOMERULONEFRITIS"}/>
             </Canvas>
           </div>
           <p className='gl-p1-prevention'>La glomerulonefritis no siempre se puede prevenir, pero hay medidas que ayudan a reducir su aparición o complicaciones.</p>
           
         </div>
         <div className="gl-model-3d-sesion4">
-          <Canvas shadows camera={{ position: [4, 2, -11], fov: 40 }}>
+          <Canvas shadows camera={{ position: [4, 2, 12], fov: 30 }}>
             <StagingSymptoms />
+            <Titles3dPrevention />
             {!showPreventionModal && (
               <PreventionModel
-                onClick={() => {
-                  setShowPreventionModal(true)
-                }}
-                // Pasa el estado de pausa al modelo
+                onClick={() => {setShowPreventionModal(true)}}
                 isPaused={isAnimationPaused}
-              />
-            )}
+              />)}
           </Canvas>
           <div className="gl-animation-hint">
             <p>💡 Presiona <strong>ESPACIO</strong> para {isAnimationPaused ? 'reanudar' : 'pausar'} la animación del modelo.</p>

@@ -1,9 +1,9 @@
 import { Html } from "@react-three/drei";
 import { useRef } from "react";
-import "./TitlePrevention.css";
+import "./TitleTreatment.css";
 import { useFrame } from "@react-three/fiber";
 
-const PreventionTitle3D = ({ title }) => {
+const PreventionTitle3D = ({ titleprevention }) => {
   const htmlRef = useRef();
 
   useFrame((state) => {
@@ -20,7 +20,7 @@ const PreventionTitle3D = ({ title }) => {
         transform
         distanceFactor={14}
       >
-        <h1 className="title-prevention">{"PREVENCIONES DE LA GLOMERULONEFRITIS"}</h1>
+        <h1 className="title-treatment">{titleprevention}</h1>
       </Html>
     </group>
   );

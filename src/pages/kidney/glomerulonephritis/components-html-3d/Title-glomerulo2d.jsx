@@ -3,7 +3,7 @@ import { Text } from '@react-three/drei'
 const TitleGlomerulo = ({ title }) => {
     return (
         <Text
-            position={[1, 6.4, 0]}
+            position={[1, 7.4, 0]}
             color={"#075F73"}
             anchorX={"center"}
             anchorY={"middle"}

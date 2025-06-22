@@ -52,7 +52,7 @@ function DraggableModel({ url, onDrop, dropZones, answered, setIsDragging, setNo
   const [ref, api] = useBox(() => ({
     mass: 0,
     position: [0, 2.5, 0],
-    args: [0.7, 0.7, 0.7], // Más pequeño
+    args: [0.7, 0.7, 0.7],
     type: "Dynamic",
   }));
   const dragging = useRef(false);
@@ -83,10 +83,11 @@ function DraggableModel({ url, onDrop, dropZones, answered, setIsDragging, setNo
       let insideAnyBox = false;
       dropZones.forEach((zone, idx) => {
         const [zx, zy, zz] = zone.position;
-        const EXTRA = 0.6;
+        // Áreas de detección más permisivas
+        const EXTRA = 1.2; // antes 0.6
         const HOLE_X = 2.2 - 0.2 * 2 + EXTRA;
         const HOLE_Z = 2.2 - 0.2 * 2 + EXTRA;
-        const HOLE_Y = 1.2 + 0.5;
+        const HOLE_Y = 1.2 + 1.0; // antes 0.5
         if (
           pos.x > zx - HOLE_X / 2 &&
           pos.x < zx + HOLE_X / 2 &&
@@ -118,8 +119,8 @@ function DraggableModel({ url, onDrop, dropZones, answered, setIsDragging, setNo
         if (!answered) {
           dragging.current = true;
           setIsDragging(true);
-          setNoBoxFeedback(false); // Oculta el feedback al volver a arrastrar
-          api.mass.set(0); // Sigue flotando mientras arrastras
+          setNoBoxFeedback(false);
+          api.mass.set(0);
           api.velocity.set(0, 0, 0);
           api.angularVelocity.set(0, 0, 0);
         }
@@ -158,20 +159,66 @@ function DraggableModel({ url, onDrop, dropZones, answered, setIsDragging, setNo
 }
 
 function Ground() {
-	usePlane(() => ({
-		position: [0, -2, 0],
-		rotation: [-Math.PI / 2, 0, 0],
-	}));
-	return (
-		<mesh
-			receiveShadow
-			position={[0, -2, 0]}
-			rotation={[-Math.PI / 2, 0, 0]}
-		>
-			<planeGeometry args={[20, 20]} />
-			<meshStandardMaterial color="#e0f7fa" transparent opacity={0.2} />
-		</mesh>
-	);
+  usePlane(() => ({
+    position: [0, -2, 0],
+    rotation: [-Math.PI / 2, 0, 0],
+  }));
+  return (
+    <mesh
+      receiveShadow
+      position={[0, -2, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
+    >
+      <planeGeometry args={[20, 20]} />
+      <meshStandardMaterial color="#e0f7fa" transparent opacity={0.2} />
+    </mesh>
+  );
+}
+
+function MovableModel({ url, onCollide, answered, answerPositions }) {
+  const [position, setPosition] = useState([0, 1, 0]); // Y=1 para que flote sobre el suelo
+  const ref = useRef();
+
+  // Movimiento con flechas
+  useEffect(() => {
+    if (answered) return;
+    const handleKeyDown = (e) => {
+      setPosition((prev) => {
+        let [x, y, z] = prev;
+        if (e.key === "ArrowLeft" || e.key === "a") x -= 0.5;
+        if (e.key === "ArrowRight" || e.key === "d") x += 0.5;
+        if (e.key === "ArrowUp" || e.key === "w") z -= 0.5;
+        if (e.key === "ArrowDown" || e.key === "s") z += 0.5;
+        return [x, y, z];
+      });
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [answered]);
+
+  // Detección de colisión con cualquiera de las cajas de respuesta
+  useFrame(() => {
+    if (!ref.current || answered) return;
+    const [x, y, z] = position;
+    answerPositions.forEach((boxPos, idx) => {
+      const dist = Math.sqrt(
+        (x - boxPos[0]) ** 2 +
+        (y - boxPos[1]) ** 2 +
+        (z - boxPos[2]) ** 2
+      );
+      if (dist < 1.5) {
+        onCollide(idx);
+      }
+    });
+  });
+
+  return (
+    <mesh ref={ref} position={position}>
+      <boxGeometry args={[0.7, 0.7, 0.7]} />
+      <meshStandardMaterial color="orange" opacity={0.0} transparent />
+      <Model3D url={url} scale={0.5} position={[0, 0, 0]} />
+    </mesh>
+  );
 }
 
 const Quiz3D = ({ onBack }) => {
@@ -245,9 +292,9 @@ const Quiz3D = ({ onBack }) => {
 
   // Posiciones de las cajas de respuesta
   const answerPositions = [
-    [-5, -0.4, 0], // izquierda (antes -3)
+    [-5, -0.4, 0], // izquierda
     [0, -0.4, 0],  // centro
-    [5, -0.4, 0],  // derecha (antes 3)
+    [5, -0.4, 0],  // derecha
   ];
 
   // Handler de drop
@@ -365,6 +412,25 @@ const Quiz3D = ({ onBack }) => {
                   </div>
                 </Html>
               )}
+              {/* Feedback si no se soltó en ninguna caja */}
+              {noBoxFeedback && (
+                <Html position={[0, 4, 0]} center transform>
+                  <div
+                    style={{
+                      color: "#e53935",
+                      fontSize: 22,
+                      fontWeight: "bold",
+                      background: "rgba(255,255,255,0.95)",
+                      borderRadius: 12,
+                      padding: "10px 24px",
+                      boxShadow: "0 2px 16px rgba(0,0,0,0.12)",
+                      marginTop: 16,
+                    }}
+                  >
+                    ¡Debes soltar el modelo sobre una caja!
+                  </div>
+                </Html>
+              )}
             </>
           )}
           {showResult && (
@@ -389,11 +455,8 @@ const Quiz3D = ({ onBack }) => {
                 <button
                   onClick={() => {
                     clearQuiz();
-                    setStep(0);
-                    setShowResult(false);
-                    setAnswered(false);
-                    setOverIdx(null);
-                    setLastCorrect(null);
+                    // Reinicia el quiz correctamente
+                    window.location.reload();
                   }}
                 >
                   Reiniciar

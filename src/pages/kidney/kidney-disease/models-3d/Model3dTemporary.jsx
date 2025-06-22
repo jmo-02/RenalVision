@@ -5,12 +5,19 @@ import { useFrame } from "@react-three/fiber";
 const Model3dTemporary = (props) => {
   const ref = useRef();
   const [paused, setPaused] = useState(false);
+<<<<<<< HEAD
   const [direction, setDirection] = useState(-1);
   const [showInfo, setShowInfo] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [infoPos, setInfoPos] = useState([0, 2, 0]); // posición dinámica
 
   // Animación y posición del cuadro de texto
+=======
+  const [direction, setDirection] = useState(-1); // -1: normal, 1: invertido
+  const [showInfo, setShowInfo] = useState(false);
+
+  // Animación de rotación
+>>>>>>> master
   useFrame((state, delta) => {
     if (ref.current && !paused) ref.current.rotation.y += direction * 0.5 * delta;
     if (ref.current) ref.current.scale.set(zoom, zoom, zoom);
@@ -46,23 +53,44 @@ const Model3dTemporary = (props) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+<<<<<<< HEAD
+=======
+  // Mostrar info solo al posar el mouse
+  const handlePointerOver = () => setShowInfo(true);
+  const handlePointerOut = () => setShowInfo(false);
+
+>>>>>>> master
   return (
     <group {...props} dispose={null}>
       <group
         ref={ref}
+<<<<<<< HEAD
         scale={0.0065} // Más pequeño
         position={[0, -0.2, 0]} // Un poco más abajo
+=======
+        scale={0.01}
+        position={[0, -0.7, 0]} // Baja el modelo un poco
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+>>>>>>> master
         tabIndex={0}
         onPointerOver={() => setShowInfo(true)}
         onPointerOut={() => setShowInfo(false)}
       >
+<<<<<<< HEAD
         {/* Cuadro de instrucciones sigue el movimiento y flotación */}
         {showInfo && (
           <Html position={infoPos} center distanceFactor={20}>
+=======
+        {/* Ventana de información resumida y animada */}
+        {showInfo && (
+          <Html position={[0, 2.8, 0]} center distanceFactor={20}>
+>>>>>>> master
             <div
               style={{
                 background: "rgba(6,86,110,0.85)",
                 color: "white",
+<<<<<<< HEAD
                 padding: "10px 18px",
                 borderRadius: "18px",
                 fontSize: "15px",
@@ -78,6 +106,22 @@ const Model3dTemporary = (props) => {
                 <li><b>Teclas + y -</b>: Acercar o alejar el modelo</li>
                 <li><b>Barra espaciadora</b>: Pausar/continuar rotación</li>
                 <li><b>Enter</b>: Invertir dirección de rotación</li>
+=======
+                padding: "12px 24px",
+                borderRadius: "18px",
+                fontSize: "16px",
+                textAlign: "center",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
+                maxWidth: "260px",
+                lineHeight: "1.4",
+              }}
+            >
+              <b>Modelo de tubos de ensayo</b>
+              <ul style={{ textAlign: "left", margin: "8px 0 0 0", paddingLeft: 16 }}>
+                <li><b>Mouse</b>: Ver info</li>
+                <li><b>Espacio</b>: Pausa</li>
+                <li><b>Enter</b>: Invierte giro</li>
+>>>>>>> master
               </ul>
             </div>
           </Html>

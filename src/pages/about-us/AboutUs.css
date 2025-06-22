@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0;
+    margin-bottom: 50px;
 }
 
 
@@ -17,7 +18,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.51);
     max-width: 800px; 
     height: auto;
-    margin-top: 10px;
+    margin-top: 120px;
+    margin-bottom: 120px; /* Ajusta el valor según lo que necesites */
     text-align: center;
 }
 

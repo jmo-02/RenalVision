@@ -10,7 +10,8 @@ const SymptomsKidneyDisease = (props) => {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     if (animate && symptomsRef.current) {
-      symptomsRef.current.position.y = 0.7 + Math.sin(t) * 0.08;
+      // Movimiento más sutil: menor amplitud y velocidad
+      symptomsRef.current.position.y = 0.7 + Math.sin(t * 0.4) * 0.08;
     }
   });
 
@@ -49,29 +50,25 @@ const SymptomsKidneyDisease = (props) => {
             skeleton={nodes.geometry_0.skeleton}
           />
           {showInfo && (
-            <Html position={[0, 0.5, 0]} center distanceFactor={10}>
+            <Html position={[-0.2, 0.6, 0]} center distanceFactor={10}>
               <div
                 style={{
                   background: "rgba(6,86,110,0.85)",
                   color: "white",
-                  padding: "12px 24px",
-                  borderRadius: "18px",
-                  fontSize: "16px",
+                  padding: "14px 28px",
+                  borderRadius: "20px",
+                  fontSize: "17px",
                   textAlign: "center",
                   boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
-                  maxWidth: "260px",
+                  maxWidth: "320px",
                   lineHeight: "1.4",
                 }}
               >
-                <b>Interacción con el modelo:</b>
+                <b>Modelo síntomas</b>
                 <ul style={{ textAlign: "left", margin: "10px 0 0 0", paddingLeft: 18 }}>
-                  <li><b>Mouse sobre el modelo</b>: Ver instrucciones</li>
-                  <li><b>Barra espaciadora</b>: Ocultar instrucciones</li>
-                  <li><b>Enter</b>: Pausar/continuar animación y ocultar instrucciones</li>
+                  <li><b>Mouse</b>: Ver info</li>
+                  <li><b>Espacio/Enter</b>: Ocultar/Pausar animación</li>
                 </ul>
-                <div style={{ marginTop: 8, fontSize: 13, opacity: 0.8 }}>
-                  (Este mensaje desaparecerá al interactuar con el teclado)
-                </div>
               </div>
             </Html>
           )}

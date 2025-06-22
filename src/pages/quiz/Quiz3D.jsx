@@ -5,6 +5,7 @@ import Model3D from "./Model3D";
 import questions from "./Questions";
 import useQuizStore from "../../stores/use-quiz-store";
 import useAuthStore from "../../stores/use-auth-store";
+import { useNavigate } from "react-router-dom";
 
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -35,6 +36,7 @@ const Quiz3D = ({ onBack }) => {
   // Auth
   const { userLooged } = useAuthStore();
   const [userId, setUserId] = useState(null);
+  const navigate = useNavigate();
 
   // Limpiar quiz al montar
   useEffect(() => {
@@ -326,7 +328,7 @@ const Quiz3D = ({ onBack }) => {
               <button
                 onClick={() => {
                   clearQuiz();
-                  window.location.reload();
+                  navigate("/quiz"); // Redirige al inicio de la sección quiz
                 }}
               >
                 Reiniciar

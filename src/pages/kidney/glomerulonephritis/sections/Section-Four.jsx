@@ -4,11 +4,13 @@ import PreventionModel from '../models-3d/Prevention-Glomerulonefritis';
 import PreventionTitle3D from '../components-html-3d/TitlePrevention';
 import StagingSymptoms from '../../kidney-stones/staging/StagingSymptoms';
 import Titles3dPrevention from '../components-html-3d/Title3d-Prevention';
+import Prevention3D from '../components-html-3d/Event-Section4';
 import { ChevronUp } from 'lucide-react';
 import './Section-Four.css';
 
 const Section4 = React.forwardRef(({ scrollToSection }, ref) => {
   const [showPreventionModal, setShowPreventionModal] = useState(false);
+  const [showPrevention, setShowPrevention] = useState(false);
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
 
   const togglePreventionModal = () => {
@@ -28,6 +30,13 @@ const Section4 = React.forwardRef(({ scrollToSection }, ref) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+  const handleModelHover = () => {
+    setShowPrevention(true);
+  };
+
+  const handleModelOut = () => {
+    setShowPrevention(false);
+  };
 
   return (
     <>
@@ -40,16 +49,19 @@ const Section4 = React.forwardRef(({ scrollToSection }, ref) => {
           </div>
           <p className='gl-p1-prevention'>La glomerulonefritis no siempre se puede prevenir, pero hay medidas que ayudan a reducir su aparición o complicaciones.</p>
           <div className="gl-animation-hint">
-            <p>Presiona el modelo 3d para ver mas informacion</p>
+            <p>Pasa el mouse por el modelo 3d para ver mas informacion</p>
           </div>
         </div>
         <div className="gl-model-3d-sesion4">
           <Canvas shadows camera={{ position: [4, 2, 12], fov: 30 }}>
             <StagingSymptoms />
             <Titles3dPrevention />
+            <Prevention3D showPrevention={showPrevention} />
             {!showPreventionModal && (
               <PreventionModel
-                onClick={() => {setShowPreventionModal(true)}}
+                //onClick={() => {setShowPreventionModal(true)}}
+                onModelHover={handleModelHover}
+                onModelOut={handleModelOut}
                 isPaused={isAnimationPaused}
               />)}
           </Canvas>

@@ -1,0 +1,38 @@
+.causes-box {
+    background: rgba(66, 62, 62, 0.95);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0px 12px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    max-height: 300px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.causes-box h3 {
+    color: #BBF3F2 !important;
+}
+
+.causes-box li {
+    color: #BBF3F2 !important;
+    list-style-type: none; /* Desactiva el estilo predeterminado */
+    position: relative; /* Necesario para el posicionamiento del círculo */
+    padding-left: 20px; /* Reduce el espacio entre el círculo y el texto */
+    
+}
+
+.causes-box li::before {
+    content: '';
+    position: absolute;
+    left: 0; /* Reduce la distancia desde el borde izquierdo */
+    top: 18%;
+    transform: translateY(-50%);
+    width: 6px; /* Tamaño del círculo */
+    height: 6px; /* Tamaño del círculo */
+    background-color: #BBF3F2; /* Color del círculo */
+    border-radius: 50%; /* Hace que sea un círculo */
+}
+.hint{
+    text-align: center;
+    color : #a19f9f !important;
+}

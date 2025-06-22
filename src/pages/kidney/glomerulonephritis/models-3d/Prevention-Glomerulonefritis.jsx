@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { OrbitControls} from '@react-three/drei';
  /*modelo*/
-const PreventionModel = ({ onModelClick,isPaused, ...props }) => {
+const PreventionModel = ({ onModelClick, onModelHover, onModelOut,isPaused, ...props }) => {
   const groupRef = useRef();
   const { nodes, materials } = useGLTF('/models-3d/glomerulonephritis/prevention-glomerulonefritis.glb');
 
@@ -34,7 +34,8 @@ const PreventionModel = ({ onModelClick,isPaused, ...props }) => {
         <shadowMaterial opacity={0.5} />
       </mesh>
 
-      <group ref={groupRef} scale={[1.8, 1.5, 1.6]} onClick={onModelClick} {...props}>
+      <group ref={groupRef} scale={[1.8, 1.5, 1.6]} onClick={onModelClick} onPointerOver={onModelHover}
+        onPointerOut={onModelOut} {...props}>
         {Object.entries(nodes).map(([name, node]) => {
           if (!node.isMesh) return null;
           return (

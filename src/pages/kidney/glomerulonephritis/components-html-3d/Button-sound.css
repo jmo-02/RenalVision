@@ -1,0 +1,34 @@
+.button-audio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.button {
+  width: 10px;
+  height: 110px;
+  display: flex;
+  font-size: 30px;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+/* Estado cuando NO está reproduciendo */
+.button.play {
+  background-color: #2ad14d;
+  color: white;
+}
+
+/* Estado cuando está reproduciendo */
+.button.stop {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Hover (opcional) */
+.button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}

@@ -24,23 +24,42 @@ section {
 
 .home {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  min-height: 100vh; /* Asegura que ocupe toda la pantalla */
+  align-items: center;      /* Centra verticalmente */
+  justify-content: center;  /* Centra horizontalmente */
+  max-width: 1100px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  gap: 60px;                /* Espacio entre texto y modelo */
 }
 
-.content {
+.home-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* <-- Cambia esto a center */
   justify-content: center;
-  max-width: 500px;
+  max-width: 650px; /* <-- Aumenta este valor o elimínalo */
+  width: 100%;      /* Asegura que pueda crecer */
+}
+
+.home-bienvenida-texto {
+  margin-left: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.home-model-3d {
+  width: 350px;
+  height: 350px;
+  margin-bottom: 150px;
+  display: flex;
+  align-items: flex-start; /* Esto alinea el Canvas arriba */
+  justify-content: center;
 }
 
 /* Logo + texto */
 .logo2 {
-  padding-top: 1rem;
+  padding-top: 0.5rem;      /* Puedes reducir este valor si quieres */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,6 +67,8 @@ section {
   color: var(--black);
   text-align: center;
   margin-right: 3.5rem;
+  margin-top: -80px;        /* <--- Sube el logo y el texto */
+  margin-bottom: 1rem;      /* Espacio debajo para que el texto no se pegue */
 }
 
 .logo-text {
@@ -123,22 +144,33 @@ section {
 
 /* Nueva sección debajo de inicio */
 .descubre-section {
-  min-height: 80vh;
+  min-height: 100vh; /* Antes era 80vh */
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 80px;
-  /* background: #f8fafc;  Elimina o cambia este valor */
   background: #0DBBB5;
   position: relative;
 }
 
 .descubre-section .content h3 {
-  color: #fff; /* Cambia este valor al color de fuente que desees */
+  color: #fff; 
 }
 
 .descubre-section .content p {
-  color: #f8f8f8; /* Cambia este valor al color de fuente que desees */
+  background: rgba(6, 86, 110, 0.12);
+  border-radius: 32px;
+  border: 1.5px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  padding: 32px 40px;
+  margin: 0 0 18px 0;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.6;
+  text-align: justify;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(2px);
 }
 
 /* Estilos para el botón de flecha hacia arriba */
@@ -169,7 +201,45 @@ section {
 }
 
 .model-3d-home {
-  width: 700px;
-  height: 800px;
-  margin-top: 60px; /* Mueve el recuadro hacia abajo */
+  width: 350px;
+  height: 350px;
+  margin-top: 60px;
+}
+
+.model-3d-descubre {
+  width: 400px;
+  height: 400px;
+  margin-top: 40px;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-intro-text {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.titulo-3d {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 10px;
+}
+
+.titulo-3d canvas {
+  width: 100% !important;
+  height: 140px !important;
+}
+
+.titulo-3d text {
+  font-size: 80px !important;
+  dominant-baseline: middle;
+}
+
+/* Si TitlesPage usa mesh o meshBasicMaterial para texto 3D, prueba también: */
+.titulo-3d .titles-3d-text {
+  font-size: 80px !important;
 }

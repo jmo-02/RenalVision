@@ -5,7 +5,7 @@ import { OrbitControls} from '@react-three/drei';
  /*modelo*/
 const GlomeruloModel = (props) => {
   const groupRef = useRef();
-  const { nodes, materials } = useGLTF('/models-3d/glomerulus.glb');
+  const { nodes, materials } = useGLTF('/models-3d/glomerulonephritis/glomerulus.glb');
 
   useFrame(() => {
     if (groupRef.current) {
@@ -34,7 +34,7 @@ const GlomeruloModel = (props) => {
         <shadowMaterial opacity={0.5} />
       </mesh>
 
-      <group ref={groupRef} {...props}>
+      <group ref={groupRef} scale={[1.8, 1.5, 1.6]} {...props}>
         {Object.entries(nodes).map(([name, node]) => {
           if (!node.isMesh) return null;
           return (
@@ -52,6 +52,6 @@ const GlomeruloModel = (props) => {
   );
 };
 
-useGLTF.preload('/models-3d/glomerulus.glb');
+useGLTF.preload('/models-3d/glomerulonephritis/glomerulus.glb');
 
 export default GlomeruloModel;

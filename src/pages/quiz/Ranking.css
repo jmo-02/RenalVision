@@ -1,0 +1,27 @@
+.ranking-table th, .ranking-table td {
+  font-size: 1.7rem;      /* Más grande */
+  padding: 18px 36px;     /* Más espacio */
+  text-align: center;
+}
+
+.ranking-table th {
+  font-weight: bold;
+  color: #38A3A5;
+  font-size: 2.5rem;      /* Más grande */
+  min-width: 140px;
+}
+
+.ranking-username {
+  font-size: 2rem;        /* Más grande */
+  font-weight: 600;
+  min-width: 260px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.ranking-title {
+  color: #38A3A5;
+  font-size: 3.2rem;      /* Más grande */
+  font-weight: bold;
+  margin-bottom: 32px;
+}

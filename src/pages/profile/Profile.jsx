@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import { useNavigate } from "react-router";
+import "./Profile.css";
 
 const Profile = () => {
   const { userLooged, logout } = useAuthStore();
@@ -36,13 +37,26 @@ const Profile = () => {
   }, [userLooged]);
 
   return (
-    <>
-      <h2>Perfil de usuario</h2>
-      <p>¡Bienvenido! {userLooged?.displayName}</p>
-      <button onClick={handleLogout} title="Cerrar sesión">
+    <div className="profile-container">
+      <div className="profile-title">¡BIENVENIDO A TU PERFIL DE USUARIO!</div>
+      <div className="profile-info">
+        <div className="profile-row">
+          <span className="profile-label">Nombre:</span>
+          <span className="profile-value">{userLooged?.displayName}</span>
+        </div>
+        <div className="profile-row">
+          <span className="profile-label">Correo:</span>
+          <span className="profile-value">{userLooged?.email}</span>
+        </div>
+      </div>
+      <button
+        className="profile-logout-btn"
+        onClick={handleLogout}
+        title="Cerrar sesión"
+      >
         Cerrar sesión
       </button>
-    </>
+    </div>
   );
 };
 

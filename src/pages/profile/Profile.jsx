@@ -43,6 +43,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
+<<<<<<< HEAD
       <div className="profile-card">
         <h2 className="profile-title">Perfil de usuario</h2>
         <p className="profile-welcome">
@@ -56,6 +57,26 @@ const Profile = () => {
           Cerrar sesión
         </button>
       </div>
+=======
+      <div className="profile-title">¡BIENVENIDO A TU PERFIL DE USUARIO!</div>
+      <div className="profile-info">
+        <div className="profile-row">
+          <span className="profile-label">Nombre:</span>
+          <span className="profile-value">{userLooged?.displayName}</span>
+        </div>
+        <div className="profile-row">
+          <span className="profile-label">Correo:</span>
+          <span className="profile-value">{userLooged?.email}</span>
+        </div>
+      </div>
+      <button
+        className="profile-logout-btn"
+        onClick={handleLogout}
+        title="Cerrar sesión"
+      >
+        Cerrar sesión
+      </button>
+>>>>>>> master
     </div>
   );
 };

@@ -6,8 +6,9 @@ const Model3dTemporary = (props) => {
   const ref = useRef();
   const [paused, setPaused] = useState(false);
   const [direction, setDirection] = useState(-1); // -1: normal, 1: invertido
-  const [showInfo, setShowInfo] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
 
+  // Animación de rotación
   useFrame((state, delta) => {
     if (ref.current && !paused) ref.current.rotation.y += direction * 0.5 * delta;
   });
@@ -29,44 +30,42 @@ const Model3dTemporary = (props) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Mostrar instrucciones al hacer click sobre el modelo
-  const handleClick = () => {
-    setShowInfo(true);
-  };
+  // Mostrar info solo al posar el mouse
+  const handlePointerOver = () => setShowInfo(true);
+  const handlePointerOut = () => setShowInfo(false);
 
   return (
     <group {...props} dispose={null}>
       <group
         ref={ref}
         scale={0.01}
-        onClick={handleClick}
+        position={[0, -0.7, 0]} // Baja el modelo un poco
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
         tabIndex={0}
       >
-        {/* Cuadro de instrucciones */}
+        {/* Ventana de información resumida y animada */}
         {showInfo && (
-          <Html position={[0, 2, 0]} center distanceFactor={20}>
+          <Html position={[0, 2.8, 0]} center distanceFactor={20}>
             <div
               style={{
                 background: "rgba(6,86,110,0.85)",
                 color: "white",
-                padding: "16px 32px",
-                borderRadius: "24px",
-                fontSize: "20px",
+                padding: "12px 24px",
+                borderRadius: "18px",
+                fontSize: "16px",
                 textAlign: "center",
                 boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
-                maxWidth: "350px",
+                maxWidth: "260px",
                 lineHeight: "1.4",
               }}
             >
-              <b>Interacción con el modelo:</b><br />
-              <ul style={{textAlign: "left", margin: "12px 0 0 0", paddingLeft: 20}}>
-                <li><b>Click</b>: Mostrar instrucciones</li>
-                <li><b>Barra espaciadora</b>: Pausar/continuar rotación</li>
-                <li><b>Enter</b>: Invertir dirección de rotación</li>
+              <b>Modelo de tubos de ensayo</b>
+              <ul style={{ textAlign: "left", margin: "8px 0 0 0", paddingLeft: 16 }}>
+                <li><b>Mouse</b>: Ver info</li>
+                <li><b>Espacio</b>: Pausa</li>
+                <li><b>Enter</b>: Invierte giro</li>
               </ul>
-              <div style={{marginTop: 8, fontSize: 15, opacity: 0.8}}>
-                (Este mensaje desaparecerá al interactuar con el teclado)
-              </div>
             </div>
           </Html>
         )}

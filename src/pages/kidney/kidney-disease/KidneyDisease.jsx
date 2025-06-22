@@ -161,7 +161,7 @@ const KidneyDisease = () => {
             <pointLight position={[-5, -5, 5]} intensity={0.5} /> {/* Reducido de 0.8 a 0.5 */}
             <Title3D title={"CALIDAD DE VIDA"} position={[-3, 3, 0]} />
             <Title4 title={"Y APOYO"} position={[3, 2, 0]} />
-            <MedicalKit scale={6} />
+            <MedicalKit scale={12} />
           </Canvas>
         </div>
       </section>

@@ -1,38 +1,34 @@
 const questions = [
   {
-    question: "¿Qué síntomas corresponden a la Enfermedad Renal Crónica?",
+    question: "La Enfermedad Renal Crónica puede causar fatiga y presión alta?.",
     model: "/models-3d/Chr-Kidney-Disease.glb",
     options: [
-      { text: "Fatiga, hinchazón, presión alta", correct: true },
-      { text: "Dolor agudo lumbar, sangre en orina", correct: false },
-      { text: "Dolor al orinar, fiebre", correct: false },
+      { text: "Verdadero", correct: true },
+      { text: "Falso", correct: false },
     ],
   },
   {
-    question: "¿Qué síntomas corresponden a los Cálculos Renales?",
+    question: "Los cálculos renales suelen causar dolor agudo lumbar?.",
     model: "/models-3d/symptoms-kidney-stone.glb",
     options: [
-      { text: "Dolor agudo lumbar, sangre en orina", correct: true },
-      { text: "Fatiga, hinchazón, presión alta", correct: false },
-      { text: "Orina espumosa, picazón", correct: false },
+      { text: "Verdadero", correct: true },
+      { text: "Falso", correct: false },
     ],
   },
   {
-    question: "¿Qué síntomas corresponden a la Glomerulonefritis?",
-    model: "/models-3d/symptoms-glomerulonefritis.glb",
+    question: "La glomerulonefritis no afecta la presión arterial?.",
+    model: "/models-3d/glomerulonephritis/symptoms-glomerulonefritis.glb",
     options: [
-      { text: "Orina oscura, hinchazón facial, presión alta", correct: true },
-      { text: "Dolor lumbar, fiebre", correct: false },
-      { text: "Náuseas, vómitos, dolor abdominal", correct: false },
+      { text: "Verdadero", correct: false },
+      { text: "Falso", correct: true },
     ],
   },
   {
-    question: "¿Qué síntomas corresponden al Cáncer de Riñón?",
+    question: "El cáncer de riñón puede manifestarse con sangre en la orina?.",
     model: "/models-3d/kidney-cancer.glb",
     options: [
-      { text: "Sangre en la orina, dolor lumbar persistente, masa abdominal", correct: true },
-      { text: "Orina espumosa, picazón", correct: false },
-      { text: "Fiebre alta, escalofríos", correct: false },
+      { text: "Verdadero", correct: true },
+      { text: "Falso", correct: false },
     ],
   },
 ];

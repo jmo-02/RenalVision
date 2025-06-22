@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = useCallback(() => {
     loginGoogleWithPopUp()
-      .then(() => navigate("/sobre-nosotros"))
+      .then(() => navigate("/perfil"))
       .catch(() => navigate("/"));
   }, [loginGoogleWithPopUp, navigate]);
 

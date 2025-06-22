@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import useAuthStore from "../../stores/use-auth-store";
-import { useNavigate } from "react-router";
 import "./Profile.css";
 
 const Profile = () => {
@@ -35,6 +35,8 @@ const Profile = () => {
     };
     fetchData();
   }, [userLooged]);
+
+  if (!userLooged) return <Navigate to="/login" />;
 
   return (
     <div className="profile-container">

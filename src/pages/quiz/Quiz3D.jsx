@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useState, useEffect, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import Model3D from "./Model3D";
 import questions from "./Questions";
@@ -99,11 +99,118 @@ const Quiz3D = ({ onBack }) => {
   // Barra de progreso
   const progress = Math.round(((step + 1) / questions.length) * 100);
 
+  function AnimatedButtons({ onAnswer, answered, correctValue }) {
+    const btnRefs = [useRef(), useRef()];
+    // Estado para posición y velocidad de cada botón
+    const [states, setStates] = React.useState([
+      { pos: [-2.5, 0, 0], vel: [0.012, 0.009] },
+      { pos: [2.5, 0, 0], vel: [-0.009, 0.012] },
+    ]);
+
+    // Animación y rebote suave con colisión que evita superposición
+    useFrame(() => {
+      setStates((prev) => {
+        // Copia profunda para manipulación
+        let next = prev.map((s) => ({
+          pos: [...s.pos],
+          vel: [...s.vel],
+        }));
+
+        // Límites de movimiento
+        const minX = -3.2, maxX = 3.2, minY = -1.2, maxY = 1.2;
+        const minDist = 1.7; // distancia mínima entre centros para no superponerse
+
+        // Movimiento y rebote contra límites
+        for (let i = 0; i < 2; i++) {
+          let [x, y, z] = next[i].pos;
+          let [vx, vy] = next[i].vel;
+
+          if (x < minX || x > maxX) vx *= -1;
+          if (y < minY || y > maxY) vy *= -1;
+
+          next[i].pos = [x + vx, y + vy, 0];
+          next[i].vel = [vx, vy];
+        }
+
+        // Colisión entre botones: si se acercan demasiado, los separa y rebota
+        const dx = next[0].pos[0] - next[1].pos[0];
+        const dy = next[0].pos[1] - next[1].pos[1];
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < minDist) {
+          // Calcula el vector de separación
+          const overlap = minDist - dist;
+          const nx = dx / (dist || 1);
+          const ny = dy / (dist || 1);
+
+          // Separa ambos botones a partes iguales
+          next[0].pos[0] += (overlap / 2) * nx;
+          next[0].pos[1] += (overlap / 2) * ny;
+          next[1].pos[0] -= (overlap / 2) * nx;
+          next[1].pos[1] -= (overlap / 2) * ny;
+
+          // Rebota las velocidades en la dirección de colisión
+          next[0].vel[0] = -next[0].vel[0];
+          next[0].vel[1] = -next[0].vel[1];
+          next[1].vel[0] = -next[1].vel[0];
+          next[1].vel[1] = -next[1].vel[1];
+        }
+
+        return next;
+      });
+    });
+
+    return (
+      <>
+        {TRUE_FALSE_OPTIONS.map((opt, idx) => (
+          <Html
+            key={opt.text}
+            position={states[idx].pos}
+            center
+            transform
+            zIndexRange={[10, 0]}
+          >
+            <button
+              ref={btnRefs[idx]}
+              onClick={() => onAnswer(opt.value)}
+              disabled={answered}
+              style={{
+                padding: "18px 36px",
+                fontSize: "1.7rem",
+                borderRadius: 10,
+                border: "none",
+                background: answered
+                  ? (
+                      (opt.value === correctValue)
+                        ? "#43a047"
+                        : "#e53935"
+                    )
+                  : "#2196f3",
+                color: "white",
+                fontWeight: "bold",
+                cursor: answered ? "default" : "pointer",
+                opacity: answered ? 0.7 : 1,
+                transition: "background 0.2s",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.18)",
+                minWidth: 120,
+              }}
+            >
+              {opt.text}
+            </button>
+          </Html>
+        ))}
+      </>
+    );
+  }
+
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas shadows camera={{ position: [0, 5, 10], fov: 50 }}>
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
+      <Canvas shadows camera={{ position: [0, 2, 18], fov: 50 }}>
+        <ambientLight intensity={1.2} /> {/* Más luz ambiental */}
+        <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+        {/* Luz extra para aclarar el modelo */}
+        <pointLight position={[0, 3, 4]} intensity={2.2} color="#ffffff" />
+        <pointLight position={[-4, 6, 6]} intensity={1.5} color="#ffffff" />
         {/* Fondo */}
         <color attach="background" args={["#e0f7fa"]} />
         {/* UI con Html */}
@@ -142,40 +249,14 @@ const Quiz3D = ({ onBack }) => {
             </Html>
             {/* Modelo debajo */}
             <group position={[0, 1.2, 0]}>
-              <Model3D url={questions[step].model} scale={0.8} position={[0, 0, 0]} />
+              <Model3D url={questions[step].model} scale={2.2} position={[0, 0, 0]} />
             </group>
             {/* Botones Falso/Verdadero */}
-            <Html position={[0, -1.5, 0]} center transform>
-              <div style={{ display: "flex", gap: 32, justifyContent: "center" }}>
-                {TRUE_FALSE_OPTIONS.map((opt, idx) => (
-                  <button
-                    key={opt.text}
-                    onClick={() => handleAnswer(opt.value)}
-                    disabled={answered}
-                    style={{
-                      padding: "18px 36px",
-                      fontSize: "1.7rem",
-                      borderRadius: 10,
-                      border: "none",
-                      background: answered
-                        ? (
-                            (opt.value === questions[step].options.find(o => o.correct).correct)
-                              ? "#43a047"
-                              : "#e53935"
-                          )
-                        : "#2196f3",
-                      color: "white",
-                      fontWeight: "bold",
-                      cursor: answered ? "default" : "pointer",
-                      opacity: answered ? 0.7 : 1,
-                      transition: "background 0.2s",
-                    }}
-                  >
-                    {opt.text}
-                  </button>
-                ))}
-              </div>
-            </Html>
+            <AnimatedButtons
+              onAnswer={handleAnswer}
+              answered={answered}
+              correctValue={questions[step].options.find(o => o.correct).correct}
+            />
             {/* Feedback de respuesta */}
             {answered && (
               <Html position={[0, -3.2, 0]} center transform>
@@ -240,4 +321,4 @@ const Quiz3D = ({ onBack }) => {
 };
 
 export default Quiz3D;
-  
+

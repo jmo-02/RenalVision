@@ -3,7 +3,7 @@ import './Button-sound.css';
 import { Html, PositionalAudio } from "@react-three/drei";
 import { FaPlay, FaStop } from "react-icons/fa";
 
-const ButtonWhatIs = ({ position = [7.5, 7.2, 0] }) => {
+const ButtonWhatIs = ({ position = [6.8, 7.2, 0] }) => {
   const audioRef = useRef();
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -48,10 +48,10 @@ const ButtonWhatIs = ({ position = [7.5, 7.2, 0] }) => {
   return (
     <group position={position}>
       <Html center transform distanceFactor={5} wrapperClass="music">
-        <div className="btn-music">
+        <div className="button-audio">
           <button
             onClick={handleClick}
-            className={`btn ${isPlaying ? "stop" : "play"}`}
+            className={`button ${isPlaying ? "stop" : "play"}`}
           >
             {isPlaying ? <FaStop /> : <FaPlay />}
           </button>

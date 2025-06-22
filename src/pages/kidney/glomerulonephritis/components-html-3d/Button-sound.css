@@ -1,10 +1,10 @@
-.btn-music{
-  Display: Flex;
-  Flex-direction: row;
-  Align-items: center;
+.button-audio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.btn {
-  width: 170px;
+.button {
+  width: 10px;
   height: 110px;
   display: flex;
   font-size: 30px;
@@ -16,19 +16,19 @@
 }
 
 /* Estado cuando NO está reproduciendo */
-.btn.play {
+.button.play {
   background-color: #2ad14d;
   color: white;
 }
 
 /* Estado cuando está reproduciendo */
-.btn.stop {
+.button.stop {
   background-color: #dc3545;
   color: white;
 }
 
 /* Hover (opcional) */
-.btn:hover {
+.button:hover {
   opacity: 0.9;
   transform: scale(1.05);
 }

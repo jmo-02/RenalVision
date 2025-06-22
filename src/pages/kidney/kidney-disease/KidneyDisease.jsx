@@ -21,6 +21,7 @@ import Title2 from "./text-staging/Title2";
 import Title3D from "./text-staging/Title3D";
 import Title4 from "./text-staging/Title4";
 import Button from "./text-staging/Button";
+import MedicalKit from "./models-3d/MedicalKit";
 
 const KidneyDisease = () => {
   const sectionRefs = [
@@ -54,9 +55,11 @@ const KidneyDisease = () => {
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
             <LightsModel />
+            <Button />
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
             <pointLight position={[-5, -5, 5]} intensity={0.8} />
+            <Title2 title={"RIÑON AFECTADO"} />
             <ChronicDisease scale={7} />
           </Canvas>
         </div>
@@ -100,15 +103,14 @@ const KidneyDisease = () => {
         </button>
       </section>
 
-      {/* Section 3 */}
+      {/* Section 3: Prevención */}
       <section ref={sectionRefs[2]} className="section3">
         <div className="content">
           <Canvas>
-            {/* <OrbitControls /> */}
-            <TitleSymptoms title={"PREVENCIÓN\nY TRATAMIENTOS"} />
+            <TitleSymptoms title={"PREVENCIÓN"} />
           </Canvas>
           <p>
-            Mantener un estilo de vida saludable, controlar la presión arterial y los niveles de azúcar en sangre, y realizar chequeos médicos regulares son claves para prevenir la ERC. El tratamiento puede incluir medicamentos, cambios en la dieta, diálisis o trasplante de riñón en casos avanzados.
+            Mantener un estilo de vida saludable, controlar la presión arterial y los niveles de azúcar en sangre, y realizar chequeos médicos regulares son claves para prevenir la ERC. Es importante evitar el consumo excesivo de sal, llevar una dieta equilibrada, realizar actividad física y evitar el consumo de tabaco y alcohol. La prevención también incluye el control de enfermedades crónicas como la diabetes y la hipertensión.
           </p>
           <button
             className="scroll-button-up2"
@@ -120,8 +122,6 @@ const KidneyDisease = () => {
         <div className="model-3d">
           <Canvas shadows camera={{ position: [0, 0, 15], fov: 45 }}>
             <OrbitControls />
-            {/* <LightsTreatment /> */}
-            {/* <LightsModel /> */}
             <ambientLight intensity={0.3} />
             <directionalLight position={[5, 5, 5]} intensity={0.7} castShadow />
             <pointLight position={[-5, -5, 5]} intensity={0.5} />
@@ -135,7 +135,7 @@ const KidneyDisease = () => {
         </button>
       </section>
 
-      {/* Section 4 */}
+      {/* Section 4: Tratamientos */}
       <section ref={sectionRefs[3]} className="section4">
         <button
           className="scroll-button-up2"
@@ -145,15 +145,10 @@ const KidneyDisease = () => {
         </button>
         <div className="content">
           <Canvas>
-            <TitleSymptoms title={"PREVENCIÓN Y TRATAMIENTO"} position={[0, -1, 2]} />
+            <TitleSymptoms title={"TRATAMIENTOS"} position={[0, -1, 2]} />
           </Canvas>
           <p className="p4">
-            Para prevenir la formación de cálculos renales,
-            es clave adoptar hábitos de vida saludables. Beber suficiente agua a lo
-            largo del día es fundamental, ya que ayuda a diluir las sustancias en la orina que
-            pueden formar cálculos. Además, se recomienda moderar el consumo de sal y proteínas animales,
-            y mantener una dieta equilibrada rica en frutas y verduras. Algunas personas pueden requerir
-            restricciones adicionales en alimentos ricos en oxalato, como las espinacas o los frutos secos.
+            El tratamiento de la enfermedad renal crónica depende del estadio y la causa subyacente. Puede incluir medicamentos para controlar la presión arterial, el azúcar en sangre y el colesterol, así como cambios en la dieta y el estilo de vida. En etapas avanzadas, puede ser necesaria la diálisis o un trasplante de riñón. Es fundamental el seguimiento médico regular para ajustar el tratamiento y prevenir complicaciones.
           </p>
         </div>
         <div className="model-3d">
@@ -161,12 +156,12 @@ const KidneyDisease = () => {
             <Sky sunPosition={[100, 20, 100]} turbidity={8} />
             <OrbitControls />
             <LightsModel />
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-            <pointLight position={[-5, -5, 5]} intensity={0.8} />
-            <Title3D title={"PREVENCIÓN"} position={[-3, 3, 0]} />
-            <Title4 title={"Y TRATAMIENTO"} position={[3, 2, 0]} />
-            <ChronicDisease scale={6} />
+            <ambientLight intensity={0.2} /> {/* Reducido de 0.5 a 0.2 */}
+            <directionalLight position={[5, 5, 5]} intensity={0.15} castShadow /> {/* Reducido de 0.3 a 0.15 */}
+            <pointLight position={[-5, -5, 5]} intensity={0.5} /> {/* Reducido de 0.8 a 0.5 */}
+            <Title3D title={"CALIDAD DE VIDA"} position={[-3, 3, 0]} />
+            <Title4 title={"Y APOYO"} position={[3, 2, 0]} />
+            <MedicalKit scale={6} />
           </Canvas>
         </div>
       </section>

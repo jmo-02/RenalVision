@@ -11,12 +11,8 @@ const Button = ({ position = [2.5, 4.4, 0] }) => {
     const audio = audioRef.current;
     if (!audio || !audio.buffer) return;
 
-    if (!isPlaying) {
-      // Si ya terminó una vez, puede necesitar recargar el buffer
-      if (!audio.isPlaying && audio.source === null) {
-        audio.setBuffer(audio.buffer);
-      }
-
+    if (!audio.isPlaying) {
+      // Siempre reinicia el audio desde el principio al hacer click si ya terminó
       try {
         await audio.play();
         setIsPlaying(true);
@@ -35,8 +31,6 @@ const Button = ({ position = [2.5, 4.4, 0] }) => {
 
     const handleEnded = () => {
       setIsPlaying(false);
-      // Al terminar, limpia el source para que pueda reiniciarse
-      audio.source = null;
     };
 
     audio.onEnded = handleEnded;
@@ -60,7 +54,7 @@ const Button = ({ position = [2.5, 4.4, 0] }) => {
 
       <PositionalAudio
         ref={audioRef}
-        url="/sounds/audio_calculos_2.mp3"
+        url="/sounds/audio_ERC.mp3"
         loop={false}
         distance={10}
         rolloffFactor={1}

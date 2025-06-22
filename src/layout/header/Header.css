@@ -214,3 +214,13 @@ header {
     background-color: #f0f0f0;
     color: #04a9d9;
   }
+
+  .logo-container:hover .logo-icon {
+    color: #7ACBCC; /* O el color que prefieras para el hover */
+    transition: color 0.2s;
+  }
+
+  .logo-container:hover .logo-text {
+    color: #7ACBCC; /* Opcional: cambia también el texto */
+    transition: color 0.2s;
+  }

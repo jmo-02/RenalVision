@@ -14,7 +14,7 @@ const Header = () => {
         {/* Logo y texto ahora son un Link */}
         <Link to="/" className="logo-container" style={{ textDecoration: "none" }}>
           <div className="logo" style={{ fontSize: 90 }}>
-            <FontAwesomeIcon icon={faStaffSnake} />
+            <FontAwesomeIcon icon={faStaffSnake} className="logo-icon" />
           </div>
           <span className="logo-text">RenalVision</span>
         </Link>

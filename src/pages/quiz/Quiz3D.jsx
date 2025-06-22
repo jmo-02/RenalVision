@@ -1,72 +1,158 @@
-import React, { useState, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useState, useEffect, useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics, useBox, usePlane } from "@react-three/cannon";
 import { OrbitControls, Html } from "@react-three/drei";
 import Model3D from "./Model3D";
 import questions from "./Questions";
 import useQuizStore from "../../stores/use-quiz-store";
 import useAuthStore from "../../stores/use-auth-store";
+import * as THREE from "three";
+import ChestBox from "./ChestBox";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-function AnswerShape({
-  position,
-  text,
-  onSelect,
-  correct,
-  answered,
-  selected,
-}) {
-  const [ref] = useBox(() => ({
-    mass: 1,
-    position,
-    args: [1.6, 1.6, 1.6],
-  }));
-
-	const [hovered, setHovered] = useState(false);
-
-  let color = "#2196f3";
-  if (answered) {
-    if (selected) color = correct ? "#43a047" : "#e53935";
-    else if (correct) color = "#43a047";
-    else color = "#2196f3";
-  } else if (hovered) {
-    color = "#29b6f6";
-  }
-
+// Caja de respuesta
+function AnswerBox({ position, text, idx, isOver, isCorrect, answered }) {
   return (
-    <mesh
-      ref={ref}
-      onClick={() => {
-        if (!answered) onSelect();
-      }}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      castShadow
-      receiveShadow
-      scale={hovered && !answered ? 1.15 : 1}
-    >
-      <dodecahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial color={color} roughness={0.4} metalness={0.2} />
-      <Html position={[0, 0, 1.2]} center>
+    <mesh position={position} castShadow receiveShadow>
+      <boxGeometry args={[2.2, 1.2, 2.2]} />
+      <meshStandardMaterial
+        color={
+          answered
+            ? isOver
+              ? isCorrect
+                ? "#43a047"
+                : "#e53935"
+              : "#2196f3"
+            : "#2196f3"
+        }
+        opacity={isOver ? 0.8 : 1}
+        transparent
+      />
+      <Html position={[0, 0.7, 0]} center transform>
         <div
           style={{
             color: "white",
             fontWeight: "bold",
             textAlign: "center",
             width: 120,
-            cursor: answered ? "default" : "pointer",
+            pointerEvents: "none",
             userSelect: "none",
-            pointerEvents: "auto",
-          }}
-          onPointerDown={(e) => {
-            e.stopPropagation();
-            if (!answered) onSelect();
           }}
         >
           {text}
         </div>
       </Html>
+    </mesh>
+  );
+}
+
+// Modelo arrastrable
+function DraggableModel({ url, onDrop, dropZones, answered, setIsDragging, setNoBoxFeedback }) {
+  const [ref, api] = useBox(() => ({
+    mass: 0,
+    position: [0, 2.5, 0],
+    args: [0.7, 0.7, 0.7], // Más pequeño
+    type: "Dynamic",
+  }));
+  const dragging = useRef(false);
+  const dropped = useRef(false);
+
+  const dragY = 2.5;
+
+  // Drag: sigue el mouse solo si está siendo arrastrado
+  useFrame(({ mouse, camera }) => {
+    if (dragging.current && !answered) {
+      const ndc = new THREE.Vector2(mouse.x, mouse.y);
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(ndc, camera);
+      const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -dragY);
+      const intersection = new THREE.Vector3();
+      raycaster.ray.intersectPlane(plane, intersection);
+
+      api.position.set(intersection.x, dragY, intersection.z);
+      api.velocity.set(0, 0, 0);
+      api.angularVelocity.set(0, 0, 0);
+    }
+  });
+
+  // Detectar drop (cuando el modelo está quieto sobre una caja)
+  useFrame(() => {
+    if (!answered && ref.current && !dragging.current && !dropped.current) {
+      const pos = ref.current.position;
+      let insideAnyBox = false;
+      dropZones.forEach((zone, idx) => {
+        const [zx, zy, zz] = zone.position;
+        const EXTRA = 0.6;
+        const HOLE_X = 2.2 - 0.2 * 2 + EXTRA;
+        const HOLE_Z = 2.2 - 0.2 * 2 + EXTRA;
+        const HOLE_Y = 1.2 + 0.5;
+        if (
+          pos.x > zx - HOLE_X / 2 &&
+          pos.x < zx + HOLE_X / 2 &&
+          pos.z > zz - HOLE_Z / 2 &&
+          pos.z < zz + HOLE_Z / 2 &&
+          pos.y < zy + HOLE_Y / 2
+        ) {
+          dropped.current = true;
+          insideAnyBox = true;
+          onDrop(idx);
+        }
+      });
+      if (!insideAnyBox && !dragging.current && !answered) {
+        setTimeout(() => {
+          if (!answered && !dropped.current) setNoBoxFeedback(true);
+        }, 700);
+      }
+    }
+    if (answered && dropped.current) {
+      dropped.current = false;
+    }
+  });
+
+  return (
+    <mesh
+      ref={ref}
+      onPointerDown={(e) => {
+        e.stopPropagation();
+        if (!answered) {
+          dragging.current = true;
+          setIsDragging(true);
+          setNoBoxFeedback(false); // Oculta el feedback al volver a arrastrar
+          api.mass.set(0); // Sigue flotando mientras arrastras
+          api.velocity.set(0, 0, 0);
+          api.angularVelocity.set(0, 0, 0);
+        }
+      }}
+      onPointerUp={(e) => {
+        e.stopPropagation();
+        if (dragging.current) {
+          dragging.current = false;
+          setIsDragging(false);
+
+          // Ahora sí, activa la física para que caiga
+          api.mass.set(1.5);
+          api.applyImpulse(
+            [
+              (Math.random() - 0.5) * 2,
+              0,
+              (Math.random() - 0.5) * 2,
+            ],
+            [0, 0, 0]
+          );
+          api.applyTorque([
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 10,
+          ]);
+        }
+      }}
+      castShadow
+      receiveShadow
+    >
+      <boxGeometry args={[0.7, 0.7, 0.7]} />
+      <meshStandardMaterial color="orange" opacity={0.0} transparent />
+      <Model3D url={url} scale={0.5} position={[0, 0, 0]} />
     </mesh>
   );
 }
@@ -89,22 +175,21 @@ function Ground() {
 }
 
 const Quiz3D = ({ onBack }) => {
-  // Estado local solo para feedback visual
-  const [step, setStep] = useState(0);
-  const [showResult, setShowResult] = useState(false);
-  const [answered, setAnswered] = useState(false);
-  const [selectedIdx, setSelectedIdx] = useState(null);
-  const [lastCorrect, setLastCorrect] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [noBoxFeedback, setNoBoxFeedback] = useState(false);
 
   // Zustand store
   const {
     quiz,
-    incrementQuizProgress,
-    incrementCorrectAnswers,
-    incrementIncorrectAnswers,
-    addPoints,
+    answerQuestion,
     clearQuiz,
   } = useQuizStore();
+
+  const step = quiz.step;
+  const showResult = quiz.showResult;
+  const answered = quiz.answered;
+  const overIdx = quiz.overIdx;
+  const lastCorrect = quiz.lastCorrect;
 
   // Auth
   const { userLooged } = useAuthStore();
@@ -113,8 +198,6 @@ const Quiz3D = ({ onBack }) => {
   // Limpiar quiz al montar
   useEffect(() => {
     clearQuiz();
-    setStep(0);
-    setShowResult(false);
   }, []);
 
   // Obtener userId igual que en Quiz.jsx
@@ -160,30 +243,16 @@ const Quiz3D = ({ onBack }) => {
     }
   };
 
-  // Handler de respuesta
-  const handleSelect = (isCorrect, idx) => {
-    setAnswered(true);
-    setSelectedIdx(idx);
-    setLastCorrect(isCorrect);
+  // Posiciones de las cajas de respuesta
+  const answerPositions = [
+    [-5, -0.4, 0], // izquierda (antes -3)
+    [0, -0.4, 0],  // centro
+    [5, -0.4, 0],  // derecha (antes 3)
+  ];
 
-    // Lógica global
-    if (isCorrect) {
-      incrementCorrectAnswers();
-      addPoints(100);
-    } else {
-      incrementIncorrectAnswers();
-    }
-    incrementQuizProgress();
-
-    setTimeout(() => {
-      setAnswered(false);
-      setSelectedIdx(null);
-      if (step < questions.length - 1) {
-        setStep(step + 1);
-      } else {
-        setShowResult(true);
-      }
-    }, 1200);
+  // Handler de drop
+  const handleDrop = (idx) => {
+    answerQuestion(idx, questions, 100);
   };
 
   // Barra de progreso
@@ -199,7 +268,7 @@ const Quiz3D = ({ onBack }) => {
           {!showResult && (
             <>
               {/* Progreso */}
-              <Html position={[2.5, 3.8, 0]} center>
+              <Html position={[2.5, 7, 0]} center transform>
                 <div
                   style={{
                     color: "#222",
@@ -207,13 +276,13 @@ const Quiz3D = ({ onBack }) => {
                     background: "rgba(255,255,255,0.7)",
                     padding: 8,
                     borderRadius: 8,
+                    pointerEvents: "none",
                   }}
                 >
-                  Pregunta {step + 1} de {questions.length} | Progreso:{" "}
-                  {progress}%
+                  Pregunta {step + 1} de {questions.length} | Progreso: {progress}%
                 </div>
               </Html>
-              <Html position={[0, 3, 0]} center>
+              <Html position={[0, 6, 0]} center transform>
                 <div
                   style={{
                     color: "#222",
@@ -221,30 +290,63 @@ const Quiz3D = ({ onBack }) => {
                     background: "rgba(255,255,255,0.8)",
                     padding: 16,
                     borderRadius: 8,
+                    pointerEvents: "none",
                   }}
                 >
                   {questions[step].question}
                 </div>
               </Html>
-              <Model3D
+              <DraggableModel
                 url={questions[step].model}
-                scale={1.2}
-                position={[0, 0.5, -3]}
+                onDrop={handleDrop}
+                dropZones={answerPositions.map((pos, idx) => ({
+                  position: pos,
+                  idx,
+                }))}
+                answered={answered}
+                setIsDragging={setIsDragging}
+                setNoBoxFeedback={setNoBoxFeedback}
               />
               {questions[step].options.map((opt, i) => (
-                <AnswerShape
-                  key={i}
-                  position={[-3 + i * 3, 0, 0]}
-                  text={opt.text}
-                  correct={opt.correct}
-                  answered={answered}
-                  selected={selectedIdx === i}
-                  onSelect={() => handleSelect(opt.correct, i)}
-                />
+                <React.Fragment key={i}>
+                  <ChestBox
+                    position={answerPositions[i]}
+                    scale={1}
+                    color={
+                      answered
+                        ? (overIdx === i
+                            ? (opt.correct ? "#43a047" : "#e53935")
+                            : "#8d5524")
+                        : "#8d5524"
+                    }
+                  />
+                  <Html
+                    position={[
+                      ...answerPositions[i].slice(0, 2),
+                      answerPositions[i][2] + 1,
+                    ]}
+                    center
+                    transform
+                  >
+                    <div
+                      style={{
+                        color: "white",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        width: 120,
+                        pointerEvents: "none",
+                        userSelect: "none",
+                        textShadow: "0 0 6px #000",
+                      }}
+                    >
+                      {opt.text}
+                    </div>
+                  </Html>
+                </React.Fragment>
               ))}
               {/* Mensaje de feedback */}
               {answered && (
-                <Html position={[0, 1.8, 0]} center>
+                <Html position={[0, 1.8, 0]} center transform>
                   <div
                     style={{
                       color: lastCorrect ? "#43a047" : "#e53935",
@@ -266,7 +368,7 @@ const Quiz3D = ({ onBack }) => {
             </>
           )}
           {showResult && (
-            <Html position={[0, 2, 0]} center>
+            <Html position={[0, 2, 0]} center transform>
               <div
                 style={{
                   color: "#222",
@@ -290,7 +392,7 @@ const Quiz3D = ({ onBack }) => {
                     setStep(0);
                     setShowResult(false);
                     setAnswered(false);
-                    setSelectedIdx(null);
+                    setOverIdx(null);
                     setLastCorrect(null);
                   }}
                 >
@@ -304,7 +406,7 @@ const Quiz3D = ({ onBack }) => {
             </Html>
           )}
         </Physics>
-        <OrbitControls />
+        <OrbitControls enabled={!isDragging} />
       </Canvas>
     </div>
   );

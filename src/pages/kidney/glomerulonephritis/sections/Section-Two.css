@@ -1,0 +1,77 @@
+.gl-section-2 {
+  align-items: flex-start;
+  background: var(--verde);
+  color: #ffffff;
+}
+
+.gl-model-3d-sesion2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 0 0 auto;
+  max-width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 10px;
+}
+
+.gl-model-3d-sesion2 canvas{
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1;
+  border-radius: 10px;
+}
+
+.gl-modal-overlay {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.gl-modal-content {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.gl-modal-text {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.gl-symptoms-list {
+  background: rgba(6, 86, 110, 0.12);
+  border-radius: 22px;
+  border: 2.5px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px 0 40px !important;
+}
+
+.gl-symptoms-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.gl-section-2 .gl-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.gl-section-2 ul li::before {
+  color: #fff; /* Específico de S2 */
+}

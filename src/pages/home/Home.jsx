@@ -8,7 +8,10 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from '@react-three/drei';
 import LightsModelBox from "./lightsmodelbox";
-import RecipientBox from "./RecipientBox";
+import TitlesPage from "../kidney/kidney-cancer/textss/TitlesPage";
+import LightsTitles from "../kidney/kidney-cancer/lightsmodel/LightsTitles";
+import TitleSection2 from "./TitleSection2";
+
 
 
 const HealthyKidneyGLB = (props) => {
@@ -58,11 +61,7 @@ const ImportanceKidneyGLB = (props) => {
         position={[props.position ? props.position[0] : 0, -6, props.position ? props.position[2] : 0]}
         receiveShadow={true}
       >
-        {/* Modifica el primer argumento (radio) para círculo, o los dos primeros (ancho, alto) para plano */}
-        {/* Ejemplo para círculo más pequeño: */}
-        <circleGeometry args={[2.5, 48]} />
-        {/* Ejemplo para plano rectangular: */}
-        {/* <planeGeometry args={[6, 4]} /> */}
+        <planeGeometry args={[7, 7]} />
         <meshPhysicalMaterial
           color="black"
           opacity={0.25}
@@ -124,7 +123,7 @@ const Home = () => {
   return (
     <>
       <section className="home" ref={inicioSectionRef}>
-        <div className="home-content">
+        <div className="home-content" style={{ marginTop: '-40px' }}>
           <div className="logo2 fade-in">
             <span className="logo-text">
               <FontAwesomeIcon icon={faStaffSnake} className="imagen1" />
@@ -147,7 +146,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="home-model-3d">
+        <div className="home-model-3d" style={{ marginTop: '-40px' }}>
           <Canvas
             camera={{ position: [0, 0, 25], fov: 45 }}
             style={{ width: '100%', height: '100%', background: 'transparent' }}
@@ -170,14 +169,21 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Nueva sección */}
+ 
       <section ref={descubreSectionRef} className="descubre-section">
         {/* Botón flecha arriba */}
         <button className="flecha-arriba-btn" onClick={handleSubirClick}>
           <FontAwesomeIcon icon={faChevronUp} size="2x" />
         </button>
-        <div className="content">
-          <h3 style={{ color: "rgb(49, 138, 172)" }}>¿Por qué son importantes los riñones?</h3>
+        <div className="content" style={{ marginTop: '-200px' }}>
+         
+          <div className="titulo-3d">
+            <Canvas shadows>
+              <TitleSection2 title={"LOS RIÑONES"} />
+              <LightsTitles />
+            </Canvas>
+          </div>
+          <h3 style={{ color: "rgb(49, 138, 172)" }}>¿Por qué son importantes ?</h3>
           <p>
             Los riñones son órganos vitales que filtran los desechos y el exceso de agua de la sangre, regulan la presión arterial y mantienen el equilibrio de minerales esenciales. Descubre cómo cuidarlos y por qué su salud es fundamental para tu bienestar general.
           </p>
@@ -185,9 +191,9 @@ const Home = () => {
         <div
           className="model-3d-descubre"
           style={{
-            width: '400px',
-            height: '400px',
-            marginTop: '40px'
+            width: '500px',
+            height: '500px',
+            marginTop: '-130px'
           }}
         >
           <Canvas
@@ -196,8 +202,8 @@ const Home = () => {
             shadows
           >
             <LightsModelBox />
-            <ImportanceKidneyGLB scale={8} position={[4, 0, 0]} />
-            <RecipientBox position={[4, -6, 0]} />
+            <ImportanceKidneyGLB scale={10} position={[4, 0, 0]} />
+          
             <OrbitControls />
           </Canvas>
         </div>

@@ -1,5 +1,5 @@
 .profile-container {
-  max-width: 900px; /* antes 420px */
+  max-width: 900px;
   margin: 60px auto;
   margin-top: 100px;
   margin-bottom: 150px; /* Espacio antes del footer */
@@ -25,16 +25,16 @@
   margin-bottom: 32px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinea todo a la izquierda */
+  align-items: flex-start; 
 }
 
 .profile-row {
   display: flex;
-  flex-direction: column; /* Nombre y valor uno debajo del otro */
+  flex-direction: column;
   align-items: flex-start;
   padding: 12px 0;
   border-bottom: 1px solid #e0e7ef;
-  font-size: 1.5rem; /* Aumentado */
+  font-size: 1.5rem; 
   width: 100%;
   gap: 2px;
 }
@@ -42,13 +42,13 @@
 .profile-label {
   color: #226b7a;
   font-weight: 800;
-  font-size: 2rem; /* Aumentado */
+  font-size: 2rem; 
 }
 
 .profile-value {
   color: #444;
-  word-break: break-all; /* Por si el correo es muy largo */
-  font-size: 2rem; /* Aumentado */
+  word-break: break-all;
+  font-size: 2rem; 
 }
 
 .profile-logout-btn {

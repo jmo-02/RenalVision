@@ -13,9 +13,11 @@ const Profile = () => {
 
   useEffect(() => {
     if (!userLooged) return;
+    
     const fetchData = async () => {
       const { displayName, email } = userLooged;
       const data = { displayName, email };
+      
       try {
         const response = await fetch(
           `${import.meta.env.VITE_API_BASE_URL}users`,
@@ -25,14 +27,17 @@ const Profile = () => {
             body: JSON.stringify(data),
           }
         );
+        
         if (!response.ok)
           throw new Error(`Error ${response.status}: ${response.statusText}`);
+        
         return await response.json();
       } catch (error) {
         console.error(`Error creating user:`, error);
         throw error;
       }
     };
+    
     fetchData();
   }, [userLooged]);
 

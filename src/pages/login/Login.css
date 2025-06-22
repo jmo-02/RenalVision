@@ -1,1 +1,262 @@
-import "./Login.css";
+.login-container {
+  min-height: 80vh;
+  background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 50%, #cffafe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 180rem;
+  z-index: 10;
+  font-size: 1.1rem; /* Escalado general */
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.login-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-logo {
+  margin: 0 auto;
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.3);
+}
+
+.login-logo-icon {
+  width: 3rem;
+  height: 3rem;
+  color: white;
+}
+
+.login-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.login-title-accent {
+  color: #14b8a6;
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.login-subtitle {
+  color: #6b7280;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.login-welcome {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-welcome-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.login-welcome-text {
+  color: #6b7280;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-google-btn {
+  width: 100%;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+  font-size: 1.25rem;
+}
+
+.login-google-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.login-google-btn:focus {
+  outline: 2px solid #14b8a6;
+  outline-offset: 2px;
+}
+
+.login-google-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+}
+
+.login-google-text {
+  color: #374151;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.login-google-btn:hover .login-google-text {
+  color: #1f2937;
+}
+
+.login-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-privacy {
+  font-size: 1rem;
+  color: hsl(240, 4%, 5%);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.login-features {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1rem;
+  color: #6b7280;
+  width: 100%;
+}
+
+.login-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-feature-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.login-feature-dot-2 {
+  background: #3b82f6;
+}
+
+.login-feature-dot-3 {
+  background: #22d3ee;
+}
+
+
+/* Responsive */
+@media (max-width: 640px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .login-features {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .login-feature {
+    justify-content: center;
+  }
+}
+
+/* Animaciones */
+.login-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-logo {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Estados de focus y active */
+.login-google-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}

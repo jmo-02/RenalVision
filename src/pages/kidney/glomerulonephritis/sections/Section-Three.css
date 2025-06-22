@@ -1,0 +1,49 @@
+.gl-section-3 {
+  background-color: #f5f5f5;
+  color: #ffffff;
+  background: var(--verde)80%;
+}
+
+
+.gl-treatment-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rem;
+  padding: 2rem;
+}
+.gl-model-3d-sesion3 canvas{
+  width: 400px;
+  height: 300px;
+  flex: 1;
+  border-radius: 10px;
+}
+
+.gl-treatment-list {
+  border-radius: 20px;
+  border: 3px solid rgba(6, 86, 110, 0.22);
+  box-shadow: 14px 24px 34px 0 rgba(0,0,0,0.08);
+  padding: 10px 40px 0 40px !important;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+}
+
+.gl-info-treatment {
+  margin-top: 1rem;
+  background: #fff2f2;
+  padding: 12px;
+  border-radius: 8px;
+  color: #990000;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.gl-scroll-button2 {
+  background-color: #38A3A5;
+  color: white;
+}
+
+.gl-scroll-button2:hover {
+  background-color: #0DBBB5;
+}

@@ -22,7 +22,7 @@ const Login = () => {
         <div className="login-card">
           <div className="login-header">
             <div className="login-logo" style={{ fontSize: 50 }}>
-              <FontAwesomeIcon icon={faStaffSnake} />
+              <FontAwesomeIcon icon={faStaffSnake} className="login-logo-icon" />
             </div>
             <div className="login-title-section">
               <h1 className="login-title">

@@ -5,6 +5,7 @@ import TitlesPage from '../components-html-3d/Title-Kidney';
 import LightsTitles from '../../kidney-cancer/lightsmodel/LightsTitles';
 import TitleGlomerulo from '../components-html-3d/Title-glomerulo2d';
 import { ChevronDown } from 'lucide-react';
+import ButtonWhatIs from '../components-html-3d/Button-sound';
 
 const Section1 = React.forwardRef(({ scrollToSection }, ref) => {
   return (
@@ -24,11 +25,15 @@ const Section1 = React.forwardRef(({ scrollToSection }, ref) => {
             aguda o crónica y está asociada a diversas causas, como procesos
             infecciosos, trastornos inmunológicos y enfermedades sistémicas.
           </p>
+          <div className="gl-hint-sonido">
+            <p>Presiona el Boton verde para escuchar informacion</p>
+          </div>
         </div>
         <div className="gl-model-3d">
           <Canvas shadows camera={{ position: [4, 2, 17], fov: 60 }}>
             <GlomeruloModel />
             <TitleGlomerulo />
+            <ButtonWhatIs  />
           </Canvas>
         </div>
       </div>

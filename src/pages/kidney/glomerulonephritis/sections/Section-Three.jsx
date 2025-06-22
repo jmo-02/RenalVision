@@ -9,12 +9,13 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 const Section3 = React.forwardRef(({ scrollToSection }, ref) => {
   const [showTreatmentInfo, setShowTreatmentInfo] = useState(false);
   const [showTreatmentHint, setShowTreatmentHint] = useState(true);
+  const [isAnimationPaused, setIsAnimationPaused] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key.toLowerCase() === 't') {
-        setShowTreatmentInfo(false);
-        setShowTreatmentHint(true);
+        e.preventDefault();
+        setIsAnimationPaused(prev => !prev);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -53,23 +54,34 @@ const Section3 = React.forwardRef(({ scrollToSection }, ref) => {
         <div className="gl-model-3d-sesion3">
           <Canvas shadows camera={{ position: [4, 2, 12], fov: 40 }}>
             <StagingTreatment />
-            <TreatmentModel onClick={() => {
+            <TreatmentModel 
+            isPaused={isAnimationPaused}
+            onClick={() => {
               setShowTreatmentInfo(true)
               setShowTreatmentHint(false);
-            }} />
+            }} 
+            onModelHover={() => {
+              setShowTreatmentInfo(true);
+              setShowTreatmentHint(false);
+            }}
+            onModelOut={() => {
+              setShowTreatmentInfo(false);
+              setShowTreatmentHint(true);
+            }}
+            />
             <Title2dPrevention />
           </Canvas>
           {showTreatmentHint && (
             <div className="gl-modal-overlay">
               <div className="gl-modal-content">
-                <p className="gl-modal-text">💡 Haz clic sobre el modelo para ver una recomendación</p>
+                <p className="gl-modal-text">💡 Pon el mouse sobre el modelo para ver una recomendación</p>
               </div>
             </div>
           )}
           {showTreatmentInfo && (
             <p className="gl-info-treatment">
               Recuerda seguir las indicaciones<br /> del médico durante el tratamiento.
-              <br />Presiona "T" para ocultar este mensaje.
+              <br />Presiona "T" para detener la animacion.
             </p>
           )}
         </div>

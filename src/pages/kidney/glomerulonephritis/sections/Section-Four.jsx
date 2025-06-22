@@ -35,11 +35,13 @@ const Section4 = React.forwardRef(({ scrollToSection }, ref) => {
         <div className="gl-content gl-full-width">
           <div className='gl-title-prevention'>
             <Canvas>
-              <PreventionTitle3D  titleprevention={"PREVENCIONES DE LA GLOMERULONEFRITIS"}/>
+              <PreventionTitle3D  titleprevention={"PREVENCIONES DE GLOMERULONEFRITIS"}/>
             </Canvas>
           </div>
           <p className='gl-p1-prevention'>La glomerulonefritis no siempre se puede prevenir, pero hay medidas que ayudan a reducir su aparición o complicaciones.</p>
-          
+          <div className="gl-animation-hint">
+            <p>Presiona el modelo 3d para ver mas informacion</p>
+          </div>
         </div>
         <div className="gl-model-3d-sesion4">
           <Canvas shadows camera={{ position: [4, 2, 12], fov: 30 }}>
@@ -51,7 +53,7 @@ const Section4 = React.forwardRef(({ scrollToSection }, ref) => {
                 isPaused={isAnimationPaused}
               />)}
           </Canvas>
-          <div className="gl-animation-hint">
+          <div className="gl-hint">
             <p>💡 Presiona <strong>ESPACIO</strong> para {isAnimationPaused ? 'reanudar' : 'pausar'} la animación del modelo.</p>
           </div>
         </div>

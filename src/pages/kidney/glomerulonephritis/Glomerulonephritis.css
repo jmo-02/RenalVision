@@ -45,7 +45,7 @@
 }
 .gl-p1-glomerulo {
   color: #ffffff;
-  font-size: 3.0rem;
+  font-size: 2.2rem !important;
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
@@ -140,15 +140,16 @@
   background: linear-gradient(360deg,#0DBBB5 30%, var(--verde)80%);
 }
 .gl-p1-prevention {
-  color: #ffffff;
-  font-size: 3.0rem;
+  color: #f0f0f0;
+  font-size: 2.6rem !important;
   background: rgba(6, 86, 110, 0.12);
   border-radius: 22px;
   border: 2.5px solid rgba(6, 86, 110, 0.22);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
   padding: 10px 40px 0 40px !important;
-  margin-right: 20px;
+  margin-right: 60px;
   margin-top: 40px;
+  width: 400px;
 }
 
 /* Contenido compartido */
@@ -280,8 +281,8 @@
 .gl-model-3d-sesion4 {
   margin-bottom: 10px;
   flex: 0 0 auto;
-  height: 450px;
-  width: 520px ;
+  height: 550px;
+  width: 620px ;
   display: flex;
   flex-direction: column;
   align-items: center;

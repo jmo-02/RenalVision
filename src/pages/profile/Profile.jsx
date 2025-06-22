@@ -43,21 +43,6 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-<<<<<<< HEAD
-      <div className="profile-card">
-        <h2 className="profile-title">Perfil de usuario</h2>
-        <p className="profile-welcome">
-          ¡Bienvenido! <span className="user-name">{userLooged?.displayName}</span>
-        </p>
-        <button 
-          className="logout-button" 
-          onClick={handleLogout} 
-          title="Cerrar sesión"
-        >
-          Cerrar sesión
-        </button>
-      </div>
-=======
       <div className="profile-title">¡BIENVENIDO A TU PERFIL DE USUARIO!</div>
       <div className="profile-info">
         <div className="profile-row">
@@ -76,7 +61,6 @@ const Profile = () => {
       >
         Cerrar sesión
       </button>
->>>>>>> master
     </div>
   );
 };

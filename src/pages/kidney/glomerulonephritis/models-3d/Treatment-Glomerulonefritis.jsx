@@ -1,17 +1,19 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-import { OrbitControls} from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 
-const TreatmentModel = (props) => {
+const TreatmentModel = ({ onModelHover, onModelOut, isPaused, ...props }) => {
   const groupRef = useRef();
   const { nodes, materials } = useGLTF('/models-3d/glomerulonephritis/treatment-bottle-glomerulonefritis.glb');
 
+  // Detener rotación si está pausado
   useFrame(() => {
-    if (groupRef.current) {
+    if (groupRef.current && !isPaused) {
       groupRef.current.rotation.y += 0.004;
     }
   });
+
   return (
     <>
       <ambientLight intensity={1} />
@@ -34,19 +36,34 @@ const TreatmentModel = (props) => {
         <shadowMaterial opacity={0.5} />
       </mesh>
 
-      <group ref={groupRef} scale={[12, 12, 12]} position={[0, -2, 0]} {...props}>
+      <group
+        ref={groupRef}
+        scale={[12, 12, 12]}
+        position={[0, -2, 0]}
+        onPointerOver={onModelHover}
+        onPointerOut={onModelOut}
+        {...props}
+      >
         {Object.entries(nodes).map(([name, node]) => {
           if (!node.isMesh) return null;
           return (
             <mesh
               key={name}
               geometry={node.geometry}
-              material={node.material || materials[node.material.name]}
+              material={node.material || materials[node.material?.name]}
               castShadow
               receiveShadow
             />
           );
         })}
+
+        {/* Aureola si está pausado */}
+        {isPaused && (
+          <mesh position={[0, 4, 0]}>
+            <torusGeometry args={[1.5, 0.1, 16, 100]} />
+            <meshStandardMaterial color="gold" emissive="gold" emissiveIntensity={1.2} />
+          </mesh>
+        )}
       </group>
     </>
   );

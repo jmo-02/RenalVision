@@ -22,10 +22,18 @@ const Section2 = React.forwardRef(({ scrollToSection }, ref) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
-
+  //evento de mouse
   const handleModelClick = () => {
     setShowCauses(prev => !prev);
     setShowHint(false);
+  };
+  const handleModelHover = () => {
+    setShowCauses(true);
+    setShowHint(false);
+  };
+
+  const handleModelOut = () => {
+    setShowCauses(false); 
   };
 
   return (
@@ -34,7 +42,11 @@ const Section2 = React.forwardRef(({ scrollToSection }, ref) => {
         <div className="gl-model-3d-sesion2">
           <Canvas shadows camera={{ position: [0, 2, 5], fov: 50 }}>
             <StagingSymptoms />
-            <SymptomsModel onModelClick={handleModelClick} />
+            <SymptomsModel 
+              onModelClick={handleModelClick} 
+              onModelHover={handleModelHover}
+              onModelOut={handleModelOut}
+            />
             <Causes3D showCauses={showCauses} />
           </Canvas>
           {showHint && (

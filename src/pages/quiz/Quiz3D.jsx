@@ -384,7 +384,7 @@ const Quiz3D = ({ onBack }) => {
                     fontWeight: 600,
                     cursor: "pointer",
                   }}
-                  onClick={() => (window.location.href = "/ranking")}
+                  onClick={() => navigate("/ranking")}
                 >
                   Ver ranking
                 </button>

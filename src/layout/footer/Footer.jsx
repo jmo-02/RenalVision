@@ -31,6 +31,7 @@ const Footer = () => {
           </li>
         </ul>
       </nav>
+      <div className="footer-divider"></div>
       <p className="copyright-text">
         Copyright©2025. Todos los derechos reservados.
       </p>

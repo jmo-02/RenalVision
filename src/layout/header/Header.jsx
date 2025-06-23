@@ -25,8 +25,8 @@ const Header = () => {
             Inicio
           </NavLink>
 
-        {/* Desplegable con hover */}
-        <div className="dropdown">
+          {/* Desplegable con hover */}
+          <div className="dropdown">
             <div className="link">Enfermedades</div>
             <div className="dropdown-menu">
               <NavLink to="/riñon/calculos-renales" className="dropdown-item">Calculos Renales</NavLink>
@@ -36,16 +36,9 @@ const Header = () => {
             </div>
           </div>
 
-         {/*  <NavLink to="/riñon" end className="link">
-            Enfermedades
+          <NavLink to="/quiz" className="link">
+            Quiz
           </NavLink>
- */}
-
-          {userLooged && (
-            <NavLink to="/quiz" end className="link">
-              Quiz
-            </NavLink>
-          )}
 
           <NavLink to="/sobre-nosotros" end className="link">
             Sobre Nosotros

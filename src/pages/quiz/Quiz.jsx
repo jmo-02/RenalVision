@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Quiz3D from "./Quiz3D";
 import "./Quiz.css"; // Assuming you have a CSS file for styling
-import { useNavigate, Navigate } from "react-router-dom"; // Asegúrate de importar correctamente tu store de autenticación
+import { useNavigate, useLocation, Navigate } from "react-router-dom"; // Asegúrate de importar correctamente tu store de autenticación
 import useAuthStore from "../../stores/use-auth-store";
 
 const Quiz = () => {
   const [showQuiz3D, setShowQuiz3D] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { userLooged } = useAuthStore();
 
-  if (!userLooged) return <Navigate to="/login" />;
+  useEffect(() => {
+    if (location.state?.fromQuiz) {
+      alert("Debes iniciar sesión para acceder al Quiz.");
+    }
+  }, [location.state]);
+
+  if (!userLooged) return <Navigate to="/login" state={{ fromQuiz: true }} />;
   if (showQuiz3D) return <Quiz3D onBack={() => setShowQuiz3D(false)} />;
 
   return (

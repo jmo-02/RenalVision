@@ -15,14 +15,14 @@ footer {
     color: white;
     padding-left: 30px;
     padding-top: 10px;
-    font-size: 2rem; /* Igual que el header */
+    font-size: 1.5rem; /* Igual que el header */
 }
 
 .footer-link {
     color: #fff;
-    font-size: 2rem; /* Igual que el header */
+    font-size: 1.8rem; /* Igual que el header */
     text-decoration: none; /* Elimina subrayado */
-    margin-top: 10px; /* Agrega espacio entre los enlaces y el borde superior */
+    margin-top: 5px; /* Agrega espacio entre los enlaces y el borde superior */
     display: inline-block;
 }
 
@@ -33,7 +33,7 @@ footer {
 .ulinks {
     display: flex;
     justify-content: center; /* Centra los elementos horizontalmente */
-    gap: 150px; /* Espaciado entre los elementos */
+    gap: 100px; /* Espaciado entre los elementos */
     list-style: none;
     padding: 0;
     margin-top: 25px;
@@ -47,14 +47,24 @@ footer {
 .footer-submenu {
     list-style: none;
     padding: 0;
-    margin: 28px 0 0 0;
+    margin: 18px 0 0 0;
     background: none;
     display: flex;
     flex-direction: column;
-    gap: 28px; /* Ajusta el valor según prefieras */
+    gap: 18px; /* Ajusta el valor según prefieras */
 }
 
 .footer-submenu li {
     display: block;
     margin: 0;
+}
+
+.footer-divider {
+    width: 80%;
+    height: 1.5px;
+    background: #e0e7ef;
+    margin: 10px auto 0 auto;
+    border: none;
+    border-radius: 2px;
+    opacity: 0.8;
 }

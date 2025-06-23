@@ -1,6 +1,12 @@
+.ranking-table {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
 .ranking-table th, .ranking-table td {
-  font-size: 1.7rem;      /* Más grande */
-  padding: 18px 36px;     /* Más espacio */
+  font-size: 1.7rem;
+  padding: 10px 18px; /* Menos espacio */
   text-align: center;
 }
 
@@ -24,4 +30,30 @@
   font-size: 3.2rem;      /* Más grande */
   font-weight: bold;
   margin-bottom: 32px;
+}
+
+.ranking-table-container {
+  padding: 24px; /* Menos padding alrededor de la tabla */
+  scrollbar-width: thin;  /* Firefox */
+  scrollbar-color: #38A3A5 #e0f7fa; /* Firefox */
+}
+
+.ranking-table-container::-webkit-scrollbar {
+  width: 14px; /* Más ancho */
+  background: #e0f7fa;
+  border-radius: 8px;
+}
+
+.ranking-table-container::-webkit-scrollbar-thumb {
+  background: #38A3A5;
+  border-radius: 8px;
+  border: 3px solid #e0f7fa; /* Borde para que se vea separado */
+}
+
+.ranking-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(56,163,165,0.07);
 }

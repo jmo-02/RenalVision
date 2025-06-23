@@ -27,6 +27,7 @@ import Title4 from "./texts/Title4";
 import RecipientPrevention from "./models-3d/RecipientPrevention";
 import Button from "./texts/Button";
 import VideoKidneyStones from "./video/VideoKidneyStones";
+import AudioInfoHint from "./video/AudioInfoHint";
 
 
 const KidneyStones = () => {
@@ -62,6 +63,7 @@ const KidneyStones = () => {
             <OrbitControls />
             <Lights />
             <Button />
+            <AudioInfoHint/>
             <KidneyWithStones scale={7} />
             <Title2 title={"RIÑON AFECTADO"} />
             <Recipient />

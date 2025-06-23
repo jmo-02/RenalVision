@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router";
+import React, { useCallback, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router";
 import "./Login.css";
 import useAuthStore from "../../stores/use-auth-store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,13 @@ import { faStaffSnake } from "@fortawesome/free-solid-svg-icons";
 const Login = () => {
   const { loginGoogleWithPopUp } = useAuthStore();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.fromQuiz) {
+      alert("Debes iniciar sesión para acceder al Quiz.");
+    }
+  }, [location.state]);
 
   const handleLogin = useCallback(() => {
     loginGoogleWithPopUp()
